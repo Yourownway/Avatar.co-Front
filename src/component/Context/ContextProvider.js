@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 //Creation des Contexts
 const PostContext = React.createContext();
 const PostUpdateContext = React.createContext();
+const EventUserContext = React.createContext();
+const EventUserUpdateContext = React.createContext();
 const UserContext = React.createContext();
 const UserUpdateContext = React.createContext();
 const SearchContext = React.createContext();
@@ -28,13 +30,19 @@ export function useSearch() {
 export function useSearchUpdate() {
   return useContext(SearchUpdateContext);
 }
+export function useEventUser() {
+  return useContext(EventUserContext);
+}
 
+export function useUpdateEventUser() {
+  return useContext(EventUserUpdateContext);
+}
 // definition des Contexts
 export function ContextProvider({ children }) {
   const [postData, setPostData] = useState([]);
   const [userData, setUserData] = useState({});
   const [searchData, setSearchData] = useState([]);
-
+  const [userEventData, setUserEventData] = useState([]);
   function updatePost(data) {
     setPostData([...data]);
   }
@@ -44,18 +52,24 @@ export function ContextProvider({ children }) {
   function updateSearch() {
     setSearchData(() => {});
   }
-
+  function updateUserEvent(data) {
+    setUserEventData([...data]);
+  }
   //Propagation des Contexts
   return (
     <PostContext.Provider value={postData}>
       <PostUpdateContext.Provider value={updatePost}>
         <UserContext.Provider value={userData}>
           <UserUpdateContext.Provider value={updateUser}>
-            <SearchContext.Provider value={searchData}>
-              <SearchUpdateContext.Provider value={updateSearch}>
-                {children}
-              </SearchUpdateContext.Provider>
-            </SearchContext.Provider>
+            <EventUserContext.Provider value={userEventData}>
+              <EventUserUpdateContext.Provider value={updateUserEvent}>
+                <SearchContext.Provider value={searchData}>
+                  <SearchUpdateContext.Provider value={updateSearch}>
+                    {children}
+                  </SearchUpdateContext.Provider>
+                </SearchContext.Provider>
+              </EventUserUpdateContext.Provider>
+            </EventUserContext.Provider>
           </UserUpdateContext.Provider>
         </UserContext.Provider>
       </PostUpdateContext.Provider>

@@ -3,7 +3,7 @@ const AuthReducer = (state, action) => {
   switch (action.type) {
     case "SIGN_IN":
       localStorage.setItem("token", action.payload.Token);
-
+      console.log('SIGN_IN OK ')
       return {
         ...state,
         isAuthenticated: true,
@@ -28,4 +28,4 @@ const AuthReducer = (state, action) => {
   }
 };
 
-module.exports = AuthReducer
+export default AuthReducer

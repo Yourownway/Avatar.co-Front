@@ -3,6 +3,7 @@ import { useState } from "react";
 import ContextUser from "../../../../Context/ContextUser";
 export default function useProfilUser() {
   const [data, setData] = useState([]);
+  const [openEdit, setOpenEdit] = useState(false);
 
   const { userData } = ContextUser;
 
@@ -23,6 +24,9 @@ export default function useProfilUser() {
   //   };
   //   fetchValidation();
   // }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  const handleClickEdit = () => {
+    setOpenEdit(!openEdit);
+  };
 
-  return { data, userData };
+  return { data, userData, openEdit, handleClickEdit };
 }

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import ContextPost from "../../../../Context/ContextPost";
+import { usePostData } from "../../../../Context/ContextProvider";
 export default function usePorfilNewPost() {
   const [state, setState] = useState({});
-  const { postData } = ContextPost;
+  const postData = usePostData();
 
   useEffect(() => {
     if (postData.length === 0) {

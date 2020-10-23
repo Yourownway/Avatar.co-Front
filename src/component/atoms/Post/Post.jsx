@@ -30,7 +30,7 @@ const postData = usePostData()
             </div>
       {/* editer supprimer si le userId du post != userId */}
     {userData ? (  
-    mapPostData.userId === userData.userId ? (<div><button onClick={handleClickEventEdit}>Editer</button>
+    mapPostData? (<div><button onClick={handleClickEventEdit}>Editer</button>
     <button onClick={handleClickEventDelelet}>Supprimer</button></div>):(null)): null}
       {openModal ? (
       <div className="post-modale--edit">
@@ -45,7 +45,7 @@ const postData = usePostData()
                 </div>
                 </div>):null}
  
-{userData?(mapPostData.userId!==userData.userId?(<button onClick={()=> handleClickEventRequest(mapPostData.id)}>Participer</button>):null):null}
+{userData?(mapPostData.Events.eventIsAdmin===true?(<button onClick={()=> handleClickEventRequest(mapPostData.id)}>Participer</button>):null):null}
 
 
           </li>

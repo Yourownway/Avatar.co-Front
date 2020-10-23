@@ -1,8 +1,13 @@
 import React from "react";
+import { useEffect } from "react";
 import usePostForm from './usePostForm'
 
 export default function PostForm({ mapPostData}) {
   const{handleChange,handleSubmit} = usePostForm()
+  useEffect(() => {
+console.log('FORM',mapPostData)
+  
+  }, [])
   return (
     <>
      <form onSubmit={handleSubmit}>

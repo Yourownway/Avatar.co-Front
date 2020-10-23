@@ -1,8 +1,8 @@
 import React, { useEffect, useReducer } from "react";
-import AuthContext from "./component/Context/AuthContext";
+// import AuthContext from "./component/Context/AuthContext";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ContextProvider, useUser } from "./component/Context/ContextProvider";
-import AuthReducer from "./component/reducer/reducer";
+import { ContextProvider } from "./component/Context/ContextProvider";
+// import AuthReducer from "./component/reducer/reducer";
 import axios from "axios";
 import { useUserUpdate } from "./component/Context/ContextProvider";
 
@@ -12,45 +12,51 @@ import routesAuth from "./component/Config/routesAuth";
 
 const initialState = {
   isAuthenticated: false,
-  user: null,
-  token: null,
+  user: null || localStorage.getItem("user"),
+
+  token: null || localStorage.getItem("token"),
 };
 
+const reducer = (state, action) => {
+  console.log("ICI ACTION :", action);
+  switch (action.type) {
+    case "SIGNIN":
+      console.log("SINGIN", action);
+      localStorage.setItem("token", action.payload.data.Token);
+      localStorage.setItem("user", action.payload.data);
+      return {
+        ...state,
+        isAuthenticated: true,
+        token: action.payload.data.Token,
+        user: action.payload.data,
+      };
+    case "LOGOUT":
+      localStorage.clear();
+      return {
+        ...state,
+        isAuthenticated: false,
+        token: null,
+      };
+    case "LOAD_USER":
+      console.log("LOAD_USER", state);
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload.data,
+      };
+    default:
+      return state;
+  }
+};
+export const AuthContext = React.createContext();
 function App() {
-  const [state, dispatch] = useReducer(AuthReducer, initialState);
-  const authValue = {
-    state,
-    dispatch,
-  };
-  const updateUser = useUserUpdate();
-  const userData = useUser();
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const token = localStorage.getItem("token");
-      console.log(token);
-      if (token) {
-        const res = await axios(`/api/load/user`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        console.log("resULT", res);
-        updateUser(res.data);
-        console.log("userValue!!", useUser);
-        dispatch({
-          type: "LOAD_USER",
-          payload: res,
-        });
-      }
-    };
-    fetchUser();
-  });
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <>
-      <AuthContext.Provider value={authValue}>
+      <AuthContext.Provider
+        value={{ reducerState: state, reducerDispatch: dispatch }}
+      >
         <ContextProvider>
           <Router>
             <Switch>

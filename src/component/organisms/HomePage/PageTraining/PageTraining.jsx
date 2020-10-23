@@ -4,7 +4,7 @@ import TrainingByDate from './TrainingFilters/date/TrainingByDate'
 import TrainingByRate from './TrainingFilters/rate/TrainingByRate'
 import TrainingByCategories from './TrainingFilters/categories/TrainingByCategories'
 import usePageTraining from './usePageTraining'
-import Post from "../atoms/Post/Post";
+import Post from "../../../atoms/Post/Post";
 import ContextSearch from "../../../Context/ContextSearch";
 import { useSearch } from "../../../Context/ContextProvider";
 

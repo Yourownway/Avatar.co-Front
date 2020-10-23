@@ -1,77 +1,47 @@
 import React, { useReducer } from "react";
-
+import Test from "./test";
 const initialState = {
-  isAuthenticated: false,
-  user: null,
-  token: null,
+  isAuthenticated: "false",
 };
 const AuthReducer = (state, action) => {
-  console.log("ICI ACTION :", action);
   switch (action.type) {
     case "SIGNIN":
-      localStorage.setItem("token", action.payload.Token);
-
+      // localStorage.setItem("token", action.payload.Token);
+      console.log(state);
       return {
         ...state,
-        isAuthenticated: true,
-        token: action.payload.Token,
-        user: action.payload,
+        isAuthenticated: "true",
+        // token: action.payload.Token,
+        // user: action.payload,
       };
     case "LOGOUT":
-      localStorage.clear();
+      console.log(state);
       return {
         ...state,
-        isAuthenticated: false,
-        token: null,
+        isAuthenticated: "false",
       };
-    case "LOAD_USER":
+    case "YES":
+      console.log(state);
       return {
         ...state,
-        isAuthenticated: true,
-        user: action.payload,
+        isAuthenticated: "YES",
       };
     default:
       return state;
   }
 };
+export const AuthContext = React.createContext();
+export default function App2() {
+  const [state, dispatch] = useReducer(AuthReducer, initialState);
 
-const AuthContext = React.createContext();
-
-const CountProvider = ({ children }) => {
-  const contextValue = useReducer(AuthReducer, initialState);
   return (
-    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+    <AuthContext.Provider
+      value={{ reducerState: state, reducerDispatch: dispatch }}
+    >
+      <div>
+        <Test />
+        <h2>hello {state.isAuthenticated} </h2>
+      </div>
+    </AuthContext.Provider>
   );
-};
-
-const useCount = () => {
-  const contextValue = useContext(CountContext);
-  return contextValue;
-};
-
-const Counter = () => {
-  const [count, dispatch] = useCount();
-  return (
-    <div>
-      {count}
-      <button onClick={() => dispatch({ type: "increment" })}>+1</button>
-      <button onClick={() => dispatch({ type: "decrement" })}>-1</button>
-      <button onClick={() => dispatch({ type: "set", count: 0 })}>reset</button>
-    </div>
-  );
-};
-
-const Example05 = () => (
-  <>
-    <CountProvider>
-      <Counter />
-      <Counter />
-    </CountProvider>
-    <CountProvider>
-      <Counter />
-      <Counter />
-    </CountProvider>
-  </>
-);
-
-export default Example05;
+}

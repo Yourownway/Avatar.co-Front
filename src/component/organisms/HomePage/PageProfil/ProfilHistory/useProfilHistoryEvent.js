@@ -1,19 +1,22 @@
-// import { useState, useEffect } from "react";
-// import axios from "axios";
-// export default function useProfilHistoryEvent() {
-//   const [userPostState, setUserPostState] = useState([]);
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useUser } from "../../../../Context/ContextProvider";
+export default function useProfilHistoryEvent() {
+  const [userPostData, setUserPostData] = useState([]);
+  const userData = useUser();
 
-//   useEffect(() => {
-//     const user = { userId: localStorage.getItem("userId") };
-//     console.log(user.userId);
-//     async function fetchData({ userPost }) {
-//       const res = await axios.post("api/post/user", user);
-//       console.log("HistoryEvent", res.data.userPost);
-//       setUserPostState(...userPostState, res.data.userPost);
-//       await console.log("userPostState", userPostState);
-//     }
+  useEffect(() => {
+    const fetchUserPost = async () => {
+      const res = await axios.post("/api/userPost", {
+        userId: userData.userId,
+      });
+      console.log("HistoryEvent", res.data.userPost);
+      if (res) {
+        setUserPostData(res.data.userPost);
+      }
+    };
 
-//     fetchData();
-//   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-//   return {};
-// }
+    fetchUserPost();
+  }, [userData]); // eslint-disable-line react-hooks/exhaustive-deps
+  return { userPostData };
+}

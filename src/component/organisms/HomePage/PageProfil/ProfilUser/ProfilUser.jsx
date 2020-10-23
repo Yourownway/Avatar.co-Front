@@ -4,12 +4,12 @@ import useProfilUser from './useProfilUser'
 import {useUser} from '../../../../Context/ContextProvider'
 export default function ProfilUser() {
 
-  const { data} = useProfilUser()
-  const {userData} = useUser()
+  const { data, handleClickEdit,openEdit} = useProfilUser()
+  const userData = useUser()
     return (
          <>
       <div className="profilUser-container">
-
+<img src="https://via.placeholder.com/150"></img>
      {userData&&data ?(<div>
      <h2> {userData.firstName}</h2> 
      <h2> {userData.userId}</h2>
@@ -20,6 +20,19 @@ export default function ProfilUser() {
           <p>{user.firstName}</p>
         ))}
       </div>
+      <button onClick={handleClickEdit}>editer</button>
+           {openEdit ? (
+      <div className="post-modale--edit">
+             
+                <div className="post-modale--edit ">
+                  <button onClick={handleClickEdit}>X</button>
+                 
+                    {/* <PostForm mapPostData={mapPostData}
+                    /> */}
+                    
+                
+                </div>
+                </div>):null}
     </>
     )
 }
