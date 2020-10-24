@@ -20,7 +20,7 @@ export default function PageTraining() {
             <Link to="/Home/Page/Training/Date">Date</Link>
           </li>
           <li>
-            <Link to={`/Home/Page/Training/Categorie`}>
+            <Link to={`/Home/Page/Training/Categorie/${select}`}>
               <select onChange={handleChange}>
                 <option></option>
                 {categories.map((data) => (
@@ -41,15 +41,8 @@ export default function PageTraining() {
               <Post postDefaultData={searchData} />
             ) : null}
             <Route path="/Home/Page/Training/Date" component={TrainingByDate} />
-            <Route path={`/Home/Page/Training/Categorie`}>
-              {select !== undefined ? (
-                <TrainingByCategories categorie={select} />
-              ) : null}
-            </Route>
-            <Route
-              path="/Home/Page/Training/Rate"
-              component={TrainingByRate}
-            />
+            <Route path={`/Home/Page/Training/Categorie/:name`} component={TrainingByCategories}/>
+            <Route path="/Home/Page/Training/Rate" component={TrainingByRate}/>
           </Switch>
         </div>
       </div>

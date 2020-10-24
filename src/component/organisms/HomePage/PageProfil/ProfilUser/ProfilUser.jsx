@@ -26,7 +26,7 @@ export default function ProfilUser() {
              
                 <div className="post-modale--edit ">
                   <button onClick={handleClickEdit}>X</button>
-                 
+                 {/* <UserForm />   */}
                     {/* <PostForm mapPostData={mapPostData}
                     /> */}
                     

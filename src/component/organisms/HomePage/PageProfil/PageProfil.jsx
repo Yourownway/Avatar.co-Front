@@ -10,7 +10,7 @@ import ProfilUser from './ProfilUser/ProfilUser'
 import usePageProfil from './usePageProfil'
 export default function PageProfil() {
 
-    const {userPost} = usePageProfil()
+   
     
     return (
  
@@ -19,7 +19,7 @@ export default function PageProfil() {
       <ProfilNav />
       <Switch>
          <Route path="/Home/Page/Profil/History" exact>
-          <ProfilHistory userPost={userPost} />
+          <ProfilHistory  />
         </Route>  
 
         <Route

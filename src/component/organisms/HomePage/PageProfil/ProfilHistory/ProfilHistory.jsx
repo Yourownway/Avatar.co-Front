@@ -3,11 +3,11 @@ import ProfilHistoryEvent from "./ProfilHistoryEvent";
 import ProfilNextEvent from "./ProfilNextEvent";
 
 
-export default function ProfilHistory({ userPost }) {
+export default function ProfilHistory({ }) {
   return (
     <div>
       <ProfilNextEvent />
-      <ProfilHistoryEvent userPost={userPost} />
+      <ProfilHistoryEvent  />
     </div>
   );
 }

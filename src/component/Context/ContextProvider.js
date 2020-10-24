@@ -49,8 +49,8 @@ export function ContextProvider({ children }) {
   function updateUser(data) {
     setUserData({ ...data });
   }
-  function updateSearch() {
-    setSearchData(() => {});
+  function updateSearch(data) {
+    setSearchData([...data]);
   }
   function updateUserEvent(data) {
     setUserEventData([...data]);

@@ -5,19 +5,12 @@ import {
   usePostData,
   useUpdatePost,
 } from "../../../../../Context/ContextProvider";
+import usePageTraining from "../../usePageTraining";
 
 export default function TrainingPost() {
+  //recuperer les tableau filtrer sans doublon
+  const { postFilter } = usePageTraining();
   const postData = usePostData();
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const res = await axios("/api/post");
-  //     updatePost(res.data.post);
-  //     console.log("POSTDATA", postData);
-  //   };
-
-  //   fetchData();
-  // }, []);
-
-  return <Post postDefaultData={postData} />;
+  return <Post postDefaultData={postFilter} />;
 }

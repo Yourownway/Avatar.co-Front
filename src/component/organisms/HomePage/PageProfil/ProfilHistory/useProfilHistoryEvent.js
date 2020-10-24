@@ -1,22 +1,21 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useUser } from "../../../../Context/ContextProvider";
+import { usePostData, useUser } from "../../../../Context/ContextProvider";
 export default function useProfilHistoryEvent() {
-  const [userPostData, setUserPostData] = useState([]);
   const userData = useUser();
-
+  const postData = usePostData();
+  const [userEvent, setUserEvent] = useState([]);
   useEffect(() => {
-    const fetchUserPost = async () => {
-      const res = await axios.post("/api/userPost", {
-        userId: userData.userId,
-      });
-      console.log("HistoryEvent", res.data.userPost);
-      if (res) {
-        setUserPostData(res.data.userPost);
-      }
+    const filterUserEvent = () => {
+      const res = postData.filter(
+        (post) => userData.userId === post["Events.userId"]
+      );
+      setUserEvent(res);
+      console.log("UserEvent =>  usePageProfil", res);
+      console.log("userData.userId", userData.userId);
     };
+    filterUserEvent();
+  }, [userData]);
 
-    fetchUserPost();
-  }, [userData]); // eslint-disable-line react-hooks/exhaustive-deps
-  return { userPostData };
+  return { userEvent };
 }
