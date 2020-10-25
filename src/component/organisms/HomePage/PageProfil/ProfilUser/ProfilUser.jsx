@@ -4,7 +4,7 @@ import useProfilUser from './useProfilUser'
 import {useUser} from '../../../../Context/ContextProvider'
 export default function ProfilUser() {
 
-  const {  handleClickEdit,openEdit,userEvent,userRequest } = useProfilUser()
+  const {  handleClickEdit,openEdit,userEvent,userRequest, handleClickCancelEvent } = useProfilUser()
   const userData = useUser()
     return (
          <>
@@ -17,17 +17,19 @@ export default function ProfilUser() {
      <p> <span>Description:</span>{userData.userDescription}</p>
      </div>):null}
       </div>
-<ul>ici{userRequest? (userRequest.map(events=> events.map(event=>
-  
-  
+<h2>Vous avez : {userRequest.length} Notification </h2>
+{userRequest? (userRequest.map(post=> post.map(event=>
+
+  <ul> 
+    
  <li>
-   { event["userId"]=== userData.userId ? (<p>Vous souhaitez participer à {event["Post.postName"]} </p>):(<><p>{event["User.firstName"]} souhaite participer à votre evenement {event["Post.postName"]} </p>
-  <button>Refuser</button> <button>Accepter</button></>)}
+   { event["userId"]=== userData.userId ? (<><p>Vous souhaitez participer à {event["Post.postName"]} </p> <button>annuler</button></>):(<><p>{event["User.firstName"]} souhaite participer à votre evenement {event["Post.postName"]} </p>
+  <button onClick={()=>(handleClickCancelEvent(event["event.id"]))}>Refuser</button> <button>Accepter</button></>)}
 
  </li> 
   
-  
-  ))):null}</ul>
+  </ul>
+  ))):null}
   
        <button onClick={handleClickEdit}>editer</button>
            {openEdit ? (
