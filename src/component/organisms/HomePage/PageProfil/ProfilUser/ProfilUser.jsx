@@ -4,7 +4,7 @@ import useProfilUser from './useProfilUser'
 import {useUser} from '../../../../Context/ContextProvider'
 export default function ProfilUser() {
 
-  const { data, handleClickEdit,openEdit,userEvent, historyPostEvents, userValidate } = useProfilUser()
+  const {  handleClickEdit,openEdit,userEvent,userRequest } = useProfilUser()
   const userData = useUser()
     return (
          <>
@@ -16,11 +16,20 @@ export default function ProfilUser() {
      <p> XP:{userData.userXp} </p>
      <p> <span>Description:</span>{userData.userDescription}</p>
      </div>):null}
-        {data.map((user) => (
-          <p>{user.firstName}</p>
-        ))}
       </div>
-      <button onClick={handleClickEdit}>editer</button>
+<ul>ici{userRequest? (userRequest.map(events=> events.map(event=>
+  
+  
+ <li>
+   { event["userId"]=== userData.userId ? (<p>Vous souhaitez participer à {event["Post.postName"]} </p>):(<><p>{event["User.firstName"]} souhaite participer à votre evenement {event["Post.postName"]} </p>
+  <button>Refuser</button> <button>Accepter</button></>)}
+
+ </li> 
+  
+  
+  ))):null}</ul>
+  
+       <button onClick={handleClickEdit}>editer</button>
            {openEdit ? (
       <div className="post-modale--edit">
              
@@ -29,10 +38,12 @@ export default function ProfilUser() {
                  {/* <UserForm />   */}
                     {/* <PostForm mapPostData={mapPostData}
                     /> */}
-                    
-                
                 </div>
-                </div>):null}
+                </div>
+                
+                ):null}
+                
     </>
     )
 }
+    

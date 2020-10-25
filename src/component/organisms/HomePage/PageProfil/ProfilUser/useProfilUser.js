@@ -1,53 +1,49 @@
-import { useState, useEffect } from "react";
-import { usePostData, useUser } from "../../../../Context/ContextProvider";
+import { useState, useEffect } from "react"
+import { usePostData, useUser } from "../../../../Context/ContextProvider"
 import {
-  filterEvent,
+  getPostUserEvent,
   getPostEvents,
-  filterEventByValidation,
-} from "../../../../action";
+  filterEvent,
+} from "../../../../action"
 export default function useProfilUser() {
-  const [data, setData] = useState([]);
-  const [openEdit, setOpenEdit] = useState(false);
-  const userData = useUser();
-  const postData = usePostData();
-  const [userEvent, setUserEvent] = useState([]);
-  const [historyPostEvents, setHistoryPostEvents] = useState([]);
-  const [userValidate, setUserValidate, getHistoryPostEvents] = useState([]);
+  const [data, setData] = useState([])
+  const [openEdit, setOpenEdit] = useState(false)
+  const userData = useUser()
+  const postData = usePostData()
+
+  const [userEvent, setUserEvent] = useState([])
+  const [postEvents, setPostEvents] = useState([])
+  const [userRequest, setUserRequest] = useState([])
   // j'applique les fonction dans l'ordre de mes post
   // recupere les evenement du User Admin et requette
   useEffect(() => {
-    filterEvent(
-      postData,
-      userData,
-      setUserEvent,
-      "Events.eventRequest",
-      "!!!!!!!!!!!!!!!!!!WAZZZA"
-    );
-  }, [userData, postData]);
+    getPostUserEvent(postData, userData, setUserEvent, "Events.userId")
+  }, [userData, postData])
 
   //recupere tableau tout les evenement lié au postid pour ensuite filtré les requete et les validation
   useEffect(() => {
-    getPostEvents(userEvent, setHistoryPostEvents, "WAZZZZZAA");
-  }, [userData, userEvent, postData]);
+    getPostEvents(userEvent, setPostEvents)
+  }, [userData, userEvent, postData])
+  //filtre les event par validation
   useEffect(() => {
-    console.log("=========================");
+    console.log("=========================")
 
-    filterEventByValidation(
-      historyPostEvents,
-      "eventValidation",
-      setUserValidate
-    );
-  }, [historyPostEvents]);
+    filterEvent(
+      postEvents,
+      "eventRequest",
+      setUserRequest,)
+    // prettier-ignore
+    //  &&event["userId"] !== userData.userId
+  }, [postEvents])
+
   const handleClickEdit = () => {
-    setOpenEdit(!openEdit);
-  };
+    setOpenEdit(!openEdit)
+  }
 
   return {
     data,
     openEdit,
     handleClickEdit,
-    userEvent,
-    historyPostEvents,
-    userValidate,
-  };
+    userRequest,
+  }
 }
