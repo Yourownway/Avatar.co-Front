@@ -7,7 +7,8 @@ import usePost from "./usePost";
 
 export default function Post({ postDefaultData }) {
 const {userData,openModal,
-  handleClickEventEdit,
+  handleClickOpenEventEdit,
+   handleClickCloseEventEdit,
  handleClickEventDelelet, 
 handleClickEventRequest, 
 } = usePost()
@@ -15,7 +16,7 @@ const postData = usePostData()
   return (
     <div className="trainingPost-container">
       <ul>
-        {postDefaultData.map((mapPostData) => (
+        {postDefaultData.map((mapPostData,i) => (
           <li key={mapPostData.id}>
             <div className="trainingPost-post" onClick={()=>{console.log(mapPostData["Events.eventIsAdmin"])}}>
               <h2>{mapPostData.postName}</h2>
@@ -29,8 +30,13 @@ const postData = usePostData()
             </div> 
 {mapPostData["User.id"]===userData.userId?(<div>
   <button>Supprimer</button>
-  <button>Editer</button></div>):(<button>Participer</button>)}
-
+  <button onClick={()=>handleClickOpenEventEdit(i)}>Editer</button></div>):(<button key={mapPostData.id} onClick={()=>handleClickEventRequest(mapPostData.id)}>Participer</button>)}
+{openModal===i ?(
+<div>
+  <button onClick={handleClickCloseEventEdit}>X</button>
+ <PostForm mapPostData={mapPostData}/> 
+</div>
+):null } 
 
           </li>
         ))}    

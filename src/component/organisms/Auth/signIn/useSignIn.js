@@ -32,7 +32,7 @@ export default function useSignIn() {
         // localStorage.setItem("token", res.data.Token);
         await authValue.reducerDispatch({ type: "SIGNIN", payload: res });
 
-        console.log("state", authValue.reducerState);
+        console.log("state", res);
         setValues({
           ...inputValues,
           // isSubmitting: true,

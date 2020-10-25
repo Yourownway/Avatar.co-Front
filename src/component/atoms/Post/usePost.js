@@ -4,10 +4,13 @@ import axios from "axios";
 import { useUser } from "../../Context/ContextProvider";
 export default function usePost() {
   const userData = useUser();
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState();
 
-  const handleClickEventEdit = () => {
-    setOpenModal(!openModal);
+  const handleClickOpenEventEdit = (i) => {
+    setOpenModal(i);
+  };
+  const handleClickCloseEventEdit = () => {
+    setOpenModal(null);
   };
   const handleClickEventDelelet = () => {};
   const handleClickEventRequest = (postId) => {
@@ -20,15 +23,17 @@ export default function usePost() {
         .then((res) => console.log("EventRequest", res));
     };
     fetchEventRequest();
-    console.log("userid", userData.userId, "postId", postId);
+    console.log("userId", userData.userId, "postId", postId);
   };
   const handleClickDeleteEventRequest = () => {};
   return {
     userData,
     openModal,
-    handleClickEventEdit,
+
     handleClickEventDelelet,
     handleClickEventRequest,
     handleClickDeleteEventRequest,
+    handleClickCloseEventEdit,
+    handleClickOpenEventEdit,
   };
 }

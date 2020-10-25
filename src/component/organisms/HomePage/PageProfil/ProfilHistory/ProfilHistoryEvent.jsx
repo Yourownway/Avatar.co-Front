@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef} from "react";
 import useProfilHistoryEvent from './useProfilHistoryEvent'
 import Post from "../../../../atoms/Post/Post";
 import usePageProfil from "../usePageProfil";
@@ -7,26 +7,31 @@ import { usePostData } from "../../../../Context/ContextProvider";
 // import useProfilHistoryEvent from './useProfilHistoryEvent'
 export default function ProfilHistoryEvent() {
    
-const {userEvent} = useProfilHistoryEvent()
+const {userEvent,historyPostEvents,userValidate} = useProfilHistoryEvent()
 
   return (
     <div className="profilNextEvent-container">
       <h1>HistroyEvent </h1>
+     
     {/* {  userPostData.map((data)=> data.postName)} */}
   <div className="trainingPost-container">
+    {/* probleme userValidate se map dans chaque post , je dois donc l'inseré via le dom */}
+   
       <ul>
-        {userEvent.map((mapPostData) => (
+        {userEvent.map((mapPostData,i) => ( 
+          
           <li key={mapPostData.id}>
-            <div className="trainingPost-post" onClick={()=>{console.log(mapPostData.id)}}>
+            <div className="trainingPost-post" >
               <h2>{mapPostData.postName}</h2>
         <h2>PostId:{mapPostData.id}</h2>
              <h3>UserId:{mapPostData["User.id"]}</h3> 
               <h3>{mapPostData["User.firstName"]}</h3>
                <h3>{mapPostData.postDescription}</h3>
                 <h3>{mapPostData["Parc.parcName"]}</h3>
-                <h3>{mapPostData["category.categoryName"]}</h3>
-        <h3> /{mapPostData.postMaxGuest}</h3>
-            
+                <h3>{mapPostData["category.categoryName"]}</h3> 
+                
+        <h3>{userValidate[i]?(userValidate[i].length):null} /{mapPostData.postMaxGuest}</h3> 
+
             </div>
       {/* Si isAdmin, = true alors boutton editer supprimer  */}
 {mapPostData["Events.eventIsAdmin"]===1? ( <div><button>Editer</button> <button>Supprimer</button>
