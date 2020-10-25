@@ -4,13 +4,13 @@ import useProfilUser from './useProfilUser'
 import {useUser} from '../../../../Context/ContextProvider'
 export default function ProfilUser() {
 
-  const { data, handleClickEdit,openEdit} = useProfilUser()
+  const { data, handleClickEdit,openEdit,userEvent, historyPostEvents, userValidate } = useProfilUser()
   const userData = useUser()
     return (
          <>
       <div className="profilUser-container">
 <img src="https://via.placeholder.com/150"></img>
-     {userData&&data ?(<div>
+     {userData?(<div>
      <h2> {userData.firstName}</h2> 
      <h2> {userData.userId}</h2>
      <p> XP:{userData.userXp} </p>
