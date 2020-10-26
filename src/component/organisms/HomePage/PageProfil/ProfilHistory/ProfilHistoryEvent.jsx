@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from "react";
-import useProfilHistoryEvent from './useProfilHistoryEvent'
+
 import Post from "../../../../atoms/Post/Post";
-import usePageProfil from "../usePageProfil";
+
 import { usePostData } from "../../../../Context/ContextProvider";
 import { filterEvent } from "../../../../action";
 

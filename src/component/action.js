@@ -3,26 +3,27 @@ import axios from "axios"
 export const getPostUserEvent = (
   postData,
   userData,
-  setUserEvent,
+  setPostUser,
   params,
   comment
 ) => {
-  const res = postData.filter((post) => userData.userId === post[params])
-  setUserEvent(res)
-  console.log("UserEvent =>  usePageProfil" + comment, res)
-  console.log("userData.userId", userData.userId)
+  console.log("OOOOOOOOO", postData)
+  const res = postData.filter((post) => userData.id === post[params])
+  setPostUser(res)
+  console.log("UserEvent =>  usePageProfil" + comment, postData)
+  console.log("userData.userId", userData.id)
 }
 // recupere tout les event lié au post User
-export const getPostEvents = async (userEvent, setPostEvents, comment) => {
+export const getPostEvents = async (postUser, setEventsPostUser, comment) => {
   //recup postID des history id ie id suer Admin or participat
-  const postIds = await userEvent.map((event) => event["Events.postId"])
+  const postIds = await postUser.map((event) => event["Events.postId"])
   console.log("postIds", postIds)
   //pour chaque post on recupere tout les event
   await axios
     .all(postIds.map((postId) => axios.get(`/api/getEvents/postId/${postId}`)))
     .then(async function (results) {
       const getData = await results.map((res) => res.data.Post)
-      setPostEvents(getData)
+      setEventsPostUser(getData)
       console.log(comment + "getData ???????????????????", getData)
     })
 }

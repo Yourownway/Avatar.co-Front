@@ -1,5 +1,6 @@
-import React,{useEffect,useState}  from 'react'
+import React,{useContext, useEffect,useState}  from 'react'
 import {Route , Switch,} from 'react-router-dom'
+import { AuthContext } from '../../../../App'
 import { getPostEvents, getPostUserEvent } from '../../../action'
 import {useUser, usePostData} from '../../../Context/ContextProvider'
 
@@ -8,12 +9,15 @@ import ProfilHistory from './ProfilHistory/ProfilHistory'
 import ProfilNewPost from './ProfilNewPost/ProfilNewPost'
 import ProfilUser from './ProfilUser/ProfilUser'
 
-import usePageProfil from './usePageProfil'
+
 export default function PageProfil() {
-  const userData = useUser();
+const authValue = useContext(AuthContext)
+const userData = authValue.reducerState.user
   const postData = usePostData();
   const [postUser, setPostUser] = useState([]); 
     const [eventsPostUser, setEventsPostUser] = useState([]);
+
+    
       useEffect(() => {
     getPostUserEvent(postData, userData, setPostUser, "Events.userId",'POSTDATA');
   }, [userData, postData]);

@@ -12,7 +12,7 @@ const {userData,openModal,
  handleClickEventDelelet, 
 handleClickEventRequest, 
 } = usePost()
-const postData = usePostData()
+
   return (
     <div className="trainingPost-container">
       <ul>

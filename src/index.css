@@ -11,7 +11,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: #171b26ff; */
+  /* background-color: #171b26ff;
+  color: white; */
 
   max-height: 100%;
 }
@@ -100,7 +101,7 @@ code {
   display: grid;
   width: 100vw;
   height: 75vh;
-  border: solid red 2px;
+
   /* grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(6, 1fr); */
   grid-gap: 1%;
@@ -152,8 +153,6 @@ code {
   grid-row: 1 /8;
 }
 .trainingPost-container {
-  border: solid red 2px;
-
   grid-column: 4/ 8;
   grid-row: 1/8;
 }

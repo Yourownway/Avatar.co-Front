@@ -10,7 +10,7 @@ import PageProfil from './PageProfil/PageProfil'
 import PageTraining from './PageTraining/PageTraining'
 import PageCoaching from './PageCoaching/PageCoaching'
 import {  usePostData, useUpdatePost,useUserUpdate,useUser } from "../../Context/ContextProvider";
-import useHomePage from './useHomePage'
+
 import  useProfilUser from './PageProfil/ProfilUser/useProfilUser'
 export default function HomePage() {
   const authValue = useContext(AuthContext)
@@ -18,7 +18,7 @@ export default function HomePage() {
   const userData = useUser()
   const updatePost = useUpdatePost();
   const postData = usePostData()
-  const {userEventData} = useHomePage()
+
   const setUserRequest = useProfilUser()
 
   useEffect(() => {
@@ -64,12 +64,12 @@ console.log('USERDAAAAAAATA',authValue.reducerState.user)
    
 
  <Header/> 
-    <h1>Bienvenu {userData.userId} :')</h1>
-  <h1>Vous avez {userEventData.length}</h1>
+    <h1>Bienvenu {authValue.reducerState.user.firstName} :')</h1>
+
   {/* <button onClick={handleClick}>Click</button> */}
  <Switch>
   <Route path= {'/Home/Page/Profil'} component ={PageProfil} />       
-    <Route path= {'/Home/Page/Training'} component ={PageTraining} />   
+    <Route path= {'/Home/Page/Training'} component ={PageTraining}  />   
    <Route path= {'/Home/Page/Coaching'} component ={PageCoaching} />   
       </Switch>
          
