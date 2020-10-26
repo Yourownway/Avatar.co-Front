@@ -33,6 +33,7 @@ export default function HomePage() {
         })
          
          if(res){
+           console.log('tutu')
             authValue.reducerDispatch({ type: "LOAD_USER", payload: res })
             updateUser(res.data)
          }
@@ -40,7 +41,9 @@ export default function HomePage() {
       
     };
     fetchUser();
-  },[authValue.reducerDispatch]);
+  },[]);
+console.log('USERDAAAAAAATA',authValue.reducerState.user)
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios("/api/post");
