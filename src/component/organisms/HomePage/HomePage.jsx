@@ -11,6 +11,7 @@ import PageTraining from './PageTraining/PageTraining'
 import PageCoaching from './PageCoaching/PageCoaching'
 import {  usePostData, useUpdatePost,useUserUpdate,useUser } from "../../Context/ContextProvider";
 import useHomePage from './useHomePage'
+import  useProfilUser from './PageProfil/ProfilUser/useProfilUser'
 export default function HomePage() {
   const authValue = useContext(AuthContext)
   const updateUser =  useUserUpdate()
@@ -18,6 +19,7 @@ export default function HomePage() {
   const updatePost = useUpdatePost();
   const postData = usePostData()
   const {userEventData} = useHomePage()
+  const setUserRequest = useProfilUser()
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -35,6 +37,7 @@ export default function HomePage() {
             updateUser(res.data)
          }
       }
+      
     };
     fetchUser();
   },[authValue.reducerDispatch]);
@@ -44,6 +47,7 @@ export default function HomePage() {
       updatePost(res.data.post);
       console.log("POSTDATA", postData);
     };
+
 
     fetchData();
   }, []);

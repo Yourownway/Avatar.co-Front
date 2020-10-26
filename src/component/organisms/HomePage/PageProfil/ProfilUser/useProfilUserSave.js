@@ -21,12 +21,12 @@ export default function useProfilUser() {
   // recupere les evenement du User Admin et requette
   useEffect(() => {
     getPostUserEvent(postData, userData, setUserEvent, "Events.userId")
-  }, [userData, postData])
+  }, [userData, postData, openEdit])
 
   //recupere tableau tout les evenement lié au postid pour ensuite filtré les requete et les validation
   useEffect(() => {
     getPostEvents(userEvent, setPostEvents)
-  }, [userData, userEvent, postData])
+  }, [userData, userEvent, postData, openEdit])
   //filtre les event par validation
   useEffect(() => {
     console.log("=========================")
@@ -37,6 +37,56 @@ export default function useProfilUser() {
     //  &&event["userId"] !== userData.userId
   }, [postEvents, userData, openEdit])
   console.log("USERREQUEST", userRequest)
+
+  useEffect(() => {
+    const element = (
+      <div>
+        {userRequest
+          ? userRequest.map((post) =>
+              post.map((event) => (
+                <ul>
+                  <li>
+                    <h1>userId {userData.userId}</h1>
+                    {event["userId"] === userData.userId ? (
+                      <>
+                        <p>
+                          Vous souhaitez participer à {event["Post.postName"]}{" "}
+                        </p>{" "}
+                        <button
+                          key={event["id"]}
+                          onClick={() => handleClickCancelEvent(event["id"])}
+                        >
+                          annuler {event["id"]}
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <p>
+                          {event["User.firstName"]} souhaite participer à votre
+                          evenement {event["Post.postName"]}{" "}
+                        </p>
+                        <button
+                          onClick={() => handleClickDeclineEvent(event["id"])}
+                        >
+                          Refuser
+                        </button>{" "}
+                        <button
+                          onClick={() => handleClickValidation(event["id"])}
+                        >
+                          Accepter
+                        </button>
+                      </>
+                    )}
+                    <h3>eventId: {event["id"]}</h3>
+                  </li>
+                </ul>
+              ))
+            )
+          : null}
+      </div>
+    )
+    setRecount(element)
+  }, [openEdit])
 
   const handleClickEdit = () => {
     setOpenEdit(!openEdit)
@@ -72,5 +122,6 @@ export default function useProfilUser() {
     openEdit,
     handleClickEdit,
     userRequest,
+    recount,
   }
 }

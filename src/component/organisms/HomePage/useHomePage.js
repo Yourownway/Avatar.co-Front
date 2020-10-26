@@ -20,10 +20,10 @@ export default function useHomePage() {
   //       userId: userData.userId,
   //     })
   //     .then((res) => {
-  //       setUserEvent(res.data.userEvent);
-  //       updateUserEvent(res.data.post);
-  //     });
-  // };
+  //       setUserEvent(res.data.userEvent)
+  //       updateUserEvent(res.data.post)
+  //     })
+  // }
   // useEffect(() => {
   //   const fetchUserEvent = async () => {
   //     const res = await axios.post("/api/user/event", {

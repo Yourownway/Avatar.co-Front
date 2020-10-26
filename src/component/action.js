@@ -18,7 +18,7 @@ export const getPostEvents = async (userEvent, setPostEvents, comment) => {
   const postIds = await userEvent.map((event) => event["Events.postId"])
   console.log("postIds", postIds)
   //pour chaque post on recupere tout les event
-  const res = await axios
+  await axios
     .all(postIds.map((postId) => axios.get(`/api/getEvents/postId/${postId}`)))
     .then(async function (results) {
       const getData = await results.map((res) => res.data.Post)
@@ -31,7 +31,7 @@ export const filterEvent = async (
   PostEvents,
   params,
   setUserValidate,
-  query
+  comment
 ) => {
   //recup postID les userId selon la requette (Admin ou participan)t
   const res = await PostEvents.map((events) => {
@@ -42,6 +42,6 @@ export const filterEvent = async (
   })
   if (res) {
     await setUserValidate(res)
-    console.log("filterEvent()", res)
+    console.log("filterEvent()" + comment, res)
   }
 }

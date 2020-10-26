@@ -1,18 +1,21 @@
 import React,{useEffect, useState} from 'react'
 
-import useProfilUser from './useProfilUser'
+import useProfilUser from './useProfilUserSave'
 import {useUser} from '../../../../Context/ContextProvider'
 export default function ProfilUser() {
 const [count, setCount] =useState(0)
 
 
-  const {  handleClickEdit,openEdit,userEvent,userRequest, handleClickCancelEvent,handleClickDeclineEvent,
-handleClickValidation } = useProfilUser()
+
+  const {  handleClickEdit,openEdit,setOpenEdit,userEvent,userRequest, handleClickCancelEvent,handleClickDeclineEvent,
+handleClickValidation,recount } = useProfilUser()
   const userData = useUser()
     return (
       
          <>
-   
+      
+         <button onClick={()=>(setOpenEdit(openEdit))}> COUNT</button>
+        
    
       <div className="profilUser-container">
 <img src="https://via.placeholder.com/150"></img>
@@ -24,21 +27,8 @@ handleClickValidation } = useProfilUser()
      </div>):null}
       </div>
 <h2>Vous avez : {userRequest.length} Notification </h2>
-{userRequest? (userRequest.map(post=> post.map(event=>
 
-  <ul> 
-    
- <li>
-<h1>userId {userData.userId}</h1>
-{ event["userId"]=== userData.userId ? (<><p>Vous souhaitez participer à {event["Post.postName"]} </p> <button key={event["id"]} onClick={()=>handleClickCancelEvent(event["id"])}>annuler {event["id"]}</button></>):(<><p>{event["User.firstName"]} souhaite participer à votre evenement {event["Post.postName"]} </p>
-  <button onClick={()=>handleClickDeclineEvent(event["id"])} >Refuser</button> <button onClick={()=>handleClickValidation(event["id"])} >Accepter</button></>)}
-<h3>eventId: {event["id"]}</h3>
- </li> 
-  
-  </ul>
-  ))):null}
-  
-
+ {recount}
        <button onClick={handleClickEdit}>editer</button>
            {openEdit ? (
       <div className="post-modale--edit">
