@@ -2,11 +2,21 @@ import React,{useEffect, useState} from 'react'
 
 import useProfilUser from './useProfilUser'
 import {useUser} from '../../../../Context/ContextProvider'
-export default function ProfilUser() {
-const [count, setCount] =useState(0)
+import { filterEvent } from '../../../../action'
+export default function ProfilUser({eventsPostUser}) {
+const [userRequest, setUserRequest] = useState([])
+ useEffect(() => {
+    console.log("=========================")
+
+    filterEvent(eventsPostUser, "eventRequest", setUserRequest, "USER REQUEST")
+
+    // prettier-ignore
+    //  &&event["userId"] !== userData.userId
+  }, [eventsPostUser])
+  console.log("USERREQUEST", userRequest)
 
 
-  const {  handleClickEdit,openEdit,userEvent,userRequest, handleClickCancelEvent,handleClickDeclineEvent,
+  const {  handleClickEdit,openEdit, handleClickCancelEvent,handleClickDeclineEvent,
 handleClickValidation } = useProfilUser()
   const userData = useUser()
     return (

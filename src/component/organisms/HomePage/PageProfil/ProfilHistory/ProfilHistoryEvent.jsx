@@ -1,13 +1,18 @@
-import React,{useRef} from "react";
+import React,{useEffect, useState} from "react";
 import useProfilHistoryEvent from './useProfilHistoryEvent'
 import Post from "../../../../atoms/Post/Post";
 import usePageProfil from "../usePageProfil";
 import { usePostData } from "../../../../Context/ContextProvider";
+import { filterEvent } from "../../../../action";
 
 // import useProfilHistoryEvent from './useProfilHistoryEvent'
-export default function ProfilHistoryEvent() {
-   
-const {userEvent,historyPostEvents,userValidate} = useProfilHistoryEvent()
+export default function ProfilHistoryEvent({eventsPostUser, postUser}) {
+
+    const [userValidate, setUserValidate] = useState([])
+  useEffect(() => {
+    filterEvent(eventsPostUser, "eventValidation", setUserValidate,'UserValidate')
+  }, [eventsPostUser])
+
 
   return (
     <div className="profilNextEvent-container">
@@ -18,7 +23,7 @@ const {userEvent,historyPostEvents,userValidate} = useProfilHistoryEvent()
     {/* probleme userValidate se map dans chaque post , je dois donc l'inseré via le dom */}
    
       <ul>
-        {userEvent.map((mapPostData,i) => ( 
+        {postUser.map((mapPostData,i) => ( 
           
           <li key={mapPostData.id}>
             <div className="trainingPost-post" >

@@ -1,5 +1,5 @@
 import axios from "axios"
-//recup les postId en fonction du UserId
+//recup tout les post lié au User (requette et admin)
 export const getPostUserEvent = (
   postData,
   userData,
@@ -12,7 +12,7 @@ export const getPostUserEvent = (
   console.log("UserEvent =>  usePageProfil" + comment, res)
   console.log("userData.userId", userData.userId)
 }
-// recup les Event des Post
+// recupere tout les event lié au post User
 export const getPostEvents = async (userEvent, setPostEvents, comment) => {
   //recup postID des history id ie id suer Admin or participat
   const postIds = await userEvent.map((event) => event["Events.postId"])
