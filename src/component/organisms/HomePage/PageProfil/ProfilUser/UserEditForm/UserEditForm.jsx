@@ -1,32 +1,33 @@
 import React,{useContext, useState} from 'react'
 import axios from 'axios'
 import { AuthContext } from '../../../../../../App';
-import { useUserUpdate } from '../../../../../Context/ContextProvider';
+import { useUser, useUserUpdate } from '../../../../../Context/ContextProvider';
 export default function UserEditForm({reducerUserData}) {
     const [userUpdateData, setUserUpdateData]=useState({...reducerUserData})
     const authValue = useContext(AuthContext)
     const updateUser = useUserUpdate()
-  
+    const userData = useUser()
      const handleChange = (event) => {
     const { name, value } = event.target;
     setUserUpdateData({
       ...userUpdateData,
       [name]: value,
     });
+    console.log(reducerUserData)
   };
   const handleSubmit = async (event) => {
-      console.log('useState',userUpdateData)
+      alert("ok")
     event.preventDefault();
     console.log("event", event);
-    const res = await axios.patch(`/api/profil/${reducerUserData.userId}/edit-user`, userUpdateData);
+    const res = await axios.patch(`/api/profil/${reducerUserData.id}/edit-user`, userUpdateData);
     console.log("USERUPDATEDATA", res.status);
-    if (res.status === 200) {
+    
      console.log(res)
-      await alert("le profil a été modifier");
+       alert("le profil a été modifier");
        await authValue.reducerDispatch({ type: "LOAD_USER", payload: res })
-    
-    
-    }
+  
+
+     event.preventDefault();
   };
   console.log('UPPPPPPPPPPPPPP')
 
@@ -37,28 +38,28 @@ export default function UserEditForm({reducerUserData}) {
         onChange={handleChange}
         type="text"
         name="firstName"
-        placeholder={userUpdateData.firstName}
+        placeholder={reducerUserData.firstName}
         value={userUpdateData.firstName}
       />
        <input
         onChange={handleChange}
         type="text"
         name="lastName"
-        placeholder={userUpdateData.lastName}
+        placeholder={reducerUserData.lastName}
         value={userUpdateData.lastName}
       />
        <input
         onChange={handleChange}
         type="text"
         name="userEmail"
-        placeholder={userUpdateData.userEmail}
+        placeholder={reducerUserData.userEmail}
         value={userUpdateData.userEmail}
       />
        <input
         onChange={handleChange}
         type="text"
         name="userDescription"
-        placeholder={userUpdateData.userDescription}
+        placeholder={reducerUserData.userDescription}
         value={userUpdateData.userDescription}
       />
       <button>Envoyer</button>

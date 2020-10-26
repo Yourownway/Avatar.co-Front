@@ -1,15 +1,17 @@
 import React,{useContext, useEffect, useState} from 'react'
-
+import UserEditForm from './UserEditForm/UserEditForm'
 import useProfilUser from './useProfilUser'
 import {useUser} from '../../../../Context/ContextProvider'
 import { filterEvent } from '../../../../action'
-import UserEditForm from './UserEditForm/UserEditForm'
+
 import { AuthContext } from '../../../../../App'
 export default function ProfilUser({eventsPostUser}) {
 const [userRequest, setUserRequest] = useState([])
 const [profilData,setProfilData] = useState()
     const authValue = useContext(AuthContext)
     const reducerUserData = authValue.reducerState.user
+ 
+    
 useEffect(() => {
   let displayUser =     <div>
     <h1>ProfilUser</h1>
@@ -17,6 +19,7 @@ useEffect(() => {
      <h2> {reducerUserData.userId}</h2>
      <p> XP:{reducerUserData.userXp} </p>
      <p> <span>Description:</span>{reducerUserData.userDescription}</p>
+       {/* <UserEditForm reducerUserData={reducerUserData}/>   */}
      </div>
      setProfilData(displayUser)
 }, [reducerUserData])
@@ -70,7 +73,7 @@ handleClickValidation } = useProfilUser()
                 </div>
                 </div>
                 
-                ):null}
+                ):null} 
                 
     </>
     )
