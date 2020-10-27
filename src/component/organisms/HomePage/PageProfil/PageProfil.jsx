@@ -10,94 +10,68 @@ import ProfilHistory from './ProfilHistory/ProfilHistory'
 import ProfilNewPost from './ProfilNewPost/ProfilNewPost'
 import ProfilUser from './ProfilUser/ProfilUser'
 
-const initialState = {
-
-eventsUser: null
-
-}
- const reducerUserEvent = (state, action) => {
-  console.log("ICI ACTION :", action);
-  switch (action.type) {
-    case "LOAD_EVENT":
-      
-
-      return {
-        ...state,
-        postUser: action.payload,
-      };
-
-    default:
-      return state;
-  }
- }
-export const EventUserContext = React.createContext()
 
 
 export default function PageProfil() {
-
- const [state, dispatch] = useReducer(reducerUserEvent, initialState)
-
 const authValue = useContext(AuthContext)
 const userData = authValue.reducerState.user
-  const postData = usePostData();
-  const [postUser, setPostUser] = useState([]); 
-    const [eventsPostUser, setEventsPostUser] = useState([]);
+
+const [allPostUser, setAllPostUser] = useState([])
+const [eventsPostUser,setEventsPostUser] = useState([])
+  useEffect(() => {
+   
+   
+  const fetchAllPostUser = async () => {
+    //recupere tout les post ou l'utilisateur participe ou a crée
+    const res = await axios.get(`/api/event/${userData.id}/getAllPostUser`)
+
+    if (res) {
+setAllPostUser(res.data)
+   //recupere tout les posts id
+   if(allPostUser.length>0){
+     const postIds = await allPostUser.map((event) => event["Events.postId"])
+    if (postIds.length>0){
+      //enfin je recupere tout les events de chaque post dans le meme ordre
+  await axios
+   .all(postIds.map((postId) => axios.get(`/api/getEvents/postId/${postId}`))).then( 
+    async (results)=>{const getData = await results.map((res) => res.data.Post)
+  setEventsPostUser(getData)
+
+  })
 
 
-// useEffect(()=>{
-// const fetchEventUser = async()=> {
+    }
+   }
+  
+  
 
+    }
+  }
+  fetchAllPostUser()
 
+  }, [userData.id,allPostUser.length ])
 
-// if(res){
-// //!!!!changer le name si export 
-// dispatch({type:'LOAD_EVENT', playload: res})
-
-// }
-
-// }
-
-// fetchEventUser()
-
-
-// },[])
-
-
-
-
-
-     useEffect(() => {
-    getPostUserEvent2(userData);
-  }, []);
-
-
-      useEffect(() => {
-    getPostUserEvent(userData, setPostUser, 'PAGE PROFIL 1 get PostUserEvent');
-  }, [userData, postData]);
-    useEffect(() => {
-    getPostEvents(postUser, setEventsPostUser,'PAGE PROFIL 2 getPosts Events');
-  }, [userData,postUser]);
 
   
     return (
  <>
-<EventUserContext.Provider value={{reducerEvent: state, dispatchEvent: dispatch }}>
+
                <div className="profilPageUser-Container">
       <ProfilNav />
       <Switch>
          <Route path="/Home/Page/Profil/History" exact>
-          <ProfilHistory eventsPostUser = {eventsPostUser} postUser={postUser} />
+          <ProfilHistory allPostUser={allPostUser} eventsPostUser={eventsPostUser}/>
         </Route>  
 
         <Route
           path="/Home/Page/Profil/Post"
           exact
-          component={ProfilNewPost}
+       
         />
       </Switch>
-      <ProfilUser  eventsPostUser={eventsPostUser}/>
+      <ProfilUser />
     </div>
-   </EventUserContext.Provider>
+
    </>
     )
 }

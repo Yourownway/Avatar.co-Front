@@ -1,4 +1,4 @@
-import React,{useEffect,useContext} from 'react'
+import React,{useEffect,useContext,useState} from 'react'
 import {Route , Switch} from 'react-router-dom'
 import Header from './molecules/Header'
 import axios from 'axios'
@@ -9,16 +9,18 @@ import {AuthContext} from '../../../App'
 import PageProfil from './PageProfil/PageProfil'
 import PageTraining from './PageTraining/PageTraining'
 import PageCoaching from './PageCoaching/PageCoaching'
-import {  usePostData, useUpdatePost,useUserUpdate,useUser } from "../../Context/ContextProvider";
+import {  usePostData, useUpdatePost,useUserUpdate,useEventsPostUser,useUpdateEventsPostUser } from "../../Context/ContextProvider";
 
 import  useProfilUser from './PageProfil/ProfilUser/useProfilUser'
+import { getPostEvents, getPostUserEvent } from '../../action'
 export default function HomePage() {
   const authValue = useContext(AuthContext)
   const updateUser =  useUserUpdate()
-  const userData = useUser()
+  const userData =  authValue.reducerState.user
   const updatePost = useUpdatePost();
   const postData = usePostData()
-
+const updateEventsPostUser = useUpdateEventsPostUser()
+const eventsPostUser = useEventsPostUser()
   const setUserRequest = useProfilUser()
 
   useEffect(() => {
@@ -35,7 +37,7 @@ export default function HomePage() {
          if(res){
  
             authValue.reducerDispatch({ type: "LOAD_USER", payload: res })
-            updateUser(res.data)
+         
          }
       }
       
@@ -55,8 +57,8 @@ export default function HomePage() {
     fetchData();
   }, []);
 
-
  
+  
   return (
     <>
 
@@ -68,9 +70,9 @@ export default function HomePage() {
 
   {/* <button onClick={handleClick}>Click</button> */}
  <Switch>
-  <Route path= {'/Home/Page/Profil'} component ={PageProfil} />       
-    <Route path= {'/Home/Page/Training'} component ={PageTraining}  />   
-   <Route path= {'/Home/Page/Coaching'} component ={PageCoaching} />   
+  <Route path= {'/Home/Page/Profil'}><PageProfil   /></Route>       
+    <Route path= {'/Home/Page/Training'}  />   
+   <Route path= {'/Home/Page/Coaching'}  />   
       </Switch>
          
    

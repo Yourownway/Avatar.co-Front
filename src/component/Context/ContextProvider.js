@@ -62,7 +62,7 @@ export function ContextProvider({ children }) {
       <PostUpdateContext.Provider value={updatePost}>
         <UserContext.Provider value={userData}>
           <UserUpdateContext.Provider value={updateUser}>
-            <EventUserContext.Provider value={eventsPostUser}>
+            <EventUserContext.Provider value={eventsPostUser.event}>
               <EventUserUpdateContext.Provider value={updateEventsPostUser}>
                 <SearchContext.Provider value={searchData}>
                   <SearchUpdateContext.Provider value={updateSearch}>
