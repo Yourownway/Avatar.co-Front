@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function FromUserPost({handleChange, userPostData}) {
+  
     return (
         <>
       <input
@@ -17,13 +18,7 @@ export default function FromUserPost({handleChange, userPostData}) {
         placeholder="postDate"
         value={userPostData.postDate}
       />
-      <input
-        onChange={handleChange}
-        type="text"
-        name="postUserRole"
-        placeholder=" postUserRole"
-        value={userPostData.postUserRole}
-      />
+
       <input
         onChange={handleChange}
         type="text"

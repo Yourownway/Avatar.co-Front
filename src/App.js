@@ -1,10 +1,7 @@
 import React, { useEffect, useReducer } from "react"
-// import AuthContext from "./component/Context/AuthContext";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { ContextProvider } from "./component/Context/ContextProvider"
-// import AuthReducer from "./component/reducer/reducer";
-import axios from "axios"
-import { useUserUpdate } from "./component/Context/ContextProvider"
 
 import "./App.css"
 

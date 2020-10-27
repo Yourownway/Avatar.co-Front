@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from "axios"
-import { useUser } from "../../../../Context/ContextProvider"
+
+import { AuthContext } from "../../../../../App"
 
 export default function usePorfilNewPost() {
+  const authValue = useContext(AuthContext)
+  const reducerUserData = authValue.reducerState.user
+
   const [userPostData, setuserPostData] = useState({})
-  const userData = useUser()
+
   useEffect(() => {
-    if (userData) {
-      setuserPostData({ ...userPostData, userId: userData.userId })
-    }
-  }, [userData]) // eslint-disable-line react-hooks/exhaustive-deps
+    setuserPostData({ ...userPostData, userId: reducerUserData.id })
+  }, [reducerUserData]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -30,7 +32,7 @@ export default function usePorfilNewPost() {
     setuserPostData({
       ...userPostData,
       postName: "",
-      postUserRole: "",
+
       postDescription: "",
       postDate: "",
       postMaxGuest: "",

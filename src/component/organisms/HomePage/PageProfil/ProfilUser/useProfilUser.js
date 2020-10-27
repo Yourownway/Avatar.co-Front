@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-import { usePostData, useUser } from "../../../../Context/ContextProvider"
+import {
+  usePostData,
+  useUpdateEventsPostUser,
+  useUser,
+} from "../../../../Context/ContextProvider"
 import {
   getPostUserEvent,
   getPostEvents,
@@ -8,7 +12,7 @@ import {
 } from "../../../../action"
 export default function useProfilUser() {
   const [openEdit, setOpenEdit] = useState(false)
-
+  const updateEventPostRequest = useUpdateEventsPostUser()
   const [userRequest, setUserRequest] = useState([])
   const handleClickEdit = () => {
     setOpenEdit(!openEdit)
@@ -17,7 +21,7 @@ export default function useProfilUser() {
     const res = await axios.delete(`/api/cancel/event/${eventId}`)
     if (res) {
       console.log("event annuler", res)
-      setUserRequest([...userRequest])
+      updateEventPostRequest(res)
     } else console.log("error delete post")
   }
 
@@ -27,10 +31,13 @@ export default function useProfilUser() {
     } else console.log("error delete post")
   }
 
-  const handleClickDeclineEvent = async (eventId) => {
-    const res = await axios.patch(`/api/decline/request/event/${eventId}`)
+  const handleClickDeclineEvent = async (userId, eventId) => {
+    const res = await axios.patch(
+      `/api/request/event/${userId}/${eventId}/decline/`
+    )
     if (res) {
       console.log("event refusé")
+      updateEventPostRequest(res)
     } else console.log("error delete post")
   }
 
