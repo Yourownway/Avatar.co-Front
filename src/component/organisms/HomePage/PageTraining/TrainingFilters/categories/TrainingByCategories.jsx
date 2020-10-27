@@ -12,12 +12,12 @@ const {postFilter} = usePageTraining()
 const postData = usePostData()
   const categorie = useParams();
   useEffect(() => {
-    console.log('postData',postData);
+
     const filterByCategorie = async()=>{
  
       const res = await postFilter.filter((post)=>post["category.categoryName"]===categorie.name)
       await setPostByCategorie(res)
-      console.log('=============++>',res)
+
    }
     filterByCategorie();
    

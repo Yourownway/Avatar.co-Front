@@ -17,12 +17,10 @@ export default function useSearchbar() {
 
   const handleChange = (e) => {
     setSearchDataInput(e.target.value)
-    console.log("ICCCII", postData)
   }
   useEffect(() => {
-    if (searchInput !== "") {
-      console.log("effect", postData)
-      console.log("eefect2", postData[1].postName)
+    if (searchInput.length !== 0) {
+      //resoudre le probleme du slug
       history.push("/Home/Page/Training/Search/" + searchInput)
       // history.push("/Home/Page/Training")
       const FiltreByPostName = async () => {
@@ -34,27 +32,15 @@ export default function useSearchbar() {
                 .toLowerCase()
                 .includes(searchInput.toLowerCase())
             )
-
-          // post["postName"].toLowerCase().includes(searchInput.toLowerCase())
         })
-        // if (Object.keys(res).length === 0 && searchInput !== " ") {
-        //   updateSearch([])
-        //   console.log("================aucun resulat trouvé=================")
-        // }
+
         console.log("res", searchInput)
 
         updateSearch(res)
       }
       FiltreByPostName()
-    } else {
-      updateSearch([])
-      history.push("/Home/Page/Training/")
     }
+  }, [searchInput]) // eslint-disable-line react-hooks/exhaustive-deps
 
-    // else if (searchInput === "" || URL !== window.location.href) {
-    //   setSearchData();
-    // }
-  }, [searchInput, postData]) // eslint-disable-line react-hooks/exhaustive-deps
-  console.log("wawawaawa", searchData)
   return { searchInput, handleChange }
 }

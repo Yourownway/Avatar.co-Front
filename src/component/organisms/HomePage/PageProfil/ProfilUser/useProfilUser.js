@@ -24,7 +24,6 @@ export default function useProfilUser() {
   const handleClickValidation = async (eventId) => {
     const res = await axios.patch(`/api/validate/request/event/${eventId}`)
     if (res) {
-      console.log("event valider")
     } else console.log("error delete post")
   }
 

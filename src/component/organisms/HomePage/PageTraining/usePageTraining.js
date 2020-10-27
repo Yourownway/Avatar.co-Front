@@ -22,17 +22,14 @@ export default function usePageTraining() {
     }
     FilterData()
   }, [postData, categories])
-  console.log("PPPPPPPPPPPPPPOOOOOOOOOOOOOOSSSSSSSSSSSTTTTTTTTTTT", postData)
-  console.log("DATTTTTTTTTTTTTTTTTTTTEEEEEEEEEEEEEEE", postFilter)
 
   useEffect(() => {
     const fetchCategories = async () => {
       const res = await axios.get("/api/categories")
-      console.log("res", res.data.Categories)
+
       setCategories(res.data.Categories)
     }
     fetchCategories()
-    console.log(categories, "categories")
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleChange = async (e) => {

@@ -1,31 +1,30 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react"
 
-import axios from "axios";
-import { useUser } from "../../Context/ContextProvider";
+import axios from "axios"
+import { AuthContext } from "../../../App"
+
 export default function usePost() {
-  const userData = useUser();
-  const [openModal, setOpenModal] = useState();
+  const authValue = useContext(AuthContext)
+  const userData = authValue.reducerState.user
+  const [openModal, setOpenModal] = useState()
 
-  const handleClickOpenEventEdit = (i) => {
-    setOpenModal(i);
-  };
+  const handleClickOpenEventEdit = () => {
+    setOpenModal(!openModal)
+  }
   const handleClickCloseEventEdit = () => {
-    setOpenModal(null);
-  };
-  const handleClickEventDelelet = () => {};
+    setOpenModal(null)
+  }
+  const handleClickEventDelelet = () => {}
   const handleClickEventRequest = (postId) => {
     const fetchEventRequest = async () => {
-      axios
-        .post("/api/event/request", {
-          userId: userData.userId,
-          postId: postId,
-        })
-        .then((res) => console.log("EventRequest", res));
-    };
-    fetchEventRequest();
-    console.log("userId", userData.userId, "postId", postId);
-  };
-  const handleClickDeleteEventRequest = () => {};
+      axios.post("/api/event/send/request", {
+        userId: userData.id,
+        postId: postId,
+      })
+    }
+    fetchEventRequest()
+  }
+  const handleClickDeleteEventRequest = () => {}
   return {
     userData,
     openModal,
@@ -35,5 +34,5 @@ export default function usePost() {
     handleClickDeleteEventRequest,
     handleClickCloseEventEdit,
     handleClickOpenEventEdit,
-  };
+  }
 }

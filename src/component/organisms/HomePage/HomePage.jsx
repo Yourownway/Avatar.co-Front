@@ -24,7 +24,7 @@ export default function HomePage() {
   useEffect(() => {
     const fetchUser = async () => {
       const token = localStorage.getItem("token");
-      console.log("token dispach ok", token);
+    
       if (token) {
          const res = await axios(`/api/load/user`, {
           headers: {
@@ -33,7 +33,7 @@ export default function HomePage() {
         })
          
          if(res){
-           console.log('tutu')
+ 
             authValue.reducerDispatch({ type: "LOAD_USER", payload: res })
             updateUser(res.data)
          }
@@ -42,13 +42,13 @@ export default function HomePage() {
     };
     fetchUser();
   },[]);
-console.log('USERDAAAAAAATA',authValue.reducerState.user)
+
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios("/api/post");
       updatePost(res.data.post);
-      console.log("POSTDATA", postData);
+
     };
 
 

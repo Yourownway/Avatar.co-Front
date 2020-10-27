@@ -1,17 +1,30 @@
 import axios from "axios"
 //recup tout les post lié au User (requette et admin)
-export const getPostUserEvent = (
-  postData,
-  userData,
-  setPostUser,
-  params,
-  comment
-) => {
-  console.log("OOOOOOOOO", postData)
-  const res = postData.filter((post) => userData.id === post[params])
-  setPostUser(res)
-  console.log("UserEvent =>  usePageProfil" + comment, postData)
-  console.log("userData.userId", userData.id)
+export const getPostUserEvent2 = (userData) => {
+  const fetchAllPostUser = async () => {
+    const res = await axios.get(`/api/event/${userData.id}/getAllPostUser`)
+
+    if (res) {
+      console.log("HERRRRRRRRRRRRRRE", res)
+    }
+  }
+  fetchAllPostUser()
+}
+
+export const getPostUserEvent = (userData, setPostUser) => {
+  const fetchAllPostUser = async () => {
+    const res = await axios.get(`/api/event/${userData.id}/getAllPostUser`)
+
+    if (res) {
+      setPostUser(res.data)
+      console.log("HERRRRRRRRRRRRRRE", res)
+    }
+  }
+  fetchAllPostUser()
+  // const res = postData.filter((post) => userData.id === post[params])
+  // setPostUser(res)
+  // console.log("UserEvent =>  usePageProfil" + comment, res)
+  // console.log("userData.userId", userData.id)
 }
 // recupere tout les event lié au post User
 export const getPostEvents = async (postUser, setEventsPostUser, comment) => {

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState } from "react"
+import axios from "axios"
 
 export default function useSignUp() {
   const [inputs, setInputs] = useState({
@@ -9,39 +9,38 @@ export default function useSignUp() {
     userPassword: "",
     // isSubmitting: false,
     // errorMessage: null,
-  });
+  })
 
   // const [display, setDisplay] = useState(false);
   // const [inputData, setInputData] = useState("");
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     setInputs({
       ...inputs,
       [name]: value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = async (event, display, setDisplay) => {
-    event.preventDefault();
+    event.preventDefault()
     try {
-      const res = await axios.post(`api/SignUp`, inputs);
-      console.log("SignUp", res);
+      const res = await axios.post(`api/SignUp`, inputs)
 
       if (res === 200) {
         setInputs({
           ...inputs,
           // isSubmitting: true,
           // errorMessage: null,
-        });
+        })
       }
     } catch (error) {
       setInputs({
         ...inputs,
         // isSubmitting: false,
         // errorMessage: error.response,
-      });
+      })
     }
-  };
-  return { handleChange, handleSubmit, inputs };
+  }
+  return { handleChange, handleSubmit, inputs }
 }

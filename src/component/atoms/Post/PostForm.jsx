@@ -22,11 +22,11 @@ const postData= usePostData()
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("event", event);
+
     const res = await axios.put(`/api/edit/post/${mapPostData.id}`, postUpdateData);
-    console.log("res", res.status);
+ 
     if (res.status === 200) {
-      console.log("status 200");
+      
       await alert("le post a été modifier");
       history.push('/Home/Page/Training')
     }

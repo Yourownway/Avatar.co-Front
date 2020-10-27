@@ -8,11 +8,17 @@ import { filterEvent } from "../../../../action";
 // import useProfilHistoryEvent from './useProfilHistoryEvent'
 export default function ProfilHistoryEvent({eventsPostUser, postUser}) {
 
+
     const [userValidate, setUserValidate] = useState([])
+
+    
   useEffect(() => {
     filterEvent(eventsPostUser, "eventValidation", setUserValidate,'UserValidate')
   }, [eventsPostUser])
 
+
+
+console.log('EVENT POST USER',eventsPostUser)
 
   return (
     <div className="profilNextEvent-container">

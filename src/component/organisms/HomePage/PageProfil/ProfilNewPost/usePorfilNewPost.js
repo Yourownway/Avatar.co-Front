@@ -11,8 +11,6 @@ export default function usePorfilNewPost() {
     }
   }, [userData]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  console.log("userPostData", userPostData)
-
   const handleChange = (event) => {
     const { name, value } = event.target
     setuserPostData({
@@ -22,12 +20,10 @@ export default function usePorfilNewPost() {
   }
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log("event", event)
-    console.log("userPostData", userPostData)
+
     const res = await axios.post("/api/post", userPostData)
-    console.log("res", res.status)
+
     if (res.status === 200) {
-      console.log("status 200")
       await alert("post envoyer avec succes")
     }
 
@@ -41,7 +37,6 @@ export default function usePorfilNewPost() {
       parcId: "",
       categoryId: "",
     })
-    console.log("userPostData", userPostData)
   }
 
   return { handleChange, handleSubmit, userPostData }

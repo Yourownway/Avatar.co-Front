@@ -13,23 +13,23 @@ export default function UserEditForm({reducerUserData}) {
       ...userUpdateData,
       [name]: value,
     });
-    console.log(reducerUserData)
+
   };
   const handleSubmit = async (event) => {
       alert("ok")
     event.preventDefault();
-    console.log("event", event);
+
     const res = await axios.patch(`/api/profil/${reducerUserData.id}/edit-user`, userUpdateData);
-    console.log("USERUPDATEDATA", res.status);
+
     
-     console.log(res)
+
        alert("le profil a été modifier");
        await authValue.reducerDispatch({ type: "LOAD_USER", payload: res })
   
 
      event.preventDefault();
   };
-  console.log('UPPPPPPPPPPPPPP')
+
 
     return (
         <div>

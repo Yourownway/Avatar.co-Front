@@ -17,27 +17,6 @@ const initialState = {
   token: null || localStorage.getItem("token"),
 }
 
-// const initialStateEvent = {
-
-//   event: null ,
-
-// }
-// const reducerEvent = (state, action) => {
-//   console.log("ICI ACTION :", action);
-//   switch (action.type) {
-//     case "POST":
-//       console.log("SINGIN", action);
-//       localStorage.setItem("token", action.payload.data.Token);
-//       localStorage.setItem("user", action.payload.data);
-//       return {
-//         ...state,
-//         event: action.payload.data,
-//       };
-
-//     default:
-//       return state;
-//   }
-
 const reducer = (state, action) => {
   console.log("ICI ACTION :", action)
   switch (action.type) {
@@ -70,6 +49,7 @@ const reducer = (state, action) => {
   }
 }
 export const AuthContext = React.createContext()
+
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
 
