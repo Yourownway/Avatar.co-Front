@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 
 export default function ListParticipant({users}) {
  const [open,setOpen] = useState(false)   
-console.log(users,'users')
+
     return (
        <>
 <div>
@@ -13,7 +13,7 @@ console.log(users,'users')
            { users.map((user)=>  
            
             <li>
-             <button onClick={()=>(console.log(users))}>ICI</button>
+         
                 <p> {user.User.firstName} </p>
                  <p> Xp: {user.User.userXp} </p>
             

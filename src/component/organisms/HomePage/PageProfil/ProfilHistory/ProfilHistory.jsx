@@ -3,13 +3,13 @@ import ProfilHistoryEvent from "./ProfilHistoryEvent";
 import ProfilNextEvent from "./ProfilNextEvent";
 
 
-export default function ProfilHistory({allPostUser, eventsPostUser}) {
+export default function ProfilHistory({ postDefaultData,eventsValidate}) {
 
 
   return (
     <div className='profilHistory-Container'>
       <ProfilNextEvent />
-      <ProfilHistoryEvent eventsPostUser={eventsPostUser} allPostUser={allPostUser} />
+      <ProfilHistoryEvent postDefaultData={postDefaultData} eventsValidate={eventsValidate} />
     </div>
   );
 }

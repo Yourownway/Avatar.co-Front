@@ -1,40 +1,36 @@
 import React,{useEffect, useState} from "react";
-import Post from "../../atoms/Post/Post";
 import ButtonPost from "./atoms/ButtonPost";
 import ListParticipant from "./atoms/ListParticipant";
 
 
-export default function ProfilHistoryEvent({ postDefaultData,eventsValidate}) {
+export default function ProfilHistoryEvent({allPostUser,eventsPostUser}) {
 
 
     const [usersProfilValidate, setUsersProfilValidate] = useState([])
-// useEffect(() => {
-//  const filterValidation = async()=>{
-//    const res = await eventsPostUser.map((post)=>post.filter(event=>event["eventValidation"]===1))
-//    if(res){
-//      setUsersProfilValidate(res)
-//      console.log(res, 'res')
-//    }
-//    else{
-//      setUsersProfilValidate([])
-//    }
+useEffect(() => {
+ const filterValidation = async()=>{
+   const res = await eventsPostUser.map((post)=>post.filter(event=>event["eventValidation"]===1))
+   if(res){
+     setUsersProfilValidate(res)
+     console.log(res, 'res')
+   }
+   else{
+     setUsersProfilValidate([])
+   }
 
-//  }
-//  filterValidation()
+ }
+ filterValidation()
 
-// }, [eventsPostUser])
+}, [eventsPostUser])
 
 
-//      console.log(usersProfilValidate,'usersProfilValidate')
-//      console.log(eventsPostUser, 'eventPostUser')
+     console.log(usersProfilValidate,'usersProfilValidate')
+     console.log(eventsPostUser, 'eventPostUser')
     
 
   return (
-    <div className="profilHistoryEvent-container">
-
-
-      <Post   postDefaultData={postDefaultData} eventsValidate={eventsValidate}/>
-   {/* <ul> { 
+    <div className="profilNextEvent-container">
+   <ul> { 
    
       allPostUser.map((post,i)=>
            
@@ -61,7 +57,7 @@ export default function ProfilHistoryEvent({ postDefaultData,eventsValidate}) {
       
       
     }
-</ul> */}
+</ul>
     </div>
   );
 }

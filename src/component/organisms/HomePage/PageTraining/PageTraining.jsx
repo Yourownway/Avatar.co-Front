@@ -46,7 +46,7 @@ filterPostEvent()
 }else
 {console.log('ERRREURR')}
 }, [postData,postsEvents.length,usersTrainingValidate.length])
-
+console.log('userTrainingValidate', usersTrainingValidate)
 
   const {categories,  select, handleChange } = usePageTraining()
   
@@ -77,7 +77,7 @@ filterPostEvent()
         <div className="trainingPage">
           <Switch>
             
-            <Route path="/Home/Page/Training/Date" ><Post postDefaultData={postData} events={postsEvents} eventsValidate={usersTrainingValidate} /></Route> */}
+            <Route path="/Home/Page/Training/Date" ><Post postDefaultData={postData} events={postsEvents} eventsValidate={usersTrainingValidate} /></Route> 
              <Route path={`/Home/Page/Training/Categorie/:name`} component={TrainingByCategories}/>
             <Route path="/Home/Page/Training/Rate" component={TrainingByRate}/>
 
