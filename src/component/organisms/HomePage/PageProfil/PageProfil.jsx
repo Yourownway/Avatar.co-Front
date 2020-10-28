@@ -2,12 +2,11 @@ import axios from 'axios'
 import React,{useContext, useEffect,useReducer,useState}  from 'react'
 import {Route , Switch,} from 'react-router-dom'
 import { AuthContext } from '../../../../App'
-import { getPostEvents, getPostUserEvent,getPostUserEvent2} from '../../../action'
-import {useUser, usePostData} from '../../../Context/ContextProvider'
+
 
 import ProfilNav from './atoms/ProfilNav'
 import ProfilHistory from './ProfilHistory/ProfilHistory'
-import ProfilNewPost from './ProfilNewPost/ProfilNewPost'
+
 import ProfilUser from './ProfilUser/ProfilUser'
 
 

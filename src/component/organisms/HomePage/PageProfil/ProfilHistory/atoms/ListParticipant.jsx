@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 
 export default function ListParticipant({users}) {
  const [open,setOpen] = useState(false)   
-console.log(users)
+
     return (
         <div>
      

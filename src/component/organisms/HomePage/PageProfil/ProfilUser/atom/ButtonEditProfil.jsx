@@ -1,12 +1,11 @@
 import React,{useContext, useState} from 'react'
 import axios from 'axios'
 import { AuthContext } from '../../../../../../App';
-import { useUser, useUserUpdate } from '../../../../../Context/ContextProvider';
+
 export default function UserEditForm({reducerUserData}) {
     const [userUpdateData, setUserUpdateData]=useState({...reducerUserData})
     const authValue = useContext(AuthContext)
-    const updateUser = useUserUpdate()
-    const userData = useUser()
+const [open,setOpen] = useState(false)
      const handleChange = (event) => {
     const { name, value } = event.target;
     setUserUpdateData({
@@ -19,7 +18,7 @@ export default function UserEditForm({reducerUserData}) {
       alert("ok")
     event.preventDefault();
 
-    const res = await axios.patch(`/api/profil/${reducerUserData.id}/edit-user`, userUpdateData);
+       const res = await axios.patch(`/api/profil/${reducerUserData.id}/edit-user`, userUpdateData);
 
     
 
@@ -33,7 +32,11 @@ export default function UserEditForm({reducerUserData}) {
 
     return (
         <div>
-             <form onSubmit={handleSubmit}>
+          <button onClick={()=>setOpen(!open)}>Edit</button>
+
+          {open? (
+
+           <form onSubmit={handleSubmit}>
       <input
         onChange={handleChange}
         type="text"
@@ -62,8 +65,18 @@ export default function UserEditForm({reducerUserData}) {
         placeholder={reducerUserData.userDescription}
         value={userUpdateData.userDescription}
       />
+         <input
+        onChange={handleChange}
+        type="text"
+        name="postBadgeRequired"
+        placeholder={reducerUserData.userDescription}
+        value={userUpdateData.userDescription}
+      />
       <button>Envoyer</button>
       </form>
+
+          ):null}
+  
         </div>
     )
 }
