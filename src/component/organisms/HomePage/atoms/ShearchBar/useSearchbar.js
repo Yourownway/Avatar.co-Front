@@ -5,7 +5,6 @@ import {
   useSearchUpdate,
   useSearch,
 } from "../../../../Context/ContextProvider"
-import usePageTraining from "../../PageTraining/usePageTraining"
 
 export default function useSearchbar() {
   const postData = usePostData()
@@ -25,22 +24,19 @@ export default function useSearchbar() {
       // history.push("/Home/Page/Training")
       const FiltreByPostName = async () => {
         const res = postData.filter((post) => {
-          if (post["Events.eventIsAdmin"] === 1)
-            return (
-              post.postName.toLowerCase().includes(searchInput.toLowerCase()) ||
-              post["User.firstName"]
-                .toLowerCase()
-                .includes(searchInput.toLowerCase())
-            )
+          return (
+            post.postName.toLowerCase().includes(searchInput.toLowerCase()) ||
+            post.User.firstName
+              .toLowerCase()
+              .includes(searchInput.toLowerCase())
+          )
         })
-
-        console.log("res", searchInput)
-
+        console.log(res, "filterRES")
         updateSearch(res)
       }
       FiltreByPostName()
     }
   }, [searchInput]) // eslint-disable-line react-hooks/exhaustive-deps
-
+  console.log("postData", postData)
   return { searchInput, handleChange }
 }

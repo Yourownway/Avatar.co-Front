@@ -81,7 +81,7 @@ console.log('userTrainingValidate', usersTrainingValidate)
              <Route path={`/Home/Page/Training/Categorie/:name`} component={TrainingByCategories}/>
             <Route path="/Home/Page/Training/Rate" component={TrainingByRate}/>
 
-            <Route path="/Home/Page/Training/search/:slug"><TrainingSearch/></Route> 
+            <Route path="/Home/Page/Training/search/:slug"><TrainingSearch events={postsEvents}/></Route> 
           </Switch>
         </div>
       </div>
