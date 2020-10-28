@@ -6,16 +6,16 @@ import ListParticipant from "./atoms/ListParticipant";
 export default function ProfilHistoryEvent({allPostUser,eventsPostUser}) {
 
 
-    const [usersValidate, setUsersValidate] = useState([])
+    const [usersProfilValidate, setUsersProfilValidate] = useState([])
 useEffect(() => {
  const filterValidation = async()=>{
    const res = await eventsPostUser.map((post)=>post.filter(event=>event["eventValidation"]===1))
    if(res){
-     setUsersValidate(res)
+     setUsersProfilValidate(res)
      console.log(res, 'res')
    }
    else{
-     setUsersValidate([])
+     setUsersProfilValidate([])
    }
 
  }
@@ -23,13 +23,13 @@ useEffect(() => {
 
 }, [eventsPostUser])
 
-console.log(allPostUser,'allPostUser')
-     console.log(usersValidate,'usersValidate')
-     console.log(eventsPostUser, 'eventPostUser')
 
+     console.log(usersProfilValidate,'usersProfilValidate')
+     console.log(eventsPostUser, 'eventPostUser')
+    
 
   return (
-    <div className="profilHistoryEvent-container">
+    <div className="profilNextEvent-container">
    <ul> { 
    
       allPostUser.map((post,i)=>
@@ -43,8 +43,8 @@ console.log(allPostUser,'allPostUser')
                <h3>{post.postDescription}</h3>
                 <h3>{post["Parc.parcName"]}</h3>
               <h3>{post["category.categoryName"]}</h3> 
-                <h3> {usersValidate[i]?(usersValidate[i].length):null} /{post.postMaxGuest}</h3> 
-              <ListParticipant users={usersValidate[i]}/> 
+                <h3> {usersProfilValidate[i]?(usersProfilValidate[i].length):null} /{post.postMaxGuest}</h3> 
+              <ListParticipant users={usersProfilValidate[i]}/> 
               {post["Events.eventValidation"]===1&&post["Events.eventIsAdmin"]===0?("Vous etes Valider"):null}
                 <ButtonPost postUser={post}  />
 

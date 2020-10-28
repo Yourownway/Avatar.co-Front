@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from "react";
 import { useParams } from "react-router-dom";
-import Post from "../../../../../atoms/Post/Post";
+
 import { usePostData } from "../../../../../Context/ContextProvider";
 import usePageTraining from "../../usePageTraining";
 
@@ -25,7 +25,7 @@ const postData = usePostData()
 
   return (
     <>
-      <Post postDefaultData={postByCategorie} />
+      {/* <Post postDefaultData={postByCategorie} /> */}
       <h1>test</h1>
     </>
   );

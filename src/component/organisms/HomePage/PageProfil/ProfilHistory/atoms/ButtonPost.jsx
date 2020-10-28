@@ -23,7 +23,7 @@ fetchDelete()
         <div>
           {postUser["Events.eventIsAdmin"]===1?(<div><button onClick={handleClickDelete}>Supprimer</button><button onClick={()=>{setOpen(!open)}}>Editer</button></div>):null}
           {open?(<EditEvent userData={reducerUserData} postUser={postUser}/>):null}
-          {postUser["Events.eventRequest"]===1&&postUser["Events.eventIsAdmin"]===0&&postUser["Events.eventValidation"]==0?(<div><button>Annuler</button></div>):null}  
+          {postUser["Events.eventRequest"]===1&&postUser["Events.eventIsAdmin"]===0&&postUser["Events.eventValidation"]===0?(<div><button>Annuler</button></div>):null}  
         </div>
     )
 }

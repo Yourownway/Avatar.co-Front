@@ -53,7 +53,7 @@ export default function HomePage() {
 
     fetchData();
   }, []);
-console.log(postData, "ALLL POSSR")
+
  
   
   return (

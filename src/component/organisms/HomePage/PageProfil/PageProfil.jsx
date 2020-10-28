@@ -32,7 +32,7 @@ setAllPostUser(res.data)
     if (postIds.length>0){
       //enfin je recupere tout les events de chaque post dans le meme ordre
   await axios
-   .all(postIds.map((postId) => axios.get(`/api/getEvents/postId/${postId}`))).then( 
+   .all(postIds.map((postId) => axios.get(`/api/event/getEvents/postId/${postId}`))).then( 
     async (results)=>{const getData = await results.map((res) => res.data.Post)
   setEventsPostUser(getData)
 
