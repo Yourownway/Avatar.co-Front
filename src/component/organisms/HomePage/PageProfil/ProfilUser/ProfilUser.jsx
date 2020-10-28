@@ -5,17 +5,25 @@ import useProfilUser from './useProfilUser'
 
 import ButtonEditProfil from './atom/ButtonEditProfil'
 import { AuthContext } from '../../../../../App'
-export default function ProfilUser() {
+export default function ProfilUser({postsEventsUser}) {
 const [userRequest, setUserRequest] = useState([])
+const [openNotification,setOpenNotification]= useState(false)
 
     const authValue = useContext(AuthContext)
-    const reducerUserData = authValue.reducerState.user
+    const userData = authValue.reducerState.user
 
 useEffect(() => {
+const getRequest = async()=>{
+  const request = await postsEventsUser.map(post=>post.Events.filter(events=>events.eventValidation===false&&events.eventRequest===true&&events.eventIsAdmin===false))
 
-}, [reducerUserData])
+setUserRequest(request)
+}
+getRequest()
 
 
+}, [userData,postsEventsUser,userRequest.length])
+
+console.log(postsEventsUser,'req')
   const {  handleClickEdit,openEdit, handleClickCancelEvent,handleClickDeclineEvent,
 handleClickValidation } = useProfilUser()
   
@@ -28,19 +36,58 @@ handleClickValidation } = useProfilUser()
       <div className="profilUser-container">
 <img src="https://via.placeholder.com/150"></img>
     <h1>ProfilUser</h1>
-     <h2> {reducerUserData.firstName}</h2> 
-     <h2> {reducerUserData.userId}</h2>
-     <p> XP:{reducerUserData.userXp} </p>
-     <p> <span>Description:</span>{reducerUserData.userDescription}</p>
-       {/* <UserEditForm reducerUserData={reducerUserData}/>   */}
+     <h2> {userData.firstName}</h2> 
+     <h2> {userData.userId}</h2>
+     <p> XP:{userData.userXp} </p>
+     <p> <span>Description:</span>{userData.userDescription}</p>
+       {/* <UserEditForm userData={userData}/>   */}
 
 
        
-         <ButtonEditProfil reducerUserData={reducerUserData}/>
+         <ButtonEditProfil userData={userData}/>
            
      </div>
-   
 
+  
+
+    
+    
+    <h1>Vous avez {userRequest.length} Notification</h1>
+    <button onClick={()=>(setOpenNotification(!openNotification))}>Notification</button>
+    {openNotification?(
+    
+    <div>
+      <button onClick={()=>{setOpenNotification(!openNotification)}}>X</button>
+      {userRequest.length>0? (userRequest.map((events,i)=>events.map(event=>
+  <ul> 
+    
+ <li>
+
+{ event.userId=== userData.id ?
+ (
+ <>   
+        <p>Vous souhaitez participer à {postsEventsUser[i].postName} </p> 
+
+        <button key={event.id} onClick={()=>handleClickCancelEvent(event.id)}> annuler </button>
+ 
+ </>
+ ):(
+ <>
+         <p>{event.User.firstName} souhaite participer à votre evenement {postsEventsUser[i].postName} </p>
+        {event.eventComment? (<h3>message: {event.eventComment}</h3>):null} 
+
+        <button onClick={()=>handleClickDeclineEvent(event.id)} >Refuser</button> 
+        <button onClick={()=>handleClickValidation(event.id)} >Accepter</button>
+
+</>)}
+
+ 
+ </li> 
+  
+ 
+  </ul>
+ ) )):null} 
+</div>):null}
 
 
 

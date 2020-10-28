@@ -15,10 +15,10 @@ import ProfilUser from './ProfilUser/ProfilUser'
 export default function PageProfil() {
 const authValue = useContext(AuthContext)
 const userData = authValue.reducerState.user
-const postData = usePostData()
-const [allPostUser, setAllPostUser] = useState([])
-const [postsEventsUser,setPostsEventsUser] = useState([])
+
+
 const [postId,setPostId] = useState([])
+const [postsEventsUser,setPostsEventsUser] = useState([])
 const [usersProfilValidate, setUsersProfilValidate] = useState([])
   useEffect(() => {
    
@@ -71,7 +71,7 @@ console.log(getValidation,'getValidation')
        component={ProfilNewPost}
         />
       </Switch>
-      <ProfilUser />
+      <ProfilUser postsEventsUser={postsEventsUser}/>
     </div>
 
    </>

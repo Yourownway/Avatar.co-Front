@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import { AuthContext } from "../../../../../App";
 import ButtonPost from "./ButtonPost";
 import ListParticipant from "./ListParticipant";
@@ -13,7 +13,9 @@ export default function Post({ postDefaultData, events,eventsValidate }) {
 //  handleClickEventDelelet, 
 // handleClickEventRequest, 
 // } = usePost()
+useEffect(() => {
 
+}, [postDefaultData.length,events, eventsValidate.length])
     const authValue = useContext(AuthContext)
     const userData = authValue.reducerState.user
 console.log(eventsValidate,'eventsValidate')
