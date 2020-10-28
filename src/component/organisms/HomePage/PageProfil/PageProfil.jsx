@@ -7,7 +7,7 @@ import { usePostData } from '../../../Context/ContextProvider'
 
 import ProfilNav from './atoms/ProfilNav'
 import ProfilHistory from './ProfilHistory/ProfilHistory'
-
+import ProfilNewPost from './ProfilNewPost/ProfilNewPost'
 import ProfilUser from './ProfilUser/ProfilUser'
 
 
@@ -68,7 +68,7 @@ console.log(getValidation,'getValidation')
         <Route
           path="/Home/Page/Profil/Post"
           exact
-       
+       component={ProfilNewPost}
         />
       </Switch>
       <ProfilUser />
