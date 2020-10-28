@@ -6,11 +6,7 @@ import {
   useUpdateEventsPostUser,
   useUser,
 } from "../../../../Context/ContextProvider"
-import {
-  getPostUserEvent,
-  getPostEvents,
-  filterEvent,
-} from "../../../../action"
+
 export default function useProfilUser() {
   const [openEdit, setOpenEdit] = useState(false)
   const updateEventsPostUser = useUpdateEventsPostUser()
@@ -19,34 +15,25 @@ export default function useProfilUser() {
   const handleClickEdit = () => {
     setOpenEdit(!openEdit)
   }
-  const handleClickCancelEvent = async (userId, eventId) => {
-    const res = await axios.delete(`/api/cancel/event/${eventId}`)
-    if (res) {
-      const refreshEventPostUser = await axios(
-        `/api/event/${userId}/getAllPostUser`
-      )
-      if (refreshEventPostUser) {
-        updateEventsPostUser(refreshEventPostUser.data)
-        console.log(eventsPostUser, "refreshEventPostUser")
-      }
-      console.log(updateEventsPostUser, "!!!!!!!!!!!!!!!!!!!!!!")
+  const handleClickCancelEvent = async (postId, userId) => {
+    const res = await axios.delete(`/api/event/${postId}/${userId}/cancel`)
+    if (res.status === 200) {
+      console.log("evenement annuler")
     } else console.log("error delete post")
   }
 
-  const handleClickValidation = async (eventId) => {
-    const res = await axios.patch(`/api/validate/request/event/${eventId}`)
-    if (res) {
+  const handleClickValidation = async (postId, userId) => {
+    const res = await axios.patch(`/api/event/${postId}/${userId}/validate`)
+    if (res.status === 200) {
+      console.log("Vous avez validez l'utilisateur")
     } else console.log("error delete post")
   }
 
-  const handleClickDeclineEvent = async (userId, eventId) => {
-    const res = await axios.patch(
-      `/api/request/event/${userId}/${eventId}/decline/`
-    )
+  const handleClickDeclineEvent = async (postId, userId) => {
+    const res = await axios.patch(`/api/event/${userId}/decline`)
     if (res) {
-      console.log("event refusé")
-      updateEventsPostUser(res)
-    } else console.log("error delete post")
+      console.log("utilisateur refusé")
+    } else console.log("erreur dans la suppression du post")
   }
 
   return {

@@ -11,7 +11,8 @@ const [openNotification,setOpenNotification]= useState(false)
 
     const authValue = useContext(AuthContext)
     const userData = authValue.reducerState.user
-
+  const {  handleClickEdit,openEdit, handleClickCancelEvent,handleClickDeclineEvent,
+handleClickValidation } = useProfilUser()
 useEffect(() => {
 const getRequest = async()=>{
   const request = await postsEventsUser.map(post=>post.Events.filter(events=>events.eventValidation===false&&events.eventRequest===true&&events.eventIsAdmin===false))
@@ -24,8 +25,7 @@ getRequest()
 }, [userData,postsEventsUser,userRequest.length])
 
 console.log(postsEventsUser,'req')
-  const {  handleClickEdit,openEdit, handleClickCancelEvent,handleClickDeclineEvent,
-handleClickValidation } = useProfilUser()
+
   
     return (
       
@@ -68,7 +68,7 @@ handleClickValidation } = useProfilUser()
  <>   
         <p>Vous souhaitez participer à {postsEventsUser[i].postName} </p> 
 
-        <button key={event.id} onClick={()=>handleClickCancelEvent(event.id)}> annuler </button>
+        <button key={event.id} onClick={()=>handleClickCancelEvent(postsEventsUser[i].id,userData.id)}> annuler </button>
  
  </>
  ):(
@@ -76,8 +76,8 @@ handleClickValidation } = useProfilUser()
          <p>{event.User.firstName} souhaite participer à votre evenement {postsEventsUser[i].postName} </p>
         {event.eventComment? (<h3>message: {event.eventComment}</h3>):null} 
 
-        <button onClick={()=>handleClickDeclineEvent(event.id)} >Refuser</button> 
-        <button onClick={()=>handleClickValidation(event.id)} >Accepter</button>
+        <button onClick={()=>handleClickDeclineEvent(postsEventsUser[i].id,event.userId)} >Refuser</button> 
+        <button onClick={()=>handleClickValidation(postsEventsUser[i].id,event.userId)} >Accepter</button>
 
 </>)}
 
