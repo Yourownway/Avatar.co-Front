@@ -7,7 +7,7 @@ export default function ProfilHistory({allPostUser, eventsPostUser}) {
 
 
   return (
-    <div>
+    <div className='profilHistory-Container'>
       <ProfilNextEvent />
       <ProfilHistoryEvent eventsPostUser={eventsPostUser} allPostUser={allPostUser} />
     </div>

@@ -29,7 +29,7 @@ console.log(allPostUser,'allPostUser')
 
 
   return (
-    <div className="profilNextEvent-container">
+    <div className="profilHistoryEvent-container">
    <ul> { 
    
       allPostUser.map((post,i)=>

@@ -22,7 +22,7 @@ export default function usePageTraining() {
     }
     FilterData()
   }, [postData, categories])
-
+  console.log(postData, "POSTTTTTTTFFILLLLTERR")
   useEffect(() => {
     const fetchCategories = async () => {
       const res = await axios.get("/api/categories")

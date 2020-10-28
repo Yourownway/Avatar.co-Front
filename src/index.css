@@ -11,8 +11,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: #171b26ff;
-  color: green; */
+  background-color: #171b26ff;
+  color: white;
 
   max-height: 100%;
 }
@@ -97,6 +97,9 @@ code {
 }
 
 /*Profil Page User */
+.profilHistory-Container {
+  background-color: #d8d9d7ff;
+}
 .profilPageUser-Container {
   display: grid;
   width: 100vw;
@@ -115,13 +118,15 @@ code {
 }
 
 .profilNextEvent-container {
-  background-color: white;
+  background-color: #d8d9d7ff;
+  color: black;
   grid-column: 1/6;
   grid-row: 2/2;
 }
 
 .profilHistoryEvent-container {
-  background-color: red;
+  background-color: #d8d9d7ff;
+  color: black;
   grid-column: 1 / 6;
   grid-row: 3 /8;
 }

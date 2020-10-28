@@ -5,16 +5,14 @@ import TrainingByRate from './TrainingFilters/rate/TrainingByRate'
 import TrainingByCategories from './TrainingFilters/categories/TrainingByCategories'
 import TrainingSearch from './TrainingFilters/search/TrainingSearch'
 import usePageTraining from './usePageTraining'
-import Post from "../../../atoms/Post/Post";
 
-import { useSearch } from "../../../Context/ContextProvider";
 
 
 export default function PageTraining() {
 
 
   const {categories,  select, handleChange } = usePageTraining()
-  const searchData = useSearch()
+  
   
   return (
     <>

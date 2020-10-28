@@ -3,8 +3,6 @@ import React, { useEffect, useReducer } from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { ContextProvider } from "./component/Context/ContextProvider"
 
-import "./App.css"
-
 import routesAuth from "./component/Config/routesAuth"
 
 const initialState = {

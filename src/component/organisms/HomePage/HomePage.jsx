@@ -12,16 +12,13 @@ import PageCoaching from './PageCoaching/PageCoaching'
 import {  usePostData, useUpdatePost,useUserUpdate,useEventsPostUser,useUpdateEventsPostUser } from "../../Context/ContextProvider";
 
 import  useProfilUser from './PageProfil/ProfilUser/useProfilUser'
-import { getPostEvents, getPostUserEvent } from '../../action'
+
 export default function HomePage() {
   const authValue = useContext(AuthContext)
-  const updateUser =  useUserUpdate()
-  const userData =  authValue.reducerState.user
+ 
   const updatePost = useUpdatePost();
   const postData = usePostData()
-const updateEventsPostUser = useUpdateEventsPostUser()
-const eventsPostUser = useEventsPostUser()
-  const setUserRequest = useProfilUser()
+
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -48,7 +45,7 @@ const eventsPostUser = useEventsPostUser()
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios("/api/post");
+      const res = await axios("/api/post/allpost");
       updatePost(res.data.post);
 
     };
@@ -56,7 +53,7 @@ const eventsPostUser = useEventsPostUser()
 
     fetchData();
   }, []);
-
+console.log(postData, "ALLL POSSR")
  
   
   return (
@@ -70,8 +67,8 @@ const eventsPostUser = useEventsPostUser()
 
   {/* <button onClick={handleClick}>Click</button> */}
  <Switch>
-  <Route path= {'/Home/Page/Profil'}><PageProfil   /></Route>       
-    <Route path= {'/Home/Page/Training'}  />   
+  <Route path= {'/Home/Page/Profil'}><PageProfil/></Route>       
+    <Route path= {'/Home/Page/Training'} component={PageTraining}  />   
    <Route path= {'/Home/Page/Coaching'}  />   
       </Switch>
          
