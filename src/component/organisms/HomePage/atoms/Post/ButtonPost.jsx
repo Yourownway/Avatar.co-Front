@@ -24,6 +24,7 @@ if (res){
       updatePost(res.data.post);
 
     };
+
     refreshPosts()
 }
 

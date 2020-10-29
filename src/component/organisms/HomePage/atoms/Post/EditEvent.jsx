@@ -20,6 +20,11 @@ const  updatePost = useUpdatePost()
        const res = await axios.patch(`/api/post/${postUser.id}/${userData.id}/edit`, eventUpdateData);
        if (res.status===200){console.log('post edité', res)
       console.log(res.status)
+        const refreshPosts = async () => {
+        const res = await axios("/api/post/allpost")
+        updatePost(res.data.post)
+      }
+      refreshPosts()
     
       }else{console.log('erreur Edit')}
 

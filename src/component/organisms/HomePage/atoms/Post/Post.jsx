@@ -7,12 +7,7 @@ import ListParticipant from "./ListParticipant";
 
 
 export default function Post({ postDefaultData, events,eventsValidate }) {
-// const {userData,openModal,
-//   handleClickOpenEventEdit,
-//    handleClickCloseEventEdit,
-//  handleClickEventDelelet, 
-// handleClickEventRequest, 
-// } = usePost()
+
 useEffect(() => {
 
 }, [postDefaultData.length,events, eventsValidate.length])
@@ -37,7 +32,7 @@ console.log(eventsValidate,'eventsValidate')
               <h3>{post.category.categoryName}</h3> 
                 <h3> {eventsValidate[i]?(eventsValidate[i].length):0} /{post.postMaxGuest}</h3> 
          {eventsValidate? (  <ListParticipant users={eventsValidate[i]}/>) : null }  
-        {/* {eventsValidate&&userData.id?   (<ButtonPost post={post,eventsValidate[i]}/>): null}  */}
+
 
               {post.Events.eventValidation===true&&post.Events.eventIsAdmin===false?("Vous etes Valider"):null}
        {eventsValidate? ( <ButtonPost post={post} eventValidate={eventsValidate[i]}  />):null}   

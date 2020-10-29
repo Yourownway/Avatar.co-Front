@@ -15,8 +15,8 @@ import usePageProfil from './ProfilUser/useProfilUser'
 export default function PageProfil() {
 const authValue = useContext(AuthContext)
 const userData = authValue.reducerState.user
-const {requette} = usePageProfil()
 
+const PostData = usePostData()
 const [postId,setPostId] = useState([])
 const [postsEventsUser,setPostsEventsUser] = useState([])
 const [usersProfilValidate, setUsersProfilValidate] = useState([])
@@ -36,23 +36,23 @@ setPostId(res.data)
       //je recupere les post ou l'user paticipe ou a crée avec les events de tout les users
   await axios
    .all(postId.map((postId) => axios.get(`/api/post/${postId.postId}/postById`))).then( 
-    async (results)=>{const getData = await results.map((res) => res.data.post)
+    async (results)=>{const getData = await results.map((res) => res.data)
   setPostsEventsUser(getData)
- console.log(getData,'updateeeee')})
+})
     
 if(postsEventsUser.length>0){
 
   //recupere tout les events valider 
   const getValidation = await postsEventsUser.map((event)=>event.Events.filter((eventData)=>eventData.eventValidation===true))
-console.log(getValidation,'getValidation')
+
   await setUsersProfilValidate(getValidation)
 }
 }
   }
   fetchAllPostUser()
-  console.log(usersProfilValidate, 'userProfilValidate')
 
-  }, [userData.id,postId.length,postsEventsUser.length,usersProfilValidate.length, requette])
+
+  }, [userData,postId.length,postsEventsUser.length,usersProfilValidate.length, PostData])
 
 
   

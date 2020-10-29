@@ -21,6 +21,7 @@ export default function HomePage() {
 
 
   useEffect(() => {
+    console.log('disparcho')
     const fetchUser = async () => {
       const token = localStorage.getItem("token");
     

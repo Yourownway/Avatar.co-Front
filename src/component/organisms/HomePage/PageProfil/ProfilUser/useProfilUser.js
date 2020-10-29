@@ -5,12 +5,14 @@ import {
   useEventsPostUser,
   useUpdateEventsPostUser,
   useUser,
+  useUpdatePost,
 } from "../../../../Context/ContextProvider"
 
 export default function useProfilUser() {
   const [openEdit, setOpenEdit] = useState(false)
   const updateEventsPostUser = useUpdateEventsPostUser()
   const eventsPostUser = useEventsPostUser()
+  const updatePost = useUpdatePost()
   const [userRequest, setUserRequest] = useState([])
   let requette = ""
   const handleClickEdit = () => {
@@ -21,6 +23,11 @@ export default function useProfilUser() {
     const res = await axios.delete(requette)
     if (res.status === 200) {
       console.log("evenement annuler")
+      const refreshPosts = async () => {
+        const res = await axios("/api/post/allpost")
+        updatePost(res.data.post)
+      }
+      refreshPosts()
     } else console.log("error delete post")
   }
 
@@ -28,6 +35,11 @@ export default function useProfilUser() {
     const res = await axios.patch(`/api/event/${postId}/${userId}/validate`)
     if (res.status === 200) {
       console.log("Vous avez validez l'utilisateur")
+      const refreshPosts = async () => {
+        const res = await axios("/api/post/allpost")
+        updatePost(res.data.post)
+      }
+      refreshPosts()
     } else console.log("error delete post")
   }
 
@@ -35,6 +47,11 @@ export default function useProfilUser() {
     const res = await axios.patch(`/api/event/${userId}/decline`)
     if (res) {
       console.log("utilisateur refusé")
+      const refreshPosts = async () => {
+        const res = await axios("/api/post/allpost")
+        updatePost(res.data.post)
+      }
+      refreshPosts()
     } else console.log("erreur dans la suppression du post")
   }
 

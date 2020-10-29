@@ -50,7 +50,7 @@ console.log('userTrainingValidate', usersTrainingValidate)
 
   const {categories,  select, handleChange } = usePageTraining()
   
-  
+  console.log(postsEvents)
   return (
     <>
       <div className="trainingFiltre-container">
