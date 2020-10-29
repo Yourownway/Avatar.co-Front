@@ -7,7 +7,6 @@ import TrainingSearch from './TrainingFilters/search/TrainingSearch'
 import usePageTraining from './usePageTraining'
 import { usePostData } from "../../../Context/ContextProvider";
 import Post from "../atoms/Post/Post";
-import axios from 'axios'
 
 
 
@@ -33,10 +32,10 @@ const getPostEvents = await postData.map((post)=>post["Events"])
 setPostsEvents([getPostEvents])
 
 if(postsEvents.length>0){
-  console.log(postsEvents, postsEvents)
+
   //recupere tout les events valider 
   const getValidation = await postsEvents.map((events)=>events.map((event)=>event.filter((eventData)=>eventData["eventValidation"]===true)))
-  console.log(getValidation, 'Validation')
+
   setUsersTrainingValidate(getValidation[0])
 }
 
@@ -46,11 +45,10 @@ filterPostEvent()
 }else
 {console.log('ERRREURR')}
 }, [postData,postsEvents.length,usersTrainingValidate.length])
-console.log('userTrainingValidate', usersTrainingValidate)
 
   const {categories,  select, handleChange } = usePageTraining()
   
-  console.log(postsEvents)
+  
   return (
     <>
       <div className="trainingFiltre-container">
@@ -77,11 +75,11 @@ console.log('userTrainingValidate', usersTrainingValidate)
         <div className="trainingPage">
           <Switch>
             
-            <Route path="/Home/Page/Training/Date" ><Post postDefaultData={postData} events={postsEvents} eventsValidate={usersTrainingValidate} /></Route> 
+            <Route path="/Home/Page/Training/Date" ><Post postDefaultData={postData}  eventsValidate={usersTrainingValidate} /></Route> 
              <Route path={`/Home/Page/Training/Categorie/:name`} component={TrainingByCategories}/>
             <Route path="/Home/Page/Training/Rate" component={TrainingByRate}/>
 
-            <Route path="/Home/Page/Training/search/:slug"><TrainingSearch events={postsEvents}/></Route> 
+           <Route path="/Home/Page/Training/search/:slug"><TrainingSearch eventsValidate={usersTrainingValidate}/></Route>  
           </Switch>
         </div>
       </div>

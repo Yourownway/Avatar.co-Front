@@ -31,12 +31,13 @@ export default function useSearchbar() {
               .includes(searchInput.toLowerCase())
           )
         })
-        console.log(res, "filterRES")
+
         updateSearch(res)
       }
       FiltreByPostName()
     }
   }, [searchInput]) // eslint-disable-line react-hooks/exhaustive-deps
-  console.log("postData", postData)
+  console.log("postData", searchData)
+
   return { searchInput, handleChange }
 }
