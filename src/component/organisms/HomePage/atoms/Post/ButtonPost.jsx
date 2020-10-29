@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useContext,useState } from 'react'
 import { AuthContext } from '../../../../../App'
+import { useUpdatePost } from '../../../../Context/ContextProvider'
 
 
 import EditEvent from './EditEvent'
@@ -11,13 +12,19 @@ export default function ButtonPost({post,eventValidate}) {
     const userData = authValue.reducerState.user
 const [open,setOpen] = useState(false)
 const [openReq,setOpenReq]= useState(false)
-
-
+const  updatePost = useUpdatePost()
+const [postState,setPostState] = useState(post)
 
 const handleCancelEvent = async (post)=>{
 const res = await axios.delete(`/api/event/${post.id}/${userData.id}/cancel`)
 if (res){
   console.log(res,'event supprimé')
+   const refreshPosts = async () => {
+      const res = await axios("/api/post/allpost");
+      updatePost(res.data.post);
+
+    };
+    refreshPosts()
 }
 
 }
@@ -26,7 +33,13 @@ const fetchDelete = async()=>{
 const res = await axios.delete(`/api/post/${post.id}/delete`)
 if (res){
   console.log(`post numero ${post.id} supprimer avec succès!`)
- //importer un reducer ou un context pour mettre a jour les USER POST 
+ //importer un reducer ou un context pour mettre a jour les USER POST
+   const refreshPosts = async () => {
+      const res = await axios("/api/post/allpost");
+      updatePost(res.data.post);
+
+    };
+    refreshPosts()
 }
 }
 fetchDelete()

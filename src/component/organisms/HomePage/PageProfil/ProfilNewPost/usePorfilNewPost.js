@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 
 import { AuthContext } from "../../../../../App"
+import { useUpdatePost } from "../../../../Context/ContextProvider"
 
 export default function usePorfilNewPost() {
   const authValue = useContext(AuthContext)
   const reducerUserData = authValue.reducerState.user
-
+  const updatePost = useUpdatePost()
   const [userPostData, setuserPostData] = useState({})
 
   useEffect(() => {
@@ -27,6 +28,12 @@ export default function usePorfilNewPost() {
 
     if (res.status === 200) {
       await alert("post envoyer avec succes")
+
+      const refreshPosts = async () => {
+        const res = await axios("/api/post/allpost")
+        updatePost(res.data.post)
+      }
+      refreshPosts()
     }
 
     setuserPostData({

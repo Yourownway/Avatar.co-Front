@@ -23,7 +23,7 @@ const [open,setOpen] = useState(false)
     
 
        alert("le profil a été modifier");
-       await authValue.uispatch({ type: "LOAD_USER", payload: res })
+       await authValue.reducerDispatch({ type: "LOAD_USER", payload: res })
   
 
      event.preventDefault();

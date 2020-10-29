@@ -12,11 +12,13 @@ export default function useProfilUser() {
   const updateEventsPostUser = useUpdateEventsPostUser()
   const eventsPostUser = useEventsPostUser()
   const [userRequest, setUserRequest] = useState([])
+  let requette = ""
   const handleClickEdit = () => {
     setOpenEdit(!openEdit)
   }
   const handleClickCancelEvent = async (postId, userId) => {
-    const res = await axios.delete(`/api/event/${postId}/${userId}/cancel`)
+    requette = `/api/event/${postId}/${userId}/cancel`
+    const res = await axios.delete(requette)
     if (res.status === 200) {
       console.log("evenement annuler")
     } else console.log("error delete post")
@@ -44,5 +46,6 @@ export default function useProfilUser() {
     openEdit,
     handleClickEdit,
     userRequest,
+    requette,
   }
 }

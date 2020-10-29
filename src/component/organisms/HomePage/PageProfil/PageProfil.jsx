@@ -9,20 +9,21 @@ import ProfilNav from './atoms/ProfilNav'
 import ProfilHistory from './ProfilHistory/ProfilHistory'
 import ProfilNewPost from './ProfilNewPost/ProfilNewPost'
 import ProfilUser from './ProfilUser/ProfilUser'
-
+import usePageProfil from './ProfilUser/useProfilUser'
 
 
 export default function PageProfil() {
 const authValue = useContext(AuthContext)
 const userData = authValue.reducerState.user
-
+const {requette} = usePageProfil()
 
 const [postId,setPostId] = useState([])
 const [postsEventsUser,setPostsEventsUser] = useState([])
 const [usersProfilValidate, setUsersProfilValidate] = useState([])
+
   useEffect(() => {
    
-   
+   console.log('Redeclancher')
   const fetchAllPostUser = async () => {
     //recupere tout les post ou l'utilisateur participe ou a crée
 
@@ -51,7 +52,7 @@ console.log(getValidation,'getValidation')
   fetchAllPostUser()
   console.log(usersProfilValidate, 'userProfilValidate')
 
-  }, [userData.id,postId.length,postsEventsUser.length,usersProfilValidate.length])
+  }, [userData.id,postId.length,postsEventsUser.length,usersProfilValidate.length, requette])
 
 
   

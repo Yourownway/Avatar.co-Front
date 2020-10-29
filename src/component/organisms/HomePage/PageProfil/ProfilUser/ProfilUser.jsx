@@ -5,15 +5,18 @@ import useProfilUser from './useProfilUser'
 
 import ButtonEditProfil from './atom/ButtonEditProfil'
 import { AuthContext } from '../../../../../App'
+import usePageProfil from './useProfilUser'
 export default function ProfilUser({postsEventsUser}) {
 const [userRequest, setUserRequest] = useState([])
 const [openNotification,setOpenNotification]= useState(false)
+let {requette} = usePageProfil()
 
     const authValue = useContext(AuthContext)
     const userData = authValue.reducerState.user
   const {  handleClickEdit,openEdit, handleClickCancelEvent,handleClickDeclineEvent,
 handleClickValidation } = useProfilUser()
 useEffect(() => {
+  console.log('mise a jour ==========>')
 const getRequest = async()=>{
   const request = await postsEventsUser.map(post=>post.Events.filter(events=>events.eventValidation===false&&events.eventRequest===true&&events.eventIsAdmin===false))
 
@@ -22,7 +25,7 @@ setUserRequest(request)
 getRequest()
 
 
-}, [userData,postsEventsUser,userRequest.length])
+}, [postsEventsUser,userRequest.length,requette])
 
 console.log(postsEventsUser,'req')
 
