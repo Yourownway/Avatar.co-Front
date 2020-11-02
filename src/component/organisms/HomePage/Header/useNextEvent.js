@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
-import { usePostData } from "../../../../Context/ContextProvider"
-export default function usePorfilNewPost() {
+import { usePostData } from "../../../Context/ContextProvider"
+
+export default function useNextEvent() {
   const [state, setState] = useState({})
   const postData = usePostData()
 

@@ -6,10 +6,13 @@ import { usePostData } from '../../../Context/ContextProvider'
 
 
 import ProfilNav from './atoms/ProfilNav'
-import ProfilHistory from './ProfilHistory/ProfilHistory'
+
+import ProfilAllEvent from './ProfilEvent/ProfilAllEvent'
 import ProfilNewPost from './ProfilNewPost/ProfilNewPost'
 import ProfilUser from './ProfilUser/ProfilUser'
-import usePageProfil from './ProfilUser/useProfilUser'
+
+
+import ProfilMyEvent from './ProfilEvent/ProfilMyEvent'
 
 
 export default function PageProfil() {
@@ -23,7 +26,7 @@ const [usersProfilValidate, setUsersProfilValidate] = useState([])
 
   useEffect(() => {
    
-   console.log('Redeclancher')
+  
   const fetchAllPostUser = async () => {
     //recupere tout les post ou l'utilisateur participe ou a crée
 
@@ -59,19 +62,24 @@ if(postsEventsUser.length>0){
     return (
  <>
 
-               <div className="profilPageUser-Container">
+  <div className="profilPageUser-Container">
+  
       <ProfilNav />
+     
       <Switch>
-         <Route path="/Home/Page/Profil/History" exact>
-         <ProfilHistory postDefaultData={postsEventsUser} eventsValidate={usersProfilValidate}/> 
+         <Route path="/Home/Page/Profil/AllEvent" exact>
+         <ProfilAllEvent postDefaultData={postsEventsUser} eventsValidate={usersProfilValidate}/> 
         </Route>  
-
+<Route path="/Home/Page/Profil/MyEvent" exact>
+  <ProfilMyEvent/>
+</Route>
         <Route
-          path="/Home/Page/Profil/Post"
+          path="/Home/Page/Profil/NewPost"
           exact
        component={ProfilNewPost}
         />
       </Switch>
+      {/* mettre une condition avec une route  */}
       <ProfilUser postsEventsUser={postsEventsUser}/>
     </div>
 

@@ -5,10 +5,11 @@ export default function ProfilNav() {
   return (
     <>
       <div className="profilNav">
-        <Link className="navbar-a" to="/Home/Page/Profil/History">
-          Mes Entrainement
+        <Link className="navbar-a" to="/Home/Page/Profil/AllEvent">
+          All Event
         </Link>
-        <Link to="/Home/Page/Profil/Post">Post</Link>
+        <Link to='/Home/Page/Profil/MyEvent'>MyEvent</Link>
+        <Link to="/Home/Page/Profil/NewPost">New Post</Link>
       </div>
     </>
   );

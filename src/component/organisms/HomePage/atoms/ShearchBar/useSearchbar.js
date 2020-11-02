@@ -37,7 +37,6 @@ export default function useSearchbar() {
       FiltreByPostName()
     }
   }, [searchInput]) // eslint-disable-line react-hooks/exhaustive-deps
-  console.log("postData", searchData)
 
   return { searchInput, handleChange }
 }

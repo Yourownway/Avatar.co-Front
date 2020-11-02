@@ -12,11 +12,12 @@ export default function TrainingSearch({eventsValidate}) {
     return (
    <div>
        
-       {searchData.map(data=> <h1>{data.postName}</h1>)}
+
              {searchData.length !== 0 ? (
-        
-              
+                          <>
+             <h1>{searchData.length} {searchData.length>1?("résultas trouvés"):("résultas trouvé")} </h1>
      <Post postDefaultData={searchData} eventsValidate={eventsValidate} />
+                          </>
              ) : <h1>Aucun resultat pour "{slug}"</h1>}
     </div>
     )

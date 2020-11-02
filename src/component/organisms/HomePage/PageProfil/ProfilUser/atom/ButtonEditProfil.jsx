@@ -1,11 +1,14 @@
 import React,{useContext, useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../../../../../../App';
+
 
 export default function UserEditForm({userData}) {
     const [userUpdateData, setUserUpdateData]=useState({...userData})
     const authValue = useContext(AuthContext)
 const [open,setOpen] = useState(false)
+let history = useHistory()
      const handleChange = (event) => {
     const { name, value } = event.target;
     setUserUpdateData({
@@ -15,18 +18,18 @@ const [open,setOpen] = useState(false)
 
   };
   const handleSubmit = async (event) => {
-      alert("ok")
+
     event.preventDefault();
 
        const res = await axios.patch(`/api/profil/${userData.id}/edit-user`, userUpdateData);
 
     
 
-       alert("le profil a été modifier");
+   
        await authValue.reducerDispatch({ type: "LOAD_USER", payload: res })
-  
+      history.push('/Home/Page/Profil/History')
 
-     event.preventDefault();
+     
   };
 
 
@@ -42,7 +45,7 @@ const [open,setOpen] = useState(false)
         type="text"
         name="firstName"
         placeholder={userData.firstName}
-        value={userUpdateData.firstName}
+         value={userUpdateData.firstName}
       />
        <input
         onChange={handleChange}

@@ -11,7 +11,7 @@ export default function Nav() {
           <NavLink
             activeClassName="navbar-a-current"
             className="navbar-a"
-            to="/Home/Page/Profil"
+            to="/Home/Page/Profil/AllEvent"
             exact
           >
             Profil

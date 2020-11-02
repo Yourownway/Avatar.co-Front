@@ -1,6 +1,6 @@
 import React,{useEffect,useContext,useState} from 'react'
 import {Route , Switch} from 'react-router-dom'
-import Header from './molecules/Header'
+import Header from './Header/Header'
 import axios from 'axios'
 import {AuthContext} from '../../../App'
 
@@ -11,7 +11,7 @@ import PageTraining from './PageTraining/PageTraining'
 import PageCoaching from './PageCoaching/PageCoaching'
 import {  usePostData, useUpdatePost,useUserUpdate,useEventsPostUser,useUpdateEventsPostUser } from "../../Context/ContextProvider";
 
-import  useProfilUser from './PageProfil/ProfilUser/useProfilUser'
+
 
 export default function HomePage() {
   const authValue = useContext(AuthContext)
@@ -64,10 +64,13 @@ export default function HomePage() {
    
 
  <Header/> 
+  
+  
     <h1>Bienvenu {authValue.reducerState.user.firstName} :')</h1>
-
+       <h1> Envie de jouer au sport ? </h1>
   {/* <button onClick={handleClick}>Click</button> */}
  <Switch>
+
   <Route path= {'/Home/Page/Profil'}><PageProfil/></Route>       
     <Route path= {'/Home/Page/Training'} component={PageTraining}  />   
    <Route path= {'/Home/Page/Coaching'}  />   

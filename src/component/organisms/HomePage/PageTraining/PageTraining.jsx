@@ -7,6 +7,8 @@ import TrainingSearch from './TrainingFilters/search/TrainingSearch'
 import usePageTraining from './usePageTraining'
 import { usePostData } from "../../../Context/ContextProvider";
 import Post from "../atoms/Post/Post";
+import ProfilMyEvent from "../PageProfil/ProfilEvent/ProfilMyEvent";
+import SearchBar from "../atoms/ShearchBar/SearchBar";
 
 
 
@@ -51,6 +53,7 @@ filterPostEvent()
   
   return (
     <>
+      <SearchBar/>
       <div className="trainingFiltre-container">
         <ul>
           <li>
@@ -73,6 +76,7 @@ filterPostEvent()
       </div>
       <div>
         <div className="trainingPage">
+        
           <Switch>
             
             <Route path="/Home/Page/Training/Date" ><Post postDefaultData={postData}  eventsValidate={usersTrainingValidate} /></Route> 
