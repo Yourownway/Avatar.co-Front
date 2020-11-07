@@ -54,7 +54,10 @@ filterPostEvent()
   return (
     <>
       <SearchBar/>
-      <div className="trainingFiltre-container">
+      <div className='pageTraining'>
+
+     
+      <div className="pageTraining-nav">
         <ul>
           <li>
             <Link to="/Home/Page/Training/Date">Date</Link>
@@ -75,7 +78,7 @@ filterPostEvent()
         </ul>
       </div>
       <div>
-        <div className="trainingPage">
+        <div className="pageTraining postList">
         
           <Switch>
             
@@ -87,6 +90,7 @@ filterPostEvent()
           </Switch>
         </div>
       </div>
+       </div>
     </>
   );
 }

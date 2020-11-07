@@ -5,39 +5,48 @@ import { NavLink } from "react-router-dom";
 export default function Nav() {
  
   return (
-    <div className="navbar">
-      <ul className="navbar-ul">
-        <li className="navbar-li">
+    <div className="navDesktop">
+      <ul className="navDesktop-ul">
+        <li className="navDesktop-li">
+           <NavLink
+            activeClassName="navDesktop-a-current"
+            className="navDesktop-a"
+            to="/Home/Page/Profil/AllEvent"
+            exact
+          >ACTU</NavLink>
+        </li>
+                <li className="navDesktop-li">
           <NavLink
-            activeClassName="navbar-a-current"
-            className="navbar-a"
+            activeClassName="navDesktop-a-current"
+            className="navDesktop-a"
             to="/Home/Page/Profil/AllEvent"
             exact
           >
-            Profil
+            PROFIL
           </NavLink>
         </li>
-        <li className="navbar-li">
+        <li className="navDesktop-li">
           <NavLink
             activeClassName="navbar-a-current"
             className="navbar-a"
             to="/Home/Page/Training" 
             exact
           >
-            Training
+            TRAINING
           </NavLink>
         </li>
-         <li className="navbar-li">
-          <NavLink
+         <li className="navDesktop-li">
+          {/* <NavLink
             activeClassName="navbar-a-current"
             className="navbar-a"
             to="/Home/Page/Coaching"
             exact
           >
-            Coaching
-          </NavLink>
+            COACHING
+          </NavLink> */}
         </li>
       </ul>
+        <div className="navDesktop-logo"><h1>Sport.co</h1></div> 
     </div>
   );
 }

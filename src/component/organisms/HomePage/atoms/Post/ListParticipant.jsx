@@ -1,13 +1,19 @@
 import React,{useState} from 'react'
 
-export default function ListParticipant({users}) {
+export default function ListParticipant({users, post}) {
  const [open,setOpen] = useState(false)   
 
     return (
        <>
-<div>
+  <div className='postList-li-bottom-guestContainer' >
+      <div className='postList-li-bottom-guest'> 
+               <h3 className='red font-name'>Participant </h3>
+
             <button onClick={()=>{setOpen(!open)}}>Voir les Participant!</button>
-            {open ? (<div> <ul>
+             </div> 
+                  <div className='postList-li-bottom-guestNumber'> <span className='red'>{users?(users.length):0} </span>/{post.postMaxGuest}</div> 
+  </div>
+            {open ? (<div className='postList-li-bottom-guestList'> <ul>
   
 
            { users.map((user)=>  
@@ -21,7 +27,7 @@ export default function ListParticipant({users}) {
                 
                 </ul>  </div>):(null)} 
 
-        </div>
+       
    </>
     )
 }

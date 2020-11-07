@@ -16,10 +16,12 @@ export default function Header() {
       
   
   {phone?(<><NavPhone/>
-  </>): (<div> <Nav/>
-    <h1 className="logo">Sport.co</h1>
-    </div>)}
-  <NextEvent />
+   <NextEvent />
+  </>): (<> <Nav/>
+  
+ <NextEvent /><User/></>
+   )}
+ 
 
         
       </div>

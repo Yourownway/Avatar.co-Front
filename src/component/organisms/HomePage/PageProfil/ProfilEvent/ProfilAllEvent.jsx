@@ -9,7 +9,7 @@ export default function ProfilHistoryEvent({ postDefaultData,eventsValidate}) {
 
 
   return (
-    <div className="profilHistoryEvent-container">
+    <div className="postList">
 
 
       <Post   postDefaultData={postDefaultData} eventsValidate={eventsValidate}/>

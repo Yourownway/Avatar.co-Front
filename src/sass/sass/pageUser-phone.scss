@@ -1,0 +1,193 @@
+//Page profil User
+.pageUser {
+  width: 100vw;
+  overflow: auto;
+
+  &-event {
+    min-width: 60%;
+  }
+  display: flex;
+  &-nav {
+    font-family: Menu;
+    font-size: 85%;
+    padding: 0% 3%;
+    overflow: hidden;
+    // min-width: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+    background-color: $light-blue;
+    @for $i from 1 through 3 {
+      &-#{$i} {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.postList {
+  background-color: $red;
+  padding: 2% 6%;
+  overflow: auto;
+  max-height: 70vh;
+
+  &-ul {
+  }
+  &-li {
+    margin: 5% 0 15vh 0;
+    height: 40vh;
+    // min-height: 250px;
+
+    // max-width: 80vw;
+    display: grid;
+    grid-template-rows: repeat(10, 10%);
+
+    &-top {
+      grid-row: 1/8;
+      background-color: $medium-blue;
+      display: grid;
+      grid-template-rows: repeat(10, 10%);
+      grid-template-columns: repeat(10, 10%);
+      overflow: hidden;
+      &-content {
+        grid-row: 1/11;
+        grid-column: 1/9;
+        width: 100%;
+
+        padding-left: 4%;
+        display: grid;
+        grid-template-rows: repeat(10, 10%);
+        grid-template-columns: repeat(10, 10%);
+      }
+      &-head {
+        padding: 3% 7% 4% 0;
+        display: flex;
+        justify-content: space-between;
+        grid-row: 1/3;
+        grid-column: 1/11;
+        font-size: 85%;
+      }
+      &-description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        grid-row: 3/7;
+        grid-column: 1/11;
+        text-align: left;
+
+        font-size: 70%;
+      }
+      &-where {
+        grid-row: 7/9;
+        padding-top: 3%;
+        grid-column: 1/9;
+        text-align: left;
+        font-size: 70%;
+      }
+      &-when {
+        margin: auto;
+        color: $red;
+        font-size: 80%;
+        grid-row: 9/11;
+        grid-column: 1/9;
+        text-align: center;
+      }
+      &-image {
+        background: $green;
+        grid-row: 1/7;
+        grid-column: 9/11;
+      }
+      &-user {
+        background: $light-blue;
+        grid-row: 7/11;
+        grid-column: 7/11;
+        margin: 3%;
+
+        &-container {
+          background: $red;
+          border: solid white;
+
+          height: 100%;
+        }
+      }
+    }
+    &-bottom {
+      grid-row: 8/10;
+      background: $dark-blue;
+      margin: 0% 0% 0% 10%;
+      // padding: 2% 3% 1% 2%;
+      display: grid;
+      grid-template-rows: repeat(5, 20%);
+      grid-template-columns: repeat(4, 25%);
+      justify-content: space-around;
+      font-size: 75%;
+
+      &-control {
+        grid-row: 1/6;
+        grid-column: 1/3;
+        padding: 2% 3%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        &Admin {
+          display: flex;
+          justify-content: center;
+
+          & button {
+            margin-right: 1vh;
+          }
+        }
+      }
+
+      &-status {
+        display: flex;
+        width: 24vh;
+        & h1 {
+          font-size: 2vh;
+
+          text-align: center;
+          margin: auto;
+        }
+      }
+      & button {
+        background-color: $medium-blue;
+        border: white solid 0.3vh;
+        color: white;
+        padding: 1% 3%;
+        max-height: 5vh;
+        min-width: 5vw;
+        max-width: 45vw;
+
+        font-size: 60%;
+        font-family: name;
+      }
+      &-guestContainer {
+        display: flex;
+        padding: 2% 3%;
+        grid-row: 1/6;
+        grid-column: 3/5;
+      }
+      &-guest {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &Number {
+          font-size: 5vh;
+          margin: auto;
+        }
+        &List {
+          color: black;
+          background: $green;
+          height: 10vh;
+
+          grid-row: 6;
+          grid-column: 1/5;
+        }
+      }
+    }
+  }
+}

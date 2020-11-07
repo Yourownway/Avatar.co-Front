@@ -16,29 +16,52 @@ useEffect(() => {
 console.log(eventsValidate,'eventsValidate')
   return (
     
-    <div className="profilNextEvent-container">
-   <ul> { 
+    <>
+   <ul className='postList-ul'> { 
    
       postDefaultData.map((post,i)=>
            
-    <li key={post.id}>
-          <div className="trainingPost-post" >
-              <h2>{post.postName}</h2>
-       <h2>PostId:{post.id}</h2>
-             <h3>UserId:{post.User.id}</h3> 
-               <h3>{post.User.firstName}</h3>
-               <h3>{post.postDescription}</h3>
-                <h3>{post.Parc.parcName}</h3>
-              <h3>{post.category.categoryName}</h3> 
-                <h3> {eventsValidate[i]?(eventsValidate[i].length):0} /{post.postMaxGuest}</h3> 
-         {eventsValidate? (  <ListParticipant users={eventsValidate[i]}/>) : null }  
+    <li className='postList-li font-description'key={post.id}>
+      
+          <div className="postList-li-top" >
+            <div className='postList-li-top-content'>
+            <div className='postList-li-top-head'>
+              <h2 className='font-name'>{post.postName}</h2>
+               <h3><span className='red'>#</span>{post.category.categoryName}</h3> 
+               </div>
+               <h3 className='postList-li-top-description'>{post.postDescription}</h3>
+               <h3 className='postList-li-top-where'>{post.Parc.parcName}</h3>
+               <h1 className='postList-li-top-when'>Lundi 27 octobre a 13h</h1>
+               </div>
+<div className='postList-li-top-image'>
+<h1>image</h1>
+</div>
+<div className='postList-li-top-user'>
+  <div className='postList-li-top-user-container'>
+ <h3>{post.User.firstName}</h3>
+  </div>
+ 
+</div>
+               
+             
+                </div>
+             <div className='postList-li-bottom'>
+               
+               {eventsValidate? ( <ButtonPost post={post} eventValidate={eventsValidate[i]}  />):null}
 
+             
+     
+             
+           
+         {eventsValidate? (  <ListParticipant post={post }users={eventsValidate[i]}/>) : null }  
+           </div>
+  
 
-              {post.Events.eventValidation===true&&post.Events.eventIsAdmin===false?("Vous etes Valider"):null}
-       {eventsValidate? ( <ButtonPost post={post} eventValidate={eventsValidate[i]}  />):null}   
+              
+          
         
-   </div>
-
+  
+  
 
 
 
@@ -47,7 +70,7 @@ console.log(eventsValidate,'eventsValidate')
       
     }
 </ul>
-    </div>
+    </>
         
    
   );

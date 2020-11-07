@@ -1,5 +1,74 @@
-@import "./var.scss";
-@import "./navPhone.scss";
+@import "./reset.scss";
+@import "./sass/var.scss";
+@import "./sass/nav.scss";
+@import "./sass/pageUser-phone.scss";
+@import "./sass/profilUser.scss";
+@import "./sass/pageTraining.scss";
+@font-face {
+  src: url(./fonts/Anton_regular.ttf);
+  font-family: Name;
+}
+@font-face {
+  src: url(./fonts/Alata_regular.ttf);
+  font-family: Descritpion;
+}
+@font-face {
+  src: url(./fonts/Audiowide_regular.ttf);
+  font-family: Menu;
+}
+@font-face {
+  src: url(./fonts/Convergence_regular.ttf);
+  font-family: Title;
+}
+
+@font-face {
+  src: url(./fonts/Creepster_regular.ttf);
+  font-family: Badge;
+}
 body {
   background-color: $medium-blue;
+  box-sizing: border-box;
+  color: $white;
+  height: 100vh;
+  width: 100vw;
+  top: 0px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  top: 0px;
+  max-width: 100vw;
+
+  // max-height: 20%;
+
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.font-name {
+  font-family: Name;
+}
+
+.font-description {
+  font-family: Descritpion;
+}
+
+.font-menu {
+  font-family: Menu;
+}
+
+.font-badge {
+  font-family: Badge;
+}
+
+.red {
+  color: $red;
+}
+.white {
+  color: white;
 }

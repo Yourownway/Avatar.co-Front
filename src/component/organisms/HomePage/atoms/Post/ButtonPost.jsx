@@ -46,7 +46,20 @@ if (res){
 fetchDelete()
 }
     return (
-        <div>
+        <div className='postList-li-bottom-control'>
+          <div className='postList-li-bottom-status'>
+<span className='red font-name'>Status: </span><h1 className='postList-li-bottom-statusH1'>
+
+{/* Status Valider  */}
+{post.Events.find(event=>event.eventRequest===false&&event.eventValidation===true&&event.eventIsAdmin===false&&event.userId===userData.id)?"Vous etes Valider":null}
+ {/* Status en Attente */}
+{post.Events.find(event=>event.eventRequest===true&&event.eventValidation===false&&event.eventIsAdmin===false&&event.userId===userData.id)?"Vous etes en Attente":null}
+{/* Status Admin */}
+{post.Events.find(event=>event.eventRequest===true&&event.eventValidation===true&&event.eventIsAdmin===true&&event.userId===userData.id)?"Vous etes Admin":null}
+
+</h1></div>
+
+
 
           {/* ici c'est pour l'annulation de l'event quand le user a fais la requette  */}
     {post?  (<h1>{post.Events.find(event=>event.eventRequest===true&&event.eventValidation===false&&event.eventIsAdmin===false&&event.userId===userData.id)?<button onClick={()=>handleCancelEvent(post)}>Annuler</button>:null}</h1>):null}  
@@ -57,7 +70,7 @@ fetchDelete()
           {/* car les post sont filtrer par eventIsAdmin === true */}
   
          {/*      ici on check si l'utilisateur est admin (possibilité d'avoir plusieur admin) */}
-          {post.Events.find(event=>event.eventRequest===true&&event.eventValidation===true&&event.eventIsAdmin===true&&event.userId===userData.id)?(<div><button onClick={handleClickDelete}>Supprimer</button><button onClick={()=>{setOpen(!open)}}>Editer</button></div>):null}
+          {post.Events.find(event=>event.eventRequest===true&&event.eventValidation===true&&event.eventIsAdmin===true&&event.userId===userData.id)?(<div className='postList-li-bottom-controlAdmin'><button onClick={handleClickDelete}>Supprimer</button><button onClick={()=>{setOpen(!open)}}>Editer</button></div>):null}
   
   
          {open?(<EditEvent userData={userData} postUser={post} open={open} setOpen={setOpen}/>):null}

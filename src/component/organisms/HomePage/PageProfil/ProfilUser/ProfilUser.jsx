@@ -34,23 +34,31 @@ console.log(postsEventsUser,'req')
       
          <>
 
-   <div>
+   <div className="pageUser-profil">
    
-      <div className="profilUser-container">
-<img src="https://via.placeholder.com/150"></img>
-    <h1>ProfilUser</h1>
-     <h2> {userData.firstName}</h2> 
-     <h2> {userData.userId}</h2>
-     <p> XP:{userData.userXp} </p>
-     <p> <span>Description:</span>{userData.userDescription}</p>
+      
+        <div className="pageUser-profil-header">
+          <h1 className='font-description'>Profil de <span className='font-name'>{userData.firstName}</span></h1>
+        </div>
+        <div className="pageUser-profil-container" >
+          <div className="pageUser-profil-container-img"></div>
+
+<div className='pageUser-profil-container-data'>
+
+
+<p> XP:{userData.userXp} </p>
+     <h2>Name:<span className="font-name white">{userData.firstName}</span> </h2> 
+   <h2>Email:<span className="font-name white">{userData.userEmail}</span> </h2> 
+     
+     {/* <p> <span>Description:</span>{userData.userDescription}</p> */}
        {/* <UserEditForm userData={userData}/>   */}
 
 
-       
-         <ButtonEditProfil userData={userData}/>
-           
+         </div>    
+        
+    
      </div>
-
+ <ButtonEditProfil userData={userData}/>
   
 
     

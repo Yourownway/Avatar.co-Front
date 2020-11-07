@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 export default function ProfilNav() {
   return (
     <>
-      <div className="profilNav">
-        <Link className="navbar-a" to="/Home/Page/Profil/AllEvent">
-          All Event
+      <div className="pageUser-nav">
+        <Link className="pageUser-nav-1" to="/Home/Page/Profil/AllEvent">
+          ALL EVENT
         </Link>
-        <Link to='/Home/Page/Profil/MyEvent'>MyEvent</Link>
-        <Link to="/Home/Page/Profil/NewPost">New Post</Link>
+        <Link className="pageUser-nav-2" to='/Home/Page/Profil/MyEvent'>MY EVENT</Link>
+        <Link className="pageUser-nav-3" to="/Home/Page/Profil/NewPost">NEW POST</Link>
       </div>
     </>
   );

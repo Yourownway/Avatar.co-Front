@@ -13,9 +13,11 @@ import ProfilUser from './ProfilUser/ProfilUser'
 
 
 import ProfilMyEvent from './ProfilEvent/ProfilMyEvent'
+import useMediaQuery from '../../../utils/useMediaQuery'
 
 
 export default function PageProfil() {
+    const phone = useMediaQuery("(max-width : 425px)")
 const authValue = useContext(AuthContext)
 const userData = authValue.reducerState.user
 
@@ -62,8 +64,8 @@ if(postsEventsUser.length>0){
     return (
  <>
 
-  <div className="profilPageUser-Container">
-  
+  <div className="pageUser">
+  <div className="pageUser-event" >
       <ProfilNav />
      
       <Switch>
@@ -79,8 +81,9 @@ if(postsEventsUser.length>0){
        component={ProfilNewPost}
         />
       </Switch>
+      </div>
       {/* mettre une condition avec une route  */}
-      <ProfilUser postsEventsUser={postsEventsUser}/>
+    {phone? null:( <ProfilUser postsEventsUser={postsEventsUser}/>)} 
     </div>
 
    </>

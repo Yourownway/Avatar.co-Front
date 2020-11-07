@@ -1,0 +1,21 @@
+.pageUser-profil {
+  width: 40%;
+  height: 100%;
+
+  &-header {
+    background-color: $red;
+  }
+  &-container {
+    display: flex;
+    &-img {
+      width: 50%;
+      background-color: $green;
+    }
+    &-data {
+      width: 50%;
+      background: $red;
+      font-family: Descritpion;
+      color: black;
+    }
+  }
+}

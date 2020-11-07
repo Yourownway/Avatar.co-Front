@@ -13,9 +13,11 @@ import {  usePostData, useUpdatePost,useUserUpdate,useEventsPostUser,useUpdateEv
 
 
 
+
 export default function HomePage() {
+
   const authValue = useContext(AuthContext)
- 
+  
   const updatePost = useUpdatePost();
   const postData = usePostData()
 
@@ -65,9 +67,9 @@ export default function HomePage() {
 
  <Header/> 
   
-  
+{/*   
     <h1>Bienvenu {authValue.reducerState.user.firstName} :')</h1>
-       <h1> Envie de jouer au sport ? </h1>
+       <h1> Envie de jouer au sport ? </h1> */}
   {/* <button onClick={handleClick}>Click</button> */}
  <Switch>
 

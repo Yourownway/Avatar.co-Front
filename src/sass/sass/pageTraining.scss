@@ -1,0 +1,13 @@
+.pageTraining {
+  display: flex;
+  &-search {
+  }
+  &-nav {
+    font-family: Menu;
+    width: 40%;
+  }
+  &.postList {
+    height: 100%;
+    border: solid white;
+  }
+}
