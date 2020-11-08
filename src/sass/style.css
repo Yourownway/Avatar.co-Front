@@ -32,7 +32,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: 90%;
+  font-size: 2.6vh;
   font-weight: normal;
 }
 
@@ -104,13 +104,13 @@ a {
 .navDesktop-logo {
   width: 35%;
   font-family: Name;
-  font-size: 10vh;
   background-color: #031373ff;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .navDesktop-logo h1 {
+  font-size: 10vh;
   text-align: center;
 }
 
@@ -123,6 +123,7 @@ a {
   grid-template-columns: repeat(8, 1fr);
 }
 .navPhone-burger {
+  grid-row: 1/3;
   grid-column: 1/3;
   margin: 15% 10% 15% 20%;
   padding: 0% 20% 0% 10%;
@@ -144,6 +145,22 @@ a {
   height: 90%;
   background-color: #80f2e8ff;
 }
+.navPhone-menu {
+  position: fixed;
+  top: 15vh;
+  z-index: 1;
+  background: #031373ff;
+  height: 85vh;
+  width: 50vh;
+  font-family: Menu;
+}
+.navPhone-menu ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
 .navPhone .user {
   grid-column: 5/9;
   padding: 4%;
@@ -155,7 +172,7 @@ a {
   border: solid white;
 }
 
-@media (min-width: 425px) {
+@media (min-width: 450px) {
   .user {
     grid-row: 2;
     grid-column: 7/9;
@@ -186,7 +203,7 @@ a {
 .nextEvent-container p {
   font-family: Descritpion;
 }
-@media (min-width: 425px) {
+@media (min-width: 450px) {
   .nextEvent-container {
     grid-row: 2;
     grid-column: 2/6;
@@ -203,7 +220,7 @@ a {
 }
 .pageUser-nav {
   font-family: Menu;
-  font-size: 85%;
+  font-size: 2.6vh;
   padding: 0% 3%;
   overflow: hidden;
   display: flex;
@@ -224,18 +241,18 @@ a {
 
 .postList {
   background-color: #b90617ff;
-  padding: 2% 6%;
+  padding: 0% 6%;
   overflow: auto;
   max-height: 70vh;
 }
 .postList-li {
   margin: 5% 0 15vh 0;
-  height: 40vh;
+  height: 45vh;
   display: grid;
   grid-template-rows: repeat(10, 10%);
 }
 .postList-li-top {
-  grid-row: 1/8;
+  grid-row: 1/7;
   background-color: #021459ff;
   display: grid;
   grid-template-rows: repeat(10, 10%);
@@ -257,7 +274,11 @@ a {
   justify-content: space-between;
   grid-row: 1/3;
   grid-column: 1/11;
-  font-size: 85%;
+}
+@media (max-width: 400px) {
+  .postList-li-top-head h2 {
+    font-size: 2vh;
+  }
 }
 .postList-li-top-description {
   display: flex;
@@ -266,19 +287,20 @@ a {
   grid-row: 3/7;
   grid-column: 1/11;
   text-align: left;
-  font-size: 70%;
+  max-width: 98%;
+  font-size: 2.2vh;
 }
 .postList-li-top-where {
   grid-row: 7/9;
   padding-top: 3%;
   grid-column: 1/9;
   text-align: left;
-  font-size: 70%;
+  font-size: 2.2vh;
 }
 .postList-li-top-when {
   margin: auto;
   color: #b90617ff;
-  font-size: 80%;
+  font-size: 2.2vh;
   grid-row: 9/11;
   grid-column: 1/9;
   text-align: center;
@@ -287,6 +309,11 @@ a {
   background: #80f2e8ff;
   grid-row: 1/7;
   grid-column: 9/11;
+  display: flex;
+  justify-content: center;
+}
+.postList-li-top-image img {
+  height: 100%;
 }
 .postList-li-top-user {
   background: #031373ff;
@@ -300,14 +327,14 @@ a {
   height: 100%;
 }
 .postList-li-bottom {
-  grid-row: 8/10;
+  grid-row: 7/10;
   background: #011641ff;
-  margin: 0% 0% 0% 10%;
+  margin: 0% 0% 0% 8%;
   display: grid;
   grid-template-rows: repeat(5, 20%);
   grid-template-columns: repeat(4, 25%);
   justify-content: space-around;
-  font-size: 75%;
+  font-size: 2.5vh;
 }
 .postList-li-bottom-control {
   grid-row: 1/6;
@@ -325,12 +352,38 @@ a {
 .postList-li-bottom-controlAdmin button {
   margin-right: 1vh;
 }
+.postList-li-bottom-controlAdmin-edit {
+  top: 0px;
+  right: 0px;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+.postList-li-bottom-controlAdmin-edit form {
+  border: solid red;
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: #011641ff;
+  height: 40%;
+}
+.postList-li-bottom-controlAdmin-edit .close {
+  align-self: flex-end;
+  width: 5%;
+}
 .postList-li-bottom-status {
   display: flex;
-  width: 24vh;
+  min-width: 20vw;
 }
 .postList-li-bottom-status h1 {
-  font-size: 2vh;
+  font-size: 3vh;
   text-align: center;
   margin: auto;
 }
@@ -338,12 +391,13 @@ a {
   background-color: #021459ff;
   border: white solid 0.3vh;
   color: white;
-  padding: 1% 3%;
-  max-height: 5vh;
-  min-width: 5vw;
-  max-width: 45vw;
-  font-size: 60%;
+  padding: 1% 2%;
   font-family: name;
+  font-size: 70%;
+  min-width: 8vw;
+}
+.postList-li-bottom button.list {
+  width: 18vw;
 }
 .postList-li-bottom-guestContainer {
   display: flex;
@@ -357,7 +411,7 @@ a {
   justify-content: space-between;
 }
 .postList-li-bottom-guestNumber {
-  font-size: 5vh;
+  font-size: 3vh;
   margin: auto;
 }
 .postList-li-bottom-guestList {
@@ -367,38 +421,169 @@ a {
   grid-row: 6;
   grid-column: 1/5;
 }
+.postList-li-bottom-guestList ul {
+  display: flex;
+  height: 100%;
+  width: 90%;
+  margin: auto;
+  border: solid red;
+  overflow: auto;
+}
+.postList-li-bottom-guestList li {
+  width: 100%;
+  height: 100%;
+  font-family: Name;
+  display: flex;
+  align-items: flex-end;
+}
+.postList-li-bottom-guestList img {
+  max-width: 100%;
+  height: 100%;
+}
 
 .pageUser-profil {
-  width: 40%;
-  height: 100%;
+  min-width: 40%;
+  max-height: 80vh;
 }
 .pageUser-profil-header {
   background-color: #b90617ff;
+  height: 10%;
+  width: 99%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.pageUser-profil-header h1 {
+  font-size: 5vh;
 }
 .pageUser-profil-container {
+  margin: 1%;
+  border: solid white;
+  height: 50%;
   display: flex;
 }
 .pageUser-profil-container-img {
-  width: 50%;
+  border: solid #b90617ff;
+  width: 55%;
   background-color: #80f2e8ff;
+  display: flex;
+  justify-content: center;
+}
+.pageUser-profil-container-img img {
+  height: 100%;
 }
 .pageUser-profil-container-data {
-  width: 50%;
+  width: 45%;
+  padding-left: 3%;
   background: #b90617ff;
   font-family: Descritpion;
   color: black;
+}
+.pageUser-profil-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.pageUser-profil-notification {
+  height: 30vh;
+}
+.pageUser-profil-notification-header {
+  display: flex;
+  justify-content: center;
+}
+.pageUser-profil-edit {
+  height: 28vh;
+  background: #b90617ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.pageUser-profil-edit form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.notifList {
+  overflow: auto;
+  background: #b90617ff;
+  padding: 4% 10%;
+  max-height: 26vh;
+}
+
+.notifList-li {
+  margin-bottom: 2%;
+  height: 12vh;
+  min-height: 100px;
+}
+
+.notifList-li-top {
+  background: #021459ff;
+  min-height: 60px;
+  margin: 0 6% 0 0;
+}
+
+.notifList-li-bottom {
+  min-height: 40px;
+  background: #011641ff;
+  margin: 0 0 0 6%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profilUser-newPost {
+  background: #b90617ff;
+  border: solid red;
+  height: 70vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 450px) {
+  .profilUser-newPost {
+    width: 100%;
+  }
+}
+.profilUser-newPost-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-height: 80%;
+}
+.profilUser-newPost-form h1 {
+  font-family: Descritpion;
+}
+.profilUser-newPost-form input,
+.profilUser-newPost-form textarea {
+  background-color: lavender;
 }
 
 .pageTraining {
   display: flex;
 }
+@media (max-width: 425px) {
+  .pageTraining {
+    display: block;
+  }
+}
+.pageTraining-search {
+  text-align: center;
+}
 .pageTraining-nav {
   font-family: Menu;
-  width: 40%;
+  width: 25%;
+  padding: 2%;
 }
-.pageTraining.postList {
-  height: 100%;
-  border: solid white;
+@media (max-width: 425px) {
+  .pageTraining-nav {
+    width: 100%;
+  }
+}
+@media (max-width: 425px) {
+  .pageTraining-nav ul {
+    display: flex;
+    justify-content: space-around;
+  }
 }
 
 @font-face {
@@ -466,6 +651,17 @@ body {
 
 .white {
   color: white;
+}
+
+.green {
+  color: #80f2e8ff;
+}
+
+.btn {
+  background-color: #021459ff;
+  border: white solid 0.3vh;
+  color: white;
+  padding: 1% 2%;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,9 +1,11 @@
 @import "./reset.scss";
 @import "./sass/var.scss";
 @import "./sass/nav.scss";
-@import "./sass/pageUser-phone.scss";
+@import "./sass/pageEvent.scss";
 @import "./sass/profilUser.scss";
+@import "./sass/pageNewPost.scss";
 @import "./sass/pageTraining.scss";
+@import "./sass/pageMyEvent.scss";
 @font-face {
   src: url(./fonts/Anton_regular.ttf);
   font-family: Name;
@@ -71,4 +73,13 @@ body {
 }
 .white {
   color: white;
+}
+.green {
+  color: $green;
+}
+.btn {
+  background-color: $medium-blue;
+  border: white solid 0.3vh;
+  color: white;
+  padding: 1% 2%;
 }

@@ -4,6 +4,7 @@ export default function FromUserPost({handleChange, userPostData}) {
   
     return (
         <>
+        <h1>Le nom de l'event..</h1>
       <input
         onChange={handleChange}
         type="text"
@@ -11,6 +12,7 @@ export default function FromUserPost({handleChange, userPostData}) {
         placeholder="postName"
         value={userPostData.postName}
       />
+      <h1>Quand ..?</h1>
       <input
         onChange={handleChange}
         type="date"
@@ -18,7 +20,7 @@ export default function FromUserPost({handleChange, userPostData}) {
         placeholder="postDate"
         value={userPostData.postDate}
       />
-
+  <h1>Quel genre ..?</h1>
       <input
         onChange={handleChange}
         type="text"
@@ -26,6 +28,7 @@ export default function FromUserPost({handleChange, userPostData}) {
         placeholder="categoryId"
         value={userPostData.categoryId}
       />
+      <h1>Ou ca ..?</h1>
       <input
         onChange={handleChange}
         type="text"
@@ -33,6 +36,7 @@ export default function FromUserPost({handleChange, userPostData}) {
         placeholder="parcId"
         value={userPostData.parcId}
       />
+      <h1>Combien de personne ..?</h1>
       <input
         onChange={handleChange}
         type="text"
@@ -40,13 +44,14 @@ export default function FromUserPost({handleChange, userPostData}) {
         placeholder="postMaxGuest"
         value={userPostData.postMaxGuest}
       />
-      <input
+       <h1>Dis nous en plus ..!</h1>
+      <textarea
         onChange={handleChange}
         type="text"
         name="postDescription"
         placeholder="postDescription"
         value={userPostData.postDescription}
-      />
+      ></textarea>
     </>
     )
 }

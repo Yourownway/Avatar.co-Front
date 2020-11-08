@@ -46,7 +46,7 @@ export default function Nav() {
           </NavLink> */}
         </li>
       </ul>
-        <div className="navDesktop-logo"><h1>Sport.co</h1></div> 
+        <div className="navDesktop-logo"><h1>Sport<span className='green'>.co</span></h1></div> 
     </div>
   );
 }

@@ -8,7 +8,7 @@ import useMediaQuery from "../../../utils/useMediaQuery";
 import NavPhone from "../atoms/NavPhone";
 
 export default function Header() {
-  const phone = useMediaQuery("(max-width : 425px)")
+  const phone = useMediaQuery("(max-width : 450px)")
   return (
     <>
       <div className="header">

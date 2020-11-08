@@ -1,13 +1,27 @@
 .pageTraining {
   display: flex;
+  @media (max-width: 425px) {
+    display: block;
+  }
   &-search {
+    text-align: center;
   }
   &-nav {
     font-family: Menu;
-    width: 40%;
+    width: 25%;
+    padding: 2%;
+    @media (max-width: 425px) {
+      width: 100%;
+    }
+    & ul {
+      @media (max-width: 425px) {
+        display: flex;
+        justify-content: space-around;
+      }
+    }
   }
-  &.postList {
-    height: 100%;
-    border: solid white;
-  }
+  // &.postList {
+  //   height: 100%;
+  //   border: solid white;
+  // }
 }

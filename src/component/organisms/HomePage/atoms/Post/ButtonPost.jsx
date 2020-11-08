@@ -51,11 +51,11 @@ fetchDelete()
 <span className='red font-name'>Status: </span><h1 className='postList-li-bottom-statusH1'>
 
 {/* Status Valider  */}
-{post.Events.find(event=>event.eventRequest===false&&event.eventValidation===true&&event.eventIsAdmin===false&&event.userId===userData.id)?"Vous etes Valider":null}
+{post.Events.find(event=>event.eventRequest===false&&event.eventValidation===true&&event.eventIsAdmin===false&&event.userId===userData.id)?" Valider":null}
  {/* Status en Attente */}
-{post.Events.find(event=>event.eventRequest===true&&event.eventValidation===false&&event.eventIsAdmin===false&&event.userId===userData.id)?"Vous etes en Attente":null}
+{post.Events.find(event=>event.eventRequest===true&&event.eventValidation===false&&event.eventIsAdmin===false&&event.userId===userData.id)?" en Attente":null}
 {/* Status Admin */}
-{post.Events.find(event=>event.eventRequest===true&&event.eventValidation===true&&event.eventIsAdmin===true&&event.userId===userData.id)?"Vous etes Admin":null}
+{post.Events.find(event=>event.eventRequest===true&&event.eventValidation===true&&event.eventIsAdmin===true&&event.userId===userData.id)?" Admin":null}
 
 </h1></div>
 

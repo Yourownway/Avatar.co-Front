@@ -4,10 +4,11 @@ import axios from 'axios'
 import { AuthContext } from '../../../../../../App';
 
 
-export default function UserEditForm({userData}) {
+export default function UserEditForm({userData,open,setOpen}) {
     const [userUpdateData, setUserUpdateData]=useState({...userData})
     const authValue = useContext(AuthContext)
-const [open,setOpen] = useState(false)
+
+const [file,setFile] = useState(null)
 let history = useHistory()
      const handleChange = (event) => {
     const { name, value } = event.target;
@@ -19,26 +20,43 @@ let history = useHistory()
   };
   const handleSubmit = async (event) => {
 
-    event.preventDefault();
+      event.preventDefault();
+ 
 
+  
+// const res =await axios.post('/test', data)
+// console.log(res,'data')
        const res = await axios.patch(`/api/profil/${userData.id}/edit-user`, userUpdateData);
 
     
-
    
-       await authValue.reducerDispatch({ type: "LOAD_USER", payload: res })
-      history.push('/Home/Page/Profil/History')
+     await authValue.reducerDispatch({ type: "LOAD_USER", payload: res })
+      
+
+     
+  };
+    const handleSubmitImg = async (event) => {
+
+      event.preventDefault();
+ const data = new FormData;
+ data.append('file',file)
+
+       const res = await axios.patch(`/api/profil/${userData.id}/edit-image`, data);
+
+     await authValue.reducerDispatch({ type: "LOAD_USER", payload: res })
+    window.location.reload(false);  
+
 
      
   };
 
 
     return (
-        <div>
-          <button onClick={()=>setOpen(!open)}>Edit</button>
+       <> 
+          {/* <button className='btn'onClick={()=>setOpen(!open)}>Edit</button> */}
 
           {open? (
-
+<div className="pageUser-profil-edit">
            <form onSubmit={handleSubmit}>
       <input
         onChange={handleChange}
@@ -61,13 +79,7 @@ let history = useHistory()
         placeholder={userData.userEmail}
         value={userUpdateData.userEmail}
       />
-       <input
-        onChange={handleChange}
-        type="text"
-        name="userDescription"
-        placeholder={userData.userDescription}
-        value={userUpdateData.userDescription}
-      />
+
          <input
         onChange={handleChange}
         type="text"
@@ -75,11 +87,17 @@ let history = useHistory()
         placeholder={userData.userDescription}
         value={userUpdateData.userDescription}
       />
-      <button>Envoyer</button>
+     
+      <button className="btn">Envoyer</button>
       </form>
-
+      <form onSubmit={handleSubmitImg}>
+         <input type='file' accept=".png" onChange={event=>{const file=event.target.files[0];
+      setFile(file)}}  />
+      <button className="btn">Envoyer</button>
+      </form>
+</div>
           ):null}
   
-        </div>
+        </>
     )
 }

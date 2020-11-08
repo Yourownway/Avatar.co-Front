@@ -1,0 +1,24 @@
+.profilUser-newPost {
+  background: $red;
+  border: solid red;
+  height: 70vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  @media (min-width: 450px) {
+    width: 100%;
+  }
+  &-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-height: 80%;
+    & h1 {
+      font-family: Descritpion;
+    }
+    & input,
+    textarea {
+      background-color: lavender;
+    }
+  }
+}

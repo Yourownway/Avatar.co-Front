@@ -9,7 +9,9 @@ import usePageProfil from './useProfilUser'
 export default function ProfilUser({postsEventsUser}) {
 const [userRequest, setUserRequest] = useState([])
 const [openNotification,setOpenNotification]= useState(false)
+const [open,setOpen] = useState(false)
 let {requette} = usePageProfil()
+const URL = "http://localhost:3006/"
 
     const authValue = useContext(AuthContext)
     const userData = authValue.reducerState.user
@@ -38,10 +40,10 @@ console.log(postsEventsUser,'req')
    
       
         <div className="pageUser-profil-header">
-          <h1 className='font-description'>Profil de <span className='font-name'>{userData.firstName}</span></h1>
+          <h1 className='font-menu'>PROFIL </h1><h1 className='font-name'>{userData.firstName}</h1>
         </div>
         <div className="pageUser-profil-container" >
-          <div className="pageUser-profil-container-img"></div>
+          <div className="pageUser-profil-container-img"><img src={URL+ userData.userImage}/> </div>
 
 <div className='pageUser-profil-container-data'>
 
@@ -57,38 +59,53 @@ console.log(postsEventsUser,'req')
          </div>    
         
     
-     </div>
- <ButtonEditProfil userData={userData}/>
-  
+     </div >  
+    <div className='pageUser-profil-buttons'>
 
-    
-    
-    <h1>Vous avez {userRequest.length} Notification</h1>
-    <button onClick={()=>(setOpenNotification(!openNotification))}>Notification</button>
+    {/* <h1>Vous avez {userRequest.length} Notification</h1> */}
+    <button className="btn" onClick={()=>{if(open)setOpen(!open);setOpenNotification(!openNotification)}}>Notification</button>
+     <button className='btn'onClick={()=>{if(openNotification)setOpenNotification(!openNotification);setOpen(!open)}}>Edit</button>
+        </div>
+     <ButtonEditProfil open={open} setOpen={setOpen}userData={userData}/>
+  
     {openNotification?(
     
     <div>
-      <button onClick={()=>{setOpenNotification(!openNotification)}}>X</button>
-      {userRequest.length>0? (userRequest.map((events,i)=>events.map(event=>
-  <ul> 
-    
- <li>
+      
+            <div className="pageUser-profil-notification">
+       <div className='pageUser-profil-notification-header'> <h1 className="font-menu">NOTIFICATION</h1> <button className="btn" onClick={()=>{setOpenNotification(!openNotification)}}>X</button></div>
+  <div className="notifList">
+      {userRequest.length>0 && postsEventsUser? (userRequest.map((events,i)=>events.map(event=>
 
-{ event.userId=== userData.id ?
+
+     
+      
+
+      
+  <ul > 
+    
+ <li className='notifList-li'>
+
+{ event.userId=== userData.id && postsEventsUser[i].postName ?
  (
  <>   
-        <p>Vous souhaitez participer à {postsEventsUser[i].postName} </p> 
+ <div className="notifList-li-top" >
+        <p>Vous souhaitez participer à <span className="font-description">{postsEventsUser[i].postName}</span>  </p> 
+       
+</div>
+    <div className='notifList-li-bottom'>
+        <button className="btn" key={event.id} onClick={()=>handleClickCancelEvent(postsEventsUser[i].id,userData.id)}> annuler </button>
+<button onClick={()=>console.log(postsEventsUser[i])}>ici</button>
 
-        <button key={event.id} onClick={()=>handleClickCancelEvent(postsEventsUser[i].id,userData.id)}> annuler </button>
- 
+ </div> 
  </>
  ):(
  <>
-         <p>{event.User.firstName} souhaite participer à votre evenement {postsEventsUser[i].postName} </p>
+         <p><span className='font-name'>{event.User.firstName} </span> souhaite participer à votre evenement <span className="font-description"> {postsEventsUser[i].postName}</span> </p>
         {event.eventComment? (<h3>message: {event.eventComment}</h3>):null} 
 
-        <button onClick={()=>handleClickDeclineEvent(postsEventsUser[i].id,event.userId)} >Refuser</button> 
-        <button onClick={()=>handleClickValidation(postsEventsUser[i].id,event.userId)} >Accepter</button>
+        <button className="btn" onClick={()=>handleClickDeclineEvent(postsEventsUser[i].id,event.userId)} >Refuser</button> 
+        <button className="btn" onClick={()=>handleClickValidation(postsEventsUser[i].id,event.userId)} >Accepter</button>
 
 </>)}
 
@@ -97,7 +114,9 @@ console.log(postsEventsUser,'req')
   
  
   </ul>
- ) )):null} 
+
+  
+ ) )):null} </div>  </div>
 </div>):null}
 
 

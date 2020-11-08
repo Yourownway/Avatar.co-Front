@@ -1,21 +1,95 @@
 .pageUser-profil {
-  width: 40%;
-  height: 100%;
+  min-width: 40%;
+  max-height: 80vh;
 
   &-header {
     background-color: $red;
+    height: 10%;
+    width: 99%;
+    display: flex;
+
+    justify-content: space-evenly;
+    & h1 {
+      font-size: 5vh;
+    }
   }
   &-container {
+    margin: 1%;
+    border: solid white;
+    height: 50%;
     display: flex;
     &-img {
-      width: 50%;
+      border: solid $red;
+      width: 55%;
       background-color: $green;
+      display: flex;
+      justify-content: center;
+      & img {
+        height: 100%;
+      }
     }
     &-data {
-      width: 50%;
+      width: 45%;
+      padding-left: 3%;
       background: $red;
       font-family: Descritpion;
       color: black;
     }
   }
+
+  &-buttons {
+    display: flex;
+
+    justify-content: space-around;
+  }
+  &-notification {
+    height: 30vh;
+
+    &-header {
+      display: flex;
+      justify-content: center;
+      & button {
+      }
+    }
+  }
+
+  &-edit {
+    height: 28vh;
+    background: $red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    & form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+}
+
+.notifList {
+  overflow: auto;
+  background: $red;
+  padding: 4% 10%;
+  max-height: 26vh;
+}
+.notifList-li {
+  margin-bottom: 2%;
+  height: 12vh;
+  min-height: 100px;
+}
+.notifList-li-top {
+  background: $medium-blue;
+  min-height: 60px;
+  margin: 0 6% 0 0;
+}
+.notifList-li-bottom {
+  min-height: 40px;
+  background: $dark-blue;
+  margin: 0 0 0 6%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

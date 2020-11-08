@@ -13,6 +13,7 @@ useEffect(() => {
 }, [postDefaultData.length,events, eventsValidate.length])
     const authValue = useContext(AuthContext)
     const userData = authValue.reducerState.user
+    const URL = "http://localhost:3006/"
 console.log(eventsValidate,'eventsValidate')
   return (
     
@@ -34,7 +35,8 @@ console.log(eventsValidate,'eventsValidate')
                <h1 className='postList-li-top-when'>Lundi 27 octobre a 13h</h1>
                </div>
 <div className='postList-li-top-image'>
-<h1>image</h1>
+{post.User.userImage ? (<img src={URL+ post.User.userImage}/> ):null}
+
 </div>
 <div className='postList-li-top-user'>
   <div className='postList-li-top-user-container'>

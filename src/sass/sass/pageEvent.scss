@@ -9,7 +9,7 @@
   display: flex;
   &-nav {
     font-family: Menu;
-    font-size: 85%;
+    font-size: 2.6vh;
     padding: 0% 3%;
     overflow: hidden;
     // min-width: 400px;
@@ -28,7 +28,7 @@
 
 .postList {
   background-color: $red;
-  padding: 2% 6%;
+  padding: 0% 6%;
   overflow: auto;
   max-height: 70vh;
 
@@ -36,7 +36,7 @@
   }
   &-li {
     margin: 5% 0 15vh 0;
-    height: 40vh;
+    height: 45vh;
     // min-height: 250px;
 
     // max-width: 80vw;
@@ -44,7 +44,8 @@
     grid-template-rows: repeat(10, 10%);
 
     &-top {
-      grid-row: 1/8;
+      grid-row: 1/7;
+
       background-color: $medium-blue;
       display: grid;
       grid-template-rows: repeat(10, 10%);
@@ -66,7 +67,12 @@
         justify-content: space-between;
         grid-row: 1/3;
         grid-column: 1/11;
-        font-size: 85%;
+
+        & h2 {
+          @media (max-width: 400px) {
+            font-size: 2vh;
+          }
+        }
       }
       &-description {
         display: flex;
@@ -75,20 +81,20 @@
         grid-row: 3/7;
         grid-column: 1/11;
         text-align: left;
-
-        font-size: 70%;
+        max-width: 98%;
+        font-size: 2.2vh;
       }
       &-where {
         grid-row: 7/9;
         padding-top: 3%;
         grid-column: 1/9;
         text-align: left;
-        font-size: 70%;
+        font-size: 2.2vh;
       }
       &-when {
         margin: auto;
         color: $red;
-        font-size: 80%;
+        font-size: 2.2vh;
         grid-row: 9/11;
         grid-column: 1/9;
         text-align: center;
@@ -97,6 +103,12 @@
         background: $green;
         grid-row: 1/7;
         grid-column: 9/11;
+        display: flex;
+        justify-content: center;
+
+        & img {
+          height: 100%;
+        }
       }
       &-user {
         background: $light-blue;
@@ -113,15 +125,15 @@
       }
     }
     &-bottom {
-      grid-row: 8/10;
+      grid-row: 7/10;
       background: $dark-blue;
-      margin: 0% 0% 0% 10%;
+      margin: 0% 0% 0% 8%;
       // padding: 2% 3% 1% 2%;
       display: grid;
       grid-template-rows: repeat(5, 20%);
       grid-template-columns: repeat(4, 25%);
       justify-content: space-around;
-      font-size: 75%;
+      font-size: 2.5vh;
 
       &-control {
         grid-row: 1/6;
@@ -139,30 +151,60 @@
           & button {
             margin-right: 1vh;
           }
+          &-edit {
+            top: 0px;
+            right: 0px;
+
+            height: 100vh;
+            width: 100vw;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+
+            & form {
+              border: solid red;
+              width: 50%;
+              height: 50%;
+              margin: auto;
+              align-self: center;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              align-items: center;
+              background: $dark-blue;
+              height: 40%;
+            }
+            & .close {
+              align-self: flex-end;
+              width: 5%;
+            }
+          }
         }
       }
 
       &-status {
         display: flex;
-        width: 24vh;
+        min-width: 20vw;
+
         & h1 {
-          font-size: 2vh;
+          font-size: 3vh;
 
           text-align: center;
           margin: auto;
+          // padding: 0% 0% 2% 2%;
         }
       }
       & button {
         background-color: $medium-blue;
         border: white solid 0.3vh;
         color: white;
-        padding: 1% 3%;
-        max-height: 5vh;
-        min-width: 5vw;
-        max-width: 45vw;
-
-        font-size: 60%;
+        padding: 1% 2%;
         font-family: name;
+        font-size: 70%;
+        min-width: 8vw;
+        &.list {
+          width: 18vw;
+        }
       }
       &-guestContainer {
         display: flex;
@@ -176,7 +218,7 @@
         justify-content: space-between;
 
         &Number {
-          font-size: 5vh;
+          font-size: 3vh;
           margin: auto;
         }
         &List {
@@ -186,6 +228,26 @@
 
           grid-row: 6;
           grid-column: 1/5;
+          & ul {
+            display: flex;
+            height: 100%;
+            width: 90%;
+            margin: auto;
+            border: solid red;
+            overflow: auto;
+          }
+
+          & li {
+            width: 100%;
+            height: 100%;
+            font-family: Name;
+            display: flex;
+            align-items: flex-end;
+          }
+          & img {
+            max-width: 100%;
+            height: 100%;
+          }
         }
       }
     }

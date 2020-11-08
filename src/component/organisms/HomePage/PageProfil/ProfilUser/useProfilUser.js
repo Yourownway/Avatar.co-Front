@@ -25,11 +25,23 @@ export default function useProfilUser() {
       console.log("evenement annuler")
       const refreshPosts = async () => {
         const res = await axios("/api/post/allpost")
-        updatePost(res.data.post)
+        await updatePost(res.data.post)
       }
       refreshPosts()
     } else console.log("error delete post")
   }
+  // const handleClickCancelEvent = async (post, userId) => {
+  //   const res = await axios.delete(`/api/event/${post.id}/${userId}/cancel`)
+  //   if (res) {
+  //     console.log(res, "event supprimé")
+  //     const refreshPosts = async () => {
+  //       const res = await axios("/api/post/allpost")
+  //       updatePost(res.data.post)
+  //     }
+
+  //     refreshPosts()
+  //   }
+  // }
 
   const handleClickValidation = async (postId, userId) => {
     const res = await axios.patch(`/api/event/${postId}/${userId}/validate`)

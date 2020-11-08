@@ -32,9 +32,10 @@ const  updatePost = useUpdatePost()
   };
 
     return (
-        <div>
-            <button onClick={()=>{setOpen(!open)}}>X</button>
-           <form onSubmit={handleSubmit}>
+        <div className="postList-li-bottom-controlAdmin-edit">
+
+           <form onSubmit={handleSubmit}>           
+            <button  className='btn close'onClick={()=>{setOpen(!open)}}>X</button>
       <input
         onChange={handleChange}
         type="text"
@@ -70,7 +71,7 @@ const  updatePost = useUpdatePost()
         placeholder={postUser.postBadgeRequired?(postUser.postBadgeRequired):("Xp requis ?")}
         value={eventUpdateData.postBadgeRequired}
       />
-      <button>Envoyer</button>
+      <button className='btn'>Envoyer</button>
       </form>
         </div>
     )

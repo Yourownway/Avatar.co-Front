@@ -8,12 +8,15 @@ export default function ProfilNewPost() {
     const { handleChange, handleSubmit,userPostData } = usePorfilNewPost()
     return (
       
-                <div className="profilPostEvent-container">
-                  {<h1>id{userData.id}</h1>}
-      <form id="profil-event-post" onSubmit={handleSubmit}>
+                <div className="profilUser-newPost">
+                
+
+                
+      <form className="profilUser-newPost-form" onSubmit={handleSubmit}>
         <FormUserPost handleChange={handleChange} userPostData={userPostData} />
         <button>Valider</button>
-      </form>
-        </div>
+      </form> 
+       </div>
+ 
     )
 }

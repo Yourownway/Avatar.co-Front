@@ -17,7 +17,7 @@ import useMediaQuery from '../../../utils/useMediaQuery'
 
 
 export default function PageProfil() {
-    const phone = useMediaQuery("(max-width : 425px)")
+    const tablette = useMediaQuery("(max-width : 750px)")
 const authValue = useContext(AuthContext)
 const userData = authValue.reducerState.user
 
@@ -39,10 +39,14 @@ const res = await axios.get(`/api/event/${userData.id}/postId`)
 setPostId(res.data)
     if (postId.length>0){
       //je recupere les post ou l'user paticipe ou a crée avec les events de tout les users
-  await axios
+ const res= await axios
    .all(postId.map((postId) => axios.get(`/api/post/${postId.postId}/postById`))).then( 
-    async (results)=>{const getData = await results.map((res) => res.data)
-  setPostsEventsUser(getData)
+    async (results)=>{const getData = results.map((res) => res.data)
+      console.log('getData',getData)
+      
+     setPostsEventsUser(getData)
+      
+
 })
     
 if(postsEventsUser.length>0){
@@ -83,7 +87,7 @@ if(postsEventsUser.length>0){
       </Switch>
       </div>
       {/* mettre une condition avec une route  */}
-    {phone? null:( <ProfilUser postsEventsUser={postsEventsUser}/>)} 
+    {tablette? null:( <ProfilUser postsEventsUser={postsEventsUser}/>)} 
     </div>
 
    </>

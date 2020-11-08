@@ -2,8 +2,11 @@ import React from 'react'
 
 export default function ProfilMyEvent() {
     return (
-        <div>
-            <h1>my Event </h1>
-        </div>
+     <div className="postList">
+
+
+      {/* <Post   postDefaultData={postDefaultData} eventsValidate={eventsValidate}/> */}
+
+    </div>
     )
 }
