@@ -37,6 +37,9 @@ export default function SignUp({display}) {
               onChange={handleChange}
               children="Mot de passe"
             />
+            {inputs.errorMessage && (
+              <span >{inputs.errorMessage.data.error}</span>
+            )}
 
             <button>Send</button>
           </form>

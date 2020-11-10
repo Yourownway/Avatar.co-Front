@@ -34,14 +34,16 @@ export default function useSignIn() {
 
         setValues({
           ...inputValues,
-          // isSubmitting: true,
-          // errorMessage: null,
+          isSubmitting: true,
+          errorMessage: null,
         })
         history.push("/Home")
       }
     } catch (error) {
       setValues({
         ...inputValues,
+        isSubmitting: false,
+        errorMessage: error.response,
       })
     }
   }

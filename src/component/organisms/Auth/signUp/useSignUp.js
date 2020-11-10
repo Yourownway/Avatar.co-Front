@@ -26,19 +26,21 @@ export default function useSignUp() {
     event.preventDefault()
     try {
       const res = await axios.post(`api/SignUp`, inputs)
-
+      console.log(res, "res")
       if (res === 200) {
         setInputs({
           ...inputs,
-          // isSubmitting: true,
-          // errorMessage: null,
+          isSubmitting: true,
+          errorMessage: null,
         })
+      } else {
+        console(res, "res")
       }
     } catch (error) {
       setInputs({
         ...inputs,
-        // isSubmitting: false,
-        // errorMessage: error.response,
+        isSubmitting: false,
+        errorMessage: error.response,
       })
     }
   }
