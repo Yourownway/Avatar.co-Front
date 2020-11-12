@@ -362,7 +362,6 @@ a {
   flex-direction: column;
 }
 .postList-li-bottom-controlAdmin-edit form {
-  border: solid red;
   width: 50%;
   height: 50%;
   margin: auto;
@@ -426,7 +425,6 @@ a {
   height: 100%;
   width: 90%;
   margin: auto;
-  border: solid red;
   overflow: auto;
 }
 .postList-li-bottom-guestList li {
@@ -520,6 +518,7 @@ a {
   background: #021459ff;
   min-height: 60px;
   margin: 0 6% 0 0;
+  text-align: center;
 }
 
 .notifList-li-bottom {
@@ -658,10 +657,11 @@ body {
 }
 
 .btn {
-  background-color: #021459ff;
-  border: white solid 0.3vh;
-  color: white;
   padding: 1% 2%;
+  background-color: #021459ff;
+  font-family: Name;
+  color: white;
+  border: white solid 0.3vh;
 }
 
 /*# sourceMappingURL=style.css.map */

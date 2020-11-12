@@ -1,12 +1,18 @@
 import React,{useContext, useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import axios from 'axios'
-import { AuthContext } from '../../../../../../App';
+import { AuthContext } from '../../../../../../../App';
 
 
 export default function UserEditForm({userData,open,setOpen}) {
     const [userUpdateData, setUserUpdateData]=useState({...userData})
     const authValue = useContext(AuthContext)
+    const token = localStorage.getItem('token')
+    const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }}
+
 
 const [file,setFile] = useState(null)
 let history = useHistory()
@@ -26,7 +32,7 @@ let history = useHistory()
   
 // const res =await axios.post('/test', data)
 // console.log(res,'data')
-       const res = await axios.patch(`/api/profil/${userData.id}/edit-user`, userUpdateData);
+       const res = await axios.patch(`/api/profil/${userData.id}/edit-user`, userUpdateData,config );
 
     
    
@@ -90,7 +96,7 @@ let history = useHistory()
      
       <button className="btn">Envoyer</button>
       </form>
-      <form onSubmit={handleSubmitImg}>
+      <form onSubmit={handleSubmitImg}   enctype="multipart/form-data">
          <input type='file' accept=".png" onChange={event=>{const file=event.target.files[0];
       setFile(file)}}  />
       <button className="btn">Envoyer</button>

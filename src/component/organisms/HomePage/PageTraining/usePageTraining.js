@@ -13,27 +13,17 @@ export default function usePageTraining() {
   // suprimer les doublons à l'affichage
   const [postFilter, setPostFilter] = useState([])
 
-  useEffect(() => {
-    const FilterData = async () => {
-      const res = await postData.filter(
-        (post) => post["User.id"] === post["Events.userId"]
-      )
-      await setPostFilter(res)
-    }
-    FilterData()
-  }, [postData, categories])
-
+  const handleChange = async (e) => {
+    setSelect(e.target.value)
+  }
   useEffect(() => {
     const fetchCategories = async () => {
       const res = await axios.get("/api/categories")
-
+      console.log(res, "fetchCategories")
       setCategories(res.data.Categories)
     }
     fetchCategories()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleChange = async (e) => {
-    setSelect(e.target.value)
-  }
   return { categories, select, handleChange, postFilter }
 }

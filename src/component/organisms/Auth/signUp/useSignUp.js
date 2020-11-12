@@ -22,7 +22,7 @@ export default function useSignUp() {
     })
   }
 
-  const handleSubmit = async (event, display, setDisplay) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     try {
       const res = await axios.post(`api/SignUp`, inputs)
@@ -30,8 +30,8 @@ export default function useSignUp() {
       if (res === 200) {
         setInputs({
           ...inputs,
-          isSubmitting: true,
-          errorMessage: null,
+          // isSubmitting: true,
+          // errorMessage: null,
         })
       } else {
         console(res, "res")
@@ -39,8 +39,8 @@ export default function useSignUp() {
     } catch (error) {
       setInputs({
         ...inputs,
-        isSubmitting: false,
-        errorMessage: error.response,
+        // isSubmitting: false,
+        // errorMessage: error.response,
       })
     }
   }

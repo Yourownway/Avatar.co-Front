@@ -29,7 +29,6 @@ export default function useSignIn() {
       event.preventDefault()
       const res = await axios.post(`/api/signIn`, inputValues)
       if (res) {
-        // localStorage.setItem("token", res.data.Token);
         await authValue.reducerDispatch({ type: "SIGNIN", payload: res })
 
         setValues({

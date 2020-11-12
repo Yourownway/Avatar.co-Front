@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react"
 import axios from "axios"
 
-import { AuthContext } from "../../../../../App"
-import { useUpdatePost } from "../../../../Context/ContextProvider"
+import { AuthContext } from "../../../../../../App"
+import { useUpdatePost } from "../../../../../Context/ContextProvider"
 
 export default function usePorfilNewPost() {
   const authValue = useContext(AuthContext)

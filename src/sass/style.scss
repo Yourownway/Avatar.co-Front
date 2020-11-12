@@ -1,11 +1,11 @@
-@import "./reset.scss";
+@import "./sass/reset.scss";
 @import "./sass/var.scss";
-@import "./sass/nav.scss";
-@import "./sass/pageEvent.scss";
-@import "./sass/profilUser.scss";
-@import "./sass/pageNewPost.scss";
-@import "./sass/pageTraining.scss";
-@import "./sass/pageMyEvent.scss";
+@import "./sass/HomePage/Header/nav.scss";
+@import "./sass/HomePage/PageProfil/molecules/pageEvent.scss";
+@import "./sass/HomePage/PageProfil/molecules/profilUser.scss";
+@import "./sass/HomePage/PageProfil/molecules/pageNewPost.scss";
+@import "./sass/HomePage/PageTraining/pageTraining.scss";
+
 @font-face {
   src: url(./fonts/Anton_regular.ttf);
   font-family: Name;
@@ -78,8 +78,9 @@ body {
   color: $green;
 }
 .btn {
-  background-color: $medium-blue;
-  border: white solid 0.3vh;
-  color: white;
   padding: 1% 2%;
+  background-color: $medium-blue;
+  font-family: Name;
+  color: white;
+  border: white solid 0.3vh;
 }

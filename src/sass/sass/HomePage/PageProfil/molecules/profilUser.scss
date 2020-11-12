@@ -48,8 +48,6 @@
     &-header {
       display: flex;
       justify-content: center;
-      & button {
-      }
     }
   }
 
@@ -84,6 +82,7 @@
   background: $medium-blue;
   min-height: 60px;
   margin: 0 6% 0 0;
+  text-align: center;
 }
 .notifList-li-bottom {
   min-height: 40px;
