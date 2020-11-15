@@ -14,7 +14,7 @@ import ProfilMyEvent from "./molecules/ProfilEvent/ProfilMyEvent"
 import useMediaQuery from "../../../utils/useMediaQuery"
 
 export default function PageProfil() {
-  const tablette = useMediaQuery("(max-width : 750px)")
+  const tablette = useMediaQuery("(max-width : 768px)")
   const authValue = useContext(AuthContext)
   const userData = authValue.reducerState.user
 
@@ -95,11 +95,16 @@ export default function PageProfil() {
               exact
               component={ProfilNewPost}
             />
+            <Route path="/Home/Page/Profil" exact>
+              <ProfilUser postsEventsUser={postsEventsUser} />
+            </Route>
           </Switch>
         </div>
 
         {/* mettre une condition avec une route  */}
-        {tablette ? null : <ProfilUser postsEventsUser={postsEventsUser} />}
+        {tablette || window.location.pathname === "/Home/Page/Profil" ? null : (
+          <ProfilUser postsEventsUser={postsEventsUser} />
+        )}
       </div>
     </>
   )

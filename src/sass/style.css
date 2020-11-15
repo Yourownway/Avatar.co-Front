@@ -32,7 +32,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-size: 2.6vh;
+  font-size: 17px;
   font-weight: normal;
 }
 
@@ -211,8 +211,6 @@ a {
 }
 
 .pageUser {
-  width: 100vw;
-  overflow: auto;
   display: flex;
 }
 .pageUser-event {
@@ -246,18 +244,18 @@ a {
   max-height: 70vh;
 }
 .postList-li {
-  margin: 5% 0 15vh 0;
   height: 45vh;
+  margin: 5% 0 15vh 0;
   display: grid;
   grid-template-rows: repeat(10, 10%);
 }
 .postList-li-top {
   grid-row: 1/7;
   background-color: #021459ff;
+  overflow: hidden;
   display: grid;
   grid-template-rows: repeat(10, 10%);
   grid-template-columns: repeat(10, 10%);
-  overflow: hidden;
 }
 .postList-li-top-content {
   grid-row: 1/11;
@@ -269,11 +267,11 @@ a {
   grid-template-columns: repeat(10, 10%);
 }
 .postList-li-top-head {
+  grid-row: 1/3;
+  grid-column: 1/11;
   padding: 3% 7% 4% 0;
   display: flex;
   justify-content: space-between;
-  grid-row: 1/3;
-  grid-column: 1/11;
 }
 @media (max-width: 400px) {
   .postList-li-top-head h2 {
@@ -442,6 +440,9 @@ a {
 .pageUser-profil {
   min-width: 40%;
   max-height: 80vh;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 .pageUser-profil-header {
   background-color: #b90617ff;
@@ -451,44 +452,140 @@ a {
   justify-content: space-evenly;
 }
 .pageUser-profil-header h1 {
-  font-size: 5vh;
+  font-size: 36px;
+  display: flex;
+  align-items: center;
 }
 .pageUser-profil-container {
   margin: 1%;
   border: solid white;
-  height: 50%;
+  height: 40vh;
   display: flex;
 }
 .pageUser-profil-container-img {
-  border: solid #b90617ff;
   width: 55%;
+  min-height: 35vh;
   background-color: #80f2e8ff;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  display: block;
 }
-.pageUser-profil-container-img img {
+.pageUser-profil-avatar-img {
   height: 100%;
+  z-index: 2;
+  width: 100%;
+  position: relative;
+  bottom: 8vh;
+}
+.pageUser-profil-banner-img {
+  z-index: 3;
+  height: 10vh;
+  position: relative;
+  bottom: 20vh;
+  width: 100%;
+}
+.pageUser-profil-banner-h1 {
+  z-index: 4;
+  color: black;
+  font-size: 3.5vh;
+  padding: 1%;
+  width: 100%;
+  position: relative;
+  bottom: 26vh;
+  text-align: center;
+}
+.pageUser-profil-bell {
+  z-index: 5;
+  height: 6vh;
+  width: 18%;
+  margin-left: 80%;
+  position: relative;
 }
 .pageUser-profil-container-data {
   width: 45%;
-  padding-left: 3%;
+  height: 100%;
   background: #b90617ff;
   font-family: Descritpion;
   color: black;
-}
-.pageUser-profil-buttons {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.pageUser-profil-container-Xpdata {
+  text-align: center;
+  width: 100%;
+  font-size: 2.7vh;
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.pageUser-profil-badge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 70%;
+}
+.pageUser-profil-badge {
+  min-width: 46%;
+  height: 10vh;
+}
+.pageUser-profil-badge-descritpion {
+  font-size: 3vh;
+}
+.pageUser-profil-container-Xpbar {
+  height: 2vh;
+  background: white;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 2%;
+  border-radius: 16px;
+}
+.pageUser-profil-content-Xpbar {
+  height: 2vh;
+  border-radius: 16px 0px 0px 16px;
+  background: radial-gradient(ellipse at left, blue, #e4eaff);
+}
+.pageUser-profil-data {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.pageUser-profil-data h2 {
+  font-size: 1.2rem;
+  width: 100%;
+  text-align: center;
+}
+.pageUser-profil .btn-edit {
+  width: 25%;
+  margin: 0% 1% 1% 80%;
+  align-self: flex-end;
 }
 .pageUser-profil-notification {
   height: 30vh;
 }
 .pageUser-profil-notification-header {
+  width: 100%;
+  height: 6vh;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background: #011641ff;
+}
+.pageUser-profil-notification-header button {
+  align-self: flex-start;
+  position: relative;
+  left: 35%;
+  width: 6%;
+  padding: 0;
 }
 .pageUser-profil-edit {
-  height: 28vh;
+  height: 24vh;
   background: #b90617ff;
   display: flex;
   flex-direction: column;
@@ -585,6 +682,51 @@ a {
   }
 }
 
+.authPage {
+  border: solid red;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.authPage-slogan {
+  border: solid red;
+  font-size: 6vh;
+  max-height: 40vh;
+}
+.authPage-form-container {
+  border: solid red;
+  width: 70%;
+  height: 100%;
+  padding: 4%;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.authPage-form-container button {
+  margin: auto;
+  align-items: flex-end;
+  border: solid red;
+}
+.authPage-form {
+  border: solid red;
+  margin: auto;
+  font-family: Descritpion;
+  padding: 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  max-width: 50%;
+  background-color: #011641ff;
+}
+.authPage-form span {
+  color: white;
+  max-width: 100%;
+}
+
 @font-face {
   src: url(./fonts/Anton_regular.ttf);
   font-family: Name;
@@ -609,8 +751,8 @@ body {
   background-color: #021459ff;
   box-sizing: border-box;
   color: white;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   top: 0px;
 }
 
@@ -662,6 +804,12 @@ body {
   font-family: Name;
   color: white;
   border: white solid 0.3vh;
+}
+
+.error-message {
+  color: #b90617ff;
+  text-align: center;
+  font-size: 2vh;
 }
 
 /*# sourceMappingURL=style.css.map */

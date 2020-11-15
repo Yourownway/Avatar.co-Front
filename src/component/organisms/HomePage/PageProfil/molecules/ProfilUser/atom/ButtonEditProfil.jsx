@@ -50,7 +50,7 @@ let history = useHistory()
        const res = await axios.patch(`/api/profil/${userData.id}/edit-image`, data);
 
      await authValue.reducerDispatch({ type: "LOAD_USER", payload: res })
-    window.location.reload(false);  
+ 
 
 
      
@@ -62,7 +62,21 @@ let history = useHistory()
           {/* <button className='btn'onClick={()=>setOpen(!open)}>Edit</button> */}
 
           {open? (
+<>
+<div className="pageUser-profil-notification-header">
+                <h1 className="font-menu">EDIT PROFIL</h1>
+                 <button
+                  className="btn"
+                  onClick={() => {
+                    setOpen(!open)
+                  }}
+                >
+                  X
+                </button>
+                </div>
+
 <div className="pageUser-profil-edit">
+    
            <form onSubmit={handleSubmit}>
       <input
         onChange={handleChange}
@@ -102,7 +116,7 @@ let history = useHistory()
       <button className="btn">Envoyer</button>
       </form>
 </div>
-          ):null}
+     </>     ):null}
   
         </>
     )

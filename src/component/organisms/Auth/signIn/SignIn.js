@@ -1,16 +1,16 @@
-import React from 'react'
+import React from "react"
 
-import Input from '../../../atoms/Input'
+import Input from "../../../atoms/Input"
 
-import useSignIn from './useSignIn'
+import useSignIn from "./useSignIn"
 
 export default function SignIn() {
-    const {handleChange,handleSubmit,inputValues}= useSignIn()
-   
-    return (
-       <>
-      <form className="home-form" onSubmit={handleSubmit}>
-        <h1>SignIn</h1>
+  const { handleChange, handleSubmit, inputValues } = useSignIn()
+
+  return (
+    <>
+      <form className="authPage-form" onSubmit={handleSubmit}>
+        <h1 className="font-name">Connexion</h1>
 
         <Input
           type="text"
@@ -26,9 +26,8 @@ export default function SignIn() {
           onChange={handleChange}
           children="Mot de Passe"
         />
-        <button>Send</button>
+        <button className="btn">Envoyer</button>
       </form>
-
     </>
-    )
+  )
 }

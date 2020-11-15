@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react"
 
 import useProfilUser from "./useProfilUser"
-
+import banner from "../../../assets/profil/banner.png"
+import bell from "../../../assets/profil/notification.png"
+import badge from "../../../assets/badge/badge"
 import ButtonEditProfil from "./atom/ButtonEditProfil"
 import { AuthContext } from "../../../../../../App"
 import usePageProfil from "./useProfilUser"
@@ -36,7 +38,6 @@ export default function ProfilUser({ postsEventsUser }) {
       setUserRequest(request)
     }
     getRequest()
-    console.log("userRequest", userRequest)
   }, [postsEventsUser, userRequest.length, requette])
 
   return (
@@ -48,53 +49,84 @@ export default function ProfilUser({ postsEventsUser }) {
         </div>
         <div className="pageUser-profil-container">
           <div className="pageUser-profil-container-img">
-            <img src={URL + userData.userImage} />{" "}
+            <img
+              src={bell}
+              className="pageUser-profil-bell"
+              onClick={() => {
+                if (open) setOpen(!open)
+                setOpenNotification(!openNotification)
+              }}
+            />
+            <img
+              className="pageUser-profil-avatar-img"
+              src={URL + userData.userImage}
+            />
+            <img src={banner} className="pageUser-profil-banner-img" />{" "}
+            <h1 className="font-name pageUser-profil-banner-h1">
+              {userData.firstName}
+            </h1>
           </div>
 
           <div className="pageUser-profil-container-data">
-            <p> XP:{userData.userXp} </p>
-            <h2>
-              Name:
-              <span className="font-name white">{userData.firstName}</span>{" "}
-            </h2>
-            <h2>
-              Email:
-              <span className="font-name white">{userData.userEmail}</span>{" "}
-            </h2>
+            <div className="pageUser-profil-container-Xpdata">
+              <div className="pageUser-profil-badge-container">
+                <img className="pageUser-profil-badge" src={badge.badge2.img} />
+                <p className="font-badge pageUser-profil-badge-descritpion">
+                  "{badge.badge2.name}"
+                </p>
+              </div>
+              <div>
+                <p>
+                  {" "}
+                  XP:<span className="white">{userData.userXp}</span>{" "}
+                </p>
+                <div className="pageUser-profil-container-Xpbar">
+                  <div
+                    className="pageUser-profil-content-Xpbar"
+                    style={{
+                      width:
+                        `${userData.userXp}`.substring(
+                          1,
+                          `${userData.userXp}`.length - 1
+                        ) + "%",
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div className="pageUser-profil-data">
+              <h2>
+                Name:
+                <span className="font-name white"> {userData.firstName}</span>
+              </h2>
+              <h2>
+                Email:
+                <span className="font-name white">{userData.userEmail}</span>
+              </h2>
+            </div>
+            <button
+              className="btn btn-edit"
+              onClick={() => {
+                if (openNotification) setOpenNotification(!openNotification)
+                setOpen(!open)
+              }}
+            >
+              Edit
+            </button>
 
             {/* <p> <span>Description:</span>{userData.userDescription}</p> */}
             {/* <UserEditForm userData={userData}/>   */}
           </div>
         </div>
-        <div className="pageUser-profil-buttons">
-          {/* <h1>Vous avez {userRequest.length} Notification</h1> */}
-          <button
-            className="btn"
-            onClick={() => {
-              if (open) setOpen(!open)
-              setOpenNotification(!openNotification)
-            }}
-          >
-            Notification
-          </button>
-          <button
-            className="btn"
-            onClick={() => {
-              if (openNotification) setOpenNotification(!openNotification)
-              setOpen(!open)
-            }}
-          >
-            Edit
-          </button>
-        </div>
-        <ButtonEditProfil open={open} setOpen={setOpen} userData={userData} />
 
+        {/* <h1>Vous avez {userRequest.length} Notification</h1> */}
+
+        <ButtonEditProfil open={open} setOpen={setOpen} userData={userData} />
         {openNotification ? (
           <div>
             <div className="pageUser-profil-notification">
               <div className="pageUser-profil-notification-header">
-                {" "}
-                <h1 className="font-menu">NOTIFICATION</h1>{" "}
+                <h1 className="font-menu">NOTIFICATION</h1>
                 <button
                   className="btn"
                   onClick={() => {
@@ -115,9 +147,9 @@ export default function ProfilUser({ postsEventsUser }) {
                                 <div className="notifList-li-top">
                                   <p>
                                     <span className="font-description">
-                                      Vous{" "}
+                                      Vous
                                     </span>
-                                    souhaitez participer à{" "}
+                                    souhaitez participer à
                                     {postsEventsUser[i] ? (
                                       <span className="font-description">
                                         {postsEventsUser[i]["postName"]}
@@ -138,8 +170,7 @@ export default function ProfilUser({ postsEventsUser }) {
                                       )
                                     }
                                   >
-                                    {" "}
-                                    annuler{" "}
+                                    annuler
                                   </button>
                                 </div>
                               </>
@@ -148,12 +179,11 @@ export default function ProfilUser({ postsEventsUser }) {
                                 <div className="notifList-li-top">
                                   <p>
                                     <span className="font-name">
-                                      {event.User.firstName}{" "}
-                                    </span>{" "}
-                                    souhaite participer à votre evenement{" "}
+                                      {event.User.firstName}
+                                    </span>
+                                    souhaite participer à votre evenement
                                     {postsEventsUser[i] ? (
                                       <span className="font-description">
-                                        {" "}
                                         {postsEventsUser[i]["postName"]}
                                       </span>
                                     ) : null}
@@ -193,14 +223,12 @@ export default function ProfilUser({ postsEventsUser }) {
                         </ul>
                       ))
                     )
-                  : null}{" "}
-              </div>{" "}
+                  : null}
+              </div>
             </div>
           </div>
         ) : null}
       </div>
-      ) : (<h1>en attente</h1>
-      )}
     </>
   )
 }

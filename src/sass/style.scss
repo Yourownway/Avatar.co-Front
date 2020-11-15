@@ -5,6 +5,7 @@
 @import "./sass/HomePage/PageProfil/molecules/profilUser.scss";
 @import "./sass/HomePage/PageProfil/molecules/pageNewPost.scss";
 @import "./sass/HomePage/PageTraining/pageTraining.scss";
+@import "./sass/Auth/authPage.scss";
 
 @font-face {
   src: url(./fonts/Anton_regular.ttf);
@@ -31,8 +32,8 @@ body {
   background-color: $medium-blue;
   box-sizing: border-box;
   color: $white;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   top: 0px;
 }
 * {
@@ -44,8 +45,6 @@ body {
 .header {
   top: 0px;
   max-width: 100vw;
-
-  // max-height: 20%;
 
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -83,4 +82,9 @@ body {
   font-family: Name;
   color: white;
   border: white solid 0.3vh;
+}
+.error-message {
+  color: $red;
+  text-align: center;
+  font-size: 2vh;
 }
