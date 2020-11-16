@@ -2,7 +2,6 @@ import { useState, useContext } from "react"
 import { AuthContext } from "../../../../App"
 import axios from "axios"
 
-import { useUserUpdate, useUser } from "../../../Context/ContextProvider"
 import { useHistory } from "react-router-dom"
 
 export default function useSignIn() {
@@ -15,7 +14,7 @@ export default function useSignIn() {
   })
 
   let history = useHistory()
-  const updateUser = useUserUpdate()
+
   const handleChange = (event) => {
     const { name, value } = event.target
     setValues({

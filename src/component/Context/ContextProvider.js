@@ -4,8 +4,8 @@ const PostContext = React.createContext()
 const PostUpdateContext = React.createContext()
 const EventUserContext = React.createContext()
 const EventUserUpdateContext = React.createContext()
-const UserContext = React.createContext()
-const UserUpdateContext = React.createContext()
+const CategoryContext = React.createContext()
+const CategoryUpdateContext = React.createContext()
 const SearchContext = React.createContext()
 const SearchUpdateContext = React.createContext()
 
@@ -18,11 +18,11 @@ export function useUpdatePost() {
   return useContext(PostUpdateContext)
 }
 
-export function useUser() {
-  return useContext(UserContext)
+export function useCategory() {
+  return useContext(CategoryContext)
 }
-export function useUserUpdate() {
-  return useContext(UserUpdateContext)
+export function useCategoryUpdate() {
+  return useContext(CategoryUpdateContext)
 }
 export function useSearch() {
   return useContext(SearchContext)
@@ -40,14 +40,14 @@ export function useUpdateEventsPostUser() {
 // definition des Contexts
 export function ContextProvider({ children }) {
   const [postData, setPostData] = useState([])
-  const [userData, setUserData] = useState({})
+  const [categoryData, setCategoryData] = useState({})
   const [searchData, setSearchData] = useState([])
   const [eventsPostUser, setEventsPostUser] = useState([])
   function updatePost(data) {
     setPostData([...data])
   }
-  function updateUser(data) {
-    setUserData({ ...data })
+  function updateCategory(data) {
+    setCategoryData({ ...data })
   }
   function updateSearch(data) {
     setSearchData([...data])
@@ -60,8 +60,8 @@ export function ContextProvider({ children }) {
   return (
     <PostContext.Provider value={postData}>
       <PostUpdateContext.Provider value={updatePost}>
-        <UserContext.Provider value={userData}>
-          <UserUpdateContext.Provider value={updateUser}>
+        <CategoryContext.Provider value={categoryData}>
+          <CategoryUpdateContext.Provider value={updateCategory}>
             <EventUserContext.Provider value={eventsPostUser.event}>
               <EventUserUpdateContext.Provider value={updateEventsPostUser}>
                 <SearchContext.Provider value={searchData}>
@@ -71,8 +71,8 @@ export function ContextProvider({ children }) {
                 </SearchContext.Provider>
               </EventUserUpdateContext.Provider>
             </EventUserContext.Provider>
-          </UserUpdateContext.Provider>
-        </UserContext.Provider>
+          </CategoryUpdateContext.Provider>
+        </CategoryContext.Provider>
       </PostUpdateContext.Provider>
     </PostContext.Provider>
   )

@@ -5,8 +5,6 @@ import { usePostData } from "../../../../../Context/ContextProvider"
 import usePageTraining from "../../usePageTraining"
 import axios from "axios"
 
-import useTrainingByCategories from "./useTrainingByCategories"
-
 export default function TrainingPostCategorie({ categories }) {
   const [postByCategorie, setPostByCategorie] = useState([])
   const [validateCategorie, setValidateCategorie] = useState([])
