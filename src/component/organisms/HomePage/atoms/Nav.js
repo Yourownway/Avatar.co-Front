@@ -7,19 +7,18 @@ export default function Nav() {
       <ul className="navDesktop-ul">
         <li className="navDesktop-li">
           <NavLink
-            activeClassName="navDesktop-a-current"
+            activeClassName="selected"
             className="navDesktop-a"
-            to="/Home/Page/Profil/AllEvent"
-            exact
+            to="/Home/Page/Profil/Actu"
           >
             ACTU
           </NavLink>
         </li>
         <li className="navDesktop-li">
           <NavLink
-            activeClassName="navDesktop-a-current"
+            activeClassName="selected"
             className="navDesktop-a"
-            to="/Home/Page/Profil/AllEvent"
+            to="/Home/Page/Profil/"
             exact
           >
             PROFIL
@@ -27,7 +26,7 @@ export default function Nav() {
         </li>
         <li className="navDesktop-li">
           <NavLink
-            activeClassName="navbar-a-current"
+            activeClassName="selected"
             className="navbar-a"
             to="/Home/Page/Training"
             exact
@@ -35,16 +34,7 @@ export default function Nav() {
             TRAINING
           </NavLink>
         </li>
-        <li className="navDesktop-li">
-          {/* <NavLink
-            activeClassName="navbar-a-current"
-            className="navbar-a"
-            to="/Home/Page/Coaching"
-            exact
-          >
-            COACHING
-          </NavLink> */}
-        </li>
+        <li className="navDesktop-li"></li>
       </ul>
       <div className="navDesktop-logo">
         <h1>

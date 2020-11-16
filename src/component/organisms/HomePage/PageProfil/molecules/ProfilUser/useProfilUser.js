@@ -2,16 +2,15 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import {
   usePostData,
-  useEventsPostUser,
-  useUpdateEventsPostUser,
+  useNextEvent,
+  useUpdateNextEvent,
   useUser,
   useUpdatePost,
 } from "../../../../../Context/ContextProvider"
 
 export default function useProfilUser() {
   const [openEdit, setOpenEdit] = useState(false)
-  const updateEventsPostUser = useUpdateEventsPostUser()
-  const eventsPostUser = useEventsPostUser()
+
   const updatePost = useUpdatePost()
   const [userRequest, setUserRequest] = useState([])
 

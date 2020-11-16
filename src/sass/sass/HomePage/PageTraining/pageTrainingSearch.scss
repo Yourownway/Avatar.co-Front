@@ -1,0 +1,23 @@
+.pageTraining-search {
+  display: flex;
+  justify-content: center;
+  &-input {
+    height: 5vh;
+    background: white;
+    font-family: description;
+    font-weight: bold;
+    color: white;
+    border-radius: 16px;
+    padding-left: 2%;
+  }
+  & button {
+    height: 5vh;
+    font-size: 2vh;
+  }
+}
+.search-result {
+  font-family: Descritpion;
+  background-color: $medium-blue;
+  color: white;
+  text-align: center;
+}

@@ -30,11 +30,11 @@ export function useSearch() {
 export function useSearchUpdate() {
   return useContext(SearchUpdateContext)
 }
-export function useEventsPostUser() {
+export function useNextEvent() {
   return useContext(EventUserContext)
 }
 
-export function useUpdateEventsPostUser() {
+export function useUpdateNextEvent() {
   return useContext(EventUserUpdateContext)
 }
 // definition des Contexts
@@ -42,7 +42,7 @@ export function ContextProvider({ children }) {
   const [postData, setPostData] = useState([])
   const [categoryData, setCategoryData] = useState({})
   const [searchData, setSearchData] = useState([])
-  const [eventsPostUser, setEventsPostUser] = useState([])
+  const [nextEvent, setNextEvent] = useState([])
   function updatePost(data) {
     setPostData([...data])
   }
@@ -53,8 +53,8 @@ export function ContextProvider({ children }) {
     setSearchData([...data])
   }
 
-  function updateEventsPostUser(data) {
-    setEventsPostUser({ event: data })
+  function updateNextEvent(data) {
+    setNextEvent({ event: data })
   }
   //Propagation des Contexts
   return (
@@ -62,8 +62,8 @@ export function ContextProvider({ children }) {
       <PostUpdateContext.Provider value={updatePost}>
         <CategoryContext.Provider value={categoryData}>
           <CategoryUpdateContext.Provider value={updateCategory}>
-            <EventUserContext.Provider value={eventsPostUser.event}>
-              <EventUserUpdateContext.Provider value={updateEventsPostUser}>
+            <EventUserContext.Provider value={nextEvent.event}>
+              <EventUserUpdateContext.Provider value={updateNextEvent}>
                 <SearchContext.Provider value={searchData}>
                   <SearchUpdateContext.Provider value={updateSearch}>
                     {children}

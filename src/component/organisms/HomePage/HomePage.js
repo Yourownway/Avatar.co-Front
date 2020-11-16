@@ -11,8 +11,8 @@ import {
   usePostData,
   useUpdatePost,
   useUserUpdate,
-  useEventsPostUser,
-  useUpdateEventsPostUser,
+  usenextEvent,
+  useupdateNextEvent,
 } from "../../Context/ContextProvider"
 
 export default function HomePage() {

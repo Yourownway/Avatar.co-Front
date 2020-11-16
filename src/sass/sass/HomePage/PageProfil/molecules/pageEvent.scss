@@ -39,7 +39,6 @@
   max-height: 60vh;
 
   &-ul {
-    border: solid black;
     padding: 2%;
   }
   &-li {
@@ -330,7 +329,6 @@
           height: 100%;
         }
         &List {
-          color: black;
           background: $green;
           height: 10vh;
           overflow: auto;

@@ -7,6 +7,7 @@
 @import "./sass/HomePage/PageProfil/molecules/pageNewPost.scss";
 @import "./sass/HomePage/PageTraining/pageTraining.scss";
 @import "./sass/Auth/authPage.scss";
+@import "./sass/HomePage/PageTraining/pageTrainingSearch.scss";
 
 @font-face {
   src: url(./fonts/Anton_regular.ttf);
@@ -42,7 +43,9 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-
+.selected {
+  color: yellow;
+}
 .header {
   top: 0px;
   max-width: 100vw;

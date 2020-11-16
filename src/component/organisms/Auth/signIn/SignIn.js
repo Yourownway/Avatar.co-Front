@@ -10,7 +10,7 @@ export default function SignIn() {
   return (
     <>
       <form className="authPage-form" onSubmit={handleSubmit}>
-        <h1 className="font-name">Connexion</h1>
+        <h1 className="authPage-form-h1 font-name">Connexion</h1>
 
         <Input
           type="text"
@@ -26,7 +26,7 @@ export default function SignIn() {
           onChange={handleChange}
           children="Mot de Passe"
         />
-        <button className="btn">Envoyer</button>
+        <button className="btn btn-signIn">Envoyer</button>
       </form>
     </>
   )

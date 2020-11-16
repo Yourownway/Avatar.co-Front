@@ -4,6 +4,9 @@
   min-height: 400px;
   display: flex;
   flex-direction: column;
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 
   &-header {
     background-color: $red;
@@ -146,6 +149,9 @@
 
       width: 100%;
       text-align: center;
+      @media (max-width: 374px) {
+        font-size: 12px;
+      }
     }
   }
   & .btn-edit {
@@ -184,7 +190,9 @@
     flex-direction: column;
     justify-content: space-around;
     overflow: auto;
-
+    @media (max-width: 700px) {
+      padding-top: 10%;
+    }
     & form {
       display: flex;
       flex-direction: column;
@@ -218,4 +226,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.profilUser {
+  display: flex;
+  justify-content: center;
 }

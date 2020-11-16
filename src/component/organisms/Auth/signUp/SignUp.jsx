@@ -8,7 +8,7 @@ export default function SignUp({ display }) {
   return (
     <>
       <form className="authPage-form" onSubmit={handleSubmit}>
-        <h1 className="font-name">Inscription</h1>
+        <h1 className=" authPage-form-h1 font-name">Inscription</h1>
         <Input
           type="text"
           name="firstName"

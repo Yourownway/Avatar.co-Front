@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import User from "../Header/User"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 export default function NavPhone() {
   const [open, setOpen] = useState(false)
@@ -18,34 +18,34 @@ export default function NavPhone() {
         <div className="navPhone-menu">
           <ul className="navPhone-ul">
             <li className="navPhone-li">
-              <Link
-                activeClassName="navPhone-a-current"
+              <NavLink
+                activeClassName="selected"
                 className="navPhone-a"
-                to="/Home/Page/Profil/AllEvent"
+                to="/Home/Page/Actu"
                 exact
               >
                 ACTU
-              </Link>
+              </NavLink>
             </li>
             <li className="navPhone-li">
-              <Link
-                activeClassName="navPhone-a-current"
+              <NavLink
                 className="navPhone-a"
-                to="/Home/Page/Profil/AllEvent"
+                to="/Home/Page/Profil"
+                activeClassName="selected"
                 exact
               >
                 PROFIL
-              </Link>
+              </NavLink>
             </li>
             <li className="navPhone-li">
-              <Link
-                activeClassName="navbar-a-current"
+              <NavLink
                 className="navbar-a"
                 to="/Home/Page/Training"
+                activeClassName="selected"
                 exact
               >
                 TRAINING
-              </Link>
+              </NavLink>
             </li>
             <li className="navPhone-li"></li>
           </ul>

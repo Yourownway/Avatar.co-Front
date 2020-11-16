@@ -1,9 +1,8 @@
-import React from "react";
-import useSearchbar from "./useSearchbar";
-
+import React from "react"
+import useSearchbar from "./useSearchbar"
 
 export default function SearchBar() {
-const {searchInput , handleChange} = useSearchbar();
+  const { searchInput, handleChange } = useSearchbar()
 
   return (
     <div className="pageTraining-search">
@@ -12,9 +11,8 @@ const {searchInput , handleChange} = useSearchbar();
         value={searchInput}
         className="pageTraining-search-input"
         type="text"
-        placeholder="appuyer pour rechercher"
+        placeholder="Search.."
       ></input>
-      <button>Send</button>
     </div>
-  );
+  )
 }

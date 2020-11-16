@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Post from "../../../atoms/Post/Post"
-import { usePostData } from "../../../../../Context/ContextProvider"
-import usePageTraining from "../../usePageTraining"
+
 import axios from "axios"
 
 export default function TrainingPostCategorie({ categories }) {
@@ -10,7 +9,6 @@ export default function TrainingPostCategorie({ categories }) {
   const [validateCategorie, setValidateCategorie] = useState([])
   const [postsEventsByCategorie, setPostEventsByCatagorie] = useState([])
 
-  const postData = usePostData()
   const categorie = useParams()
 
   useEffect(() => {

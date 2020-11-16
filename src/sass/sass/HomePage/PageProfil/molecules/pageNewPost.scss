@@ -13,6 +13,7 @@
     flex-direction: column;
     justify-content: space-around;
     max-height: 80%;
+
     & h1 {
       font-family: Descritpion;
     }
@@ -20,5 +21,11 @@
     textarea {
       background-color: lavender;
     }
+  }
+}
+.newPost-input {
+  @media (max-width: 450px) {
+    width: 80%;
+    border: solid red;
   }
 }

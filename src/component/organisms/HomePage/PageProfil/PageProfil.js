@@ -2,7 +2,10 @@ import axios from "axios"
 import React, { useContext, useEffect, useReducer, useState } from "react"
 import { Route, Switch } from "react-router-dom"
 import { AuthContext } from "../../../../App"
-import { usePostData } from "../../../Context/ContextProvider"
+import {
+  usePostData,
+  useUpdateNextEvent,
+} from "../../../Context/ContextProvider"
 
 import ProfilNav from "./molecules/ProfilNav/ProfilNav"
 
@@ -19,6 +22,7 @@ export default function PageProfil() {
   const userData = authValue.reducerState.user
 
   const PostData = usePostData()
+  const updateNextEvent = useUpdateNextEvent()
   const [postId, setPostId] = useState([])
   const [postsEventsUser, setPostsEventsUser] = useState([])
   const [usersProfilValidate, setUsersProfilValidate] = useState([])
@@ -49,6 +53,7 @@ export default function PageProfil() {
 
               setPostsEventsUser(getData)
 
+              updateNextEvent(getData[0])
               if (getData.length > 0) {
                 //recupere tout les events valider
                 const getValidation = await getData.map((event) =>
@@ -91,7 +96,7 @@ export default function PageProfil() {
     usersProfilValidate.length,
     PostData,
   ])
-  console.log(userData, "la")
+
   return (
     <>
       <div className="pageUser">
@@ -119,7 +124,9 @@ export default function PageProfil() {
               component={ProfilNewPost}
             />
             <Route path="/Home/Page/Profil" exact>
-              <ProfilUser postsEventsUser={postsEventsUser} />
+              <div className="profilUser">
+                <ProfilUser postsEventsUser={postsEventsUser} />
+              </div>
             </Route>
           </Switch>
         </div>

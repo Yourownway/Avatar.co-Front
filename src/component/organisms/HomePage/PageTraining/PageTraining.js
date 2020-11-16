@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react"
-import { Route, Switch, Link } from "react-router-dom"
-import TrainingByDate from "./TrainingFilters/date/TrainingByDate"
+import { Route, Switch, NavLink } from "react-router-dom"
 import TrainingByRate from "./TrainingFilters/rate/TrainingByRate"
 import TrainingByCategories from "./TrainingFilters/categories/TrainingByCategories"
 import TrainingSearch from "./TrainingFilters/search/TrainingSearch"
 import usePageTraining from "./usePageTraining"
 import { usePostData } from "../../../Context/ContextProvider"
 import Post from "../atoms/Post/Post"
-import ProfilMyEvent from "../PageProfil/molecules/ProfilEvent/ProfilMyEvent"
 import SearchBar from "../atoms/ShearchBar/SearchBar"
-import axios from "axios"
 
 export default function PageTraining() {
   const [postsEvents, setPostsEvents] = useState([])
@@ -49,10 +46,12 @@ export default function PageTraining() {
         <div className="pageTraining-nav">
           <ul>
             <li>
-              <Link to="/Home/Page/Training/Date">Date</Link>
+              <NavLink activeClassName="selected" to="/Home/Page/Training/Date">
+                Date
+              </NavLink>
             </li>
             <li>
-              <Link to={`/Home/Page/Training/Categorie/${select}`}>
+              <NavLink to={`/Home/Page/Training/Categorie/${select}`}>
                 <select onChange={handleChange}>
                   <option></option>
                   {categories.map((data) => (
@@ -61,11 +60,9 @@ export default function PageTraining() {
                     </option>
                   ))}
                 </select>
-              </Link>
+              </NavLink>
             </li>
-            <li>
-              <Link to="/Home/Page/Training/Rate">Pertinance</Link>
-            </li>
+            <li></li>
           </ul>
         </div>
         <div>
