@@ -1,5 +1,5 @@
 .pageUser-profil {
-  min-width: 40%;
+  width: 40%;
   max-height: 80vh;
   min-height: 400px;
   display: flex;
@@ -41,13 +41,13 @@
     z-index: 2;
     width: 100%;
     position: relative;
-    bottom: 8vh;
+    bottom: 18vh;
   }
   &-banner-img {
     z-index: 3;
     height: 10vh;
     position: relative;
-    bottom: 20vh;
+    bottom: 30vh;
     width: 100%;
   }
   &-banner-h1 {
@@ -57,16 +57,29 @@
     padding: 1%;
     width: 100%;
     position: relative;
-    bottom: 26vh;
+    bottom: 36vh;
     text-align: center;
   }
   &-bell {
-    z-index: 5;
-    height: 6vh;
-    width: 18%;
+    z-index: 4;
+    height: 8vh;
+    width: 22%;
     margin-left: 80%;
+    bottom: 4vh;
+    right: 2%;
 
     position: relative;
+    &-number {
+      font-size: 3vh;
+
+      right: 2%;
+      padding-right: 1%;
+      position: relative;
+      color: white;
+      font-family: name;
+      text-align: end;
+      z-index: 5;
+    }
   }
   &-container-data {
     width: 45%;
@@ -98,7 +111,7 @@
   }
   &-badge {
     min-width: 46%;
-    height: 10vh;
+    height: 12vh;
 
     &-descritpion {
       font-size: 3vh;
@@ -129,7 +142,7 @@
     align-items: center;
 
     & h2 {
-      font-size: 1.2rem;
+      font-size: 16px;
 
       width: 100%;
       text-align: center;
@@ -170,6 +183,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    overflow: auto;
 
     & form {
       display: flex;

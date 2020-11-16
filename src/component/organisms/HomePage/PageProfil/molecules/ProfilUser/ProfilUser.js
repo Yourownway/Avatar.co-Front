@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react"
 import useProfilUser from "./useProfilUser"
 import banner from "../../../assets/profil/banner.png"
 import bell from "../../../assets/profil/notification.png"
-import badge from "../../../assets/badge/badge"
+import badges from "../../../assets/badge/badge"
 import ButtonEditProfil from "./atom/ButtonEditProfil"
 import { AuthContext } from "../../../../../../App"
 import usePageProfil from "./useProfilUser"
@@ -34,11 +34,20 @@ export default function ProfilUser({ postsEventsUser }) {
             events.eventIsAdmin === false
         )
       )
+      if (request) {
+        const cleanRequest = request.filter((event) => event.length > 0)
+        console.log(cleanRequest, "ici")
 
-      setUserRequest(request)
+        setUserRequest(cleanRequest)
+      }
     }
     getRequest()
   }, [postsEventsUser, userRequest.length, requette])
+  // console.log(
+  //   userRequest.map((event) =>
+  //     event.filter((data) => data.userId != userData.id)
+  //   )
+  // )
 
   return (
     <>
@@ -49,6 +58,9 @@ export default function ProfilUser({ postsEventsUser }) {
         </div>
         <div className="pageUser-profil-container">
           <div className="pageUser-profil-container-img">
+            <h1 className="pageUser-profil-bell-number">
+              {userRequest.length}
+            </h1>{" "}
             <img
               src={bell}
               className="pageUser-profil-bell"
@@ -70,10 +82,18 @@ export default function ProfilUser({ postsEventsUser }) {
           <div className="pageUser-profil-container-data">
             <div className="pageUser-profil-container-Xpdata">
               <div className="pageUser-profil-badge-container">
-                <img className="pageUser-profil-badge" src={badge.badge2.img} />
-                <p className="font-badge pageUser-profil-badge-descritpion">
-                  "{badge.badge2.name}"
-                </p>
+                {userData.userBadge ? (
+                  <>
+                    {" "}
+                    <img
+                      className="pageUser-profil-badge"
+                      src={badges[`${userData.userBadge}`].img}
+                    />
+                    <p className="font-badge pageUser-profil-badge-descritpion">
+                      "{badges[`${userData.userBadge}`].name}"
+                    </p>{" "}
+                  </>
+                ) : null}
               </div>
               <div>
                 <p>
@@ -147,9 +167,9 @@ export default function ProfilUser({ postsEventsUser }) {
                                 <div className="notifList-li-top">
                                   <p>
                                     <span className="font-description">
-                                      Vous
+                                      Vous{" "}
                                     </span>
-                                    souhaitez participer à
+                                    souhaitez participer à{" "}
                                     {postsEventsUser[i] ? (
                                       <span className="font-description">
                                         {postsEventsUser[i]["postName"]}
@@ -179,9 +199,9 @@ export default function ProfilUser({ postsEventsUser }) {
                                 <div className="notifList-li-top">
                                   <p>
                                     <span className="font-name">
-                                      {event.User.firstName}
+                                      {event.User.firstName}{" "}
                                     </span>
-                                    souhaite participer à votre evenement
+                                    souhaite participer à votre evenement{" "}
                                     {postsEventsUser[i] ? (
                                       <span className="font-description">
                                         {postsEventsUser[i]["postName"]}

@@ -22,6 +22,8 @@ export default function PageProfil() {
   const [postId, setPostId] = useState([])
   const [postsEventsUser, setPostsEventsUser] = useState([])
   const [usersProfilValidate, setUsersProfilValidate] = useState([])
+  const [postsAdmin, setPostsAdmin] = useState([])
+  const [validateAdmin, setValidateAdmin] = useState([])
 
   const token = localStorage.getItem("token")
   const config = {
@@ -43,10 +45,10 @@ export default function PageProfil() {
               )
             )
             .then(async (results) => {
-              const getData = results.map((res) => res.data)
-              console.log("getData", getData)
+              const getData = await results.map((res) => res.data)
 
-              await setPostsEventsUser(getData)
+              setPostsEventsUser(getData)
+
               if (getData.length > 0) {
                 //recupere tout les events valider
                 const getValidation = await getData.map((event) =>
@@ -56,6 +58,24 @@ export default function PageProfil() {
                 )
 
                 setUsersProfilValidate(getValidation)
+              }
+              if (getData.length > 0) {
+                console.log("getData", getData)
+                const getAdmin = await getData.filter(
+                  (data) => data.userId === userData.id
+                )
+
+                console.log(getAdmin, "ici")
+
+                setPostsAdmin(getAdmin)
+                if (getAdmin.length > 0) {
+                  const getAdminValidation = await getAdmin.map((event) =>
+                    event.Events.filter(
+                      (eventData) => eventData.eventValidation === true
+                    )
+                  )
+                  setValidateAdmin(getAdminValidation)
+                }
               }
             })
         }
@@ -71,7 +91,7 @@ export default function PageProfil() {
     usersProfilValidate.length,
     PostData,
   ])
-
+  console.log(userData, "la")
   return (
     <>
       <div className="pageUser">
@@ -87,7 +107,10 @@ export default function PageProfil() {
             </Route>
 
             <Route path="/Home/Page/Profil/MyEvent" exact>
-              <ProfilMyEvent />
+              <ProfilMyEvent
+                postDefaultData={postsAdmin}
+                eventsValidate={validateAdmin}
+              />
             </Route>
 
             <Route

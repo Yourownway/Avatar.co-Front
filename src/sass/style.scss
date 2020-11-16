@@ -1,6 +1,7 @@
 @import "./sass/reset.scss";
 @import "./sass/var.scss";
 @import "./sass/HomePage/Header/nav.scss";
+@import "./sass/HomePage/Header/user.scss";
 @import "./sass/HomePage/PageProfil/molecules/pageEvent.scss";
 @import "./sass/HomePage/PageProfil/molecules/profilUser.scss";
 @import "./sass/HomePage/PageProfil/molecules/pageNewPost.scss";
@@ -45,10 +46,10 @@ body {
 .header {
   top: 0px;
   max-width: 100vw;
-
+  height: 35vh;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 50%);
 }
 
 .font-name {

@@ -55,8 +55,8 @@ export default function ButtonPost({ post, eventValidate }) {
   return (
     <div className="postList-li-bottom-control">
       <div className="postList-li-bottom-status">
-        <span className="red font-name">Status: </span>
-        <h1 className="postList-li-bottom-statusH1">
+        <span className="red font-name postList-li-bottom-info">Status: </span>
+        <h1>
           {/* Status Valider  */}
           {post.Events.find(
             (event) =>
@@ -85,7 +85,7 @@ export default function ButtonPost({ post, eventValidate }) {
               event.eventIsAdmin === true &&
               event.userId === userData.id
           )
-            ? " Admin"
+            ? "Admin"
             : null}
         </h1>
       </div>

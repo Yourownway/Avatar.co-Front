@@ -27,7 +27,7 @@ export default function PageTraining() {
         setPostsEvents([getPostEvents])
 
         if (postsEvents.length > 0) {
-          //recupere tout les events valider
+          //recupere tous les events valider
           const getValidation = await postsEvents.map((events) =>
             events.map((event) =>
               event.filter((eventData) => eventData["eventValidation"] === true)

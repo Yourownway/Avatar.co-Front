@@ -8,10 +8,12 @@ export default function ListParticipant({ users, post }) {
     <>
       <div className="postList-li-bottom-guestContainer">
         <div className="postList-li-bottom-guest">
-          <h3 className="red font-name">Participant </h3>
+          <h3 className="red font-name postList-li-bottom-info">
+            Participant{" "}
+          </h3>
 
           <button
-            className="list"
+            className="list participant"
             onClick={() => {
               setOpen(!open)
             }}

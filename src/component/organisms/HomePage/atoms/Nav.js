@@ -1,21 +1,21 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-
+import React from "react"
+import { NavLink } from "react-router-dom"
 
 export default function Nav() {
- 
   return (
     <div className="navDesktop">
       <ul className="navDesktop-ul">
         <li className="navDesktop-li">
-           <NavLink
+          <NavLink
             activeClassName="navDesktop-a-current"
             className="navDesktop-a"
             to="/Home/Page/Profil/AllEvent"
             exact
-          >ACTU</NavLink>
+          >
+            ACTU
+          </NavLink>
         </li>
-                <li className="navDesktop-li">
+        <li className="navDesktop-li">
           <NavLink
             activeClassName="navDesktop-a-current"
             className="navDesktop-a"
@@ -29,13 +29,13 @@ export default function Nav() {
           <NavLink
             activeClassName="navbar-a-current"
             className="navbar-a"
-            to="/Home/Page/Training" 
+            to="/Home/Page/Training"
             exact
           >
             TRAINING
           </NavLink>
         </li>
-         <li className="navDesktop-li">
+        <li className="navDesktop-li">
           {/* <NavLink
             activeClassName="navbar-a-current"
             className="navbar-a"
@@ -46,7 +46,11 @@ export default function Nav() {
           </NavLink> */}
         </li>
       </ul>
-        <div className="navDesktop-logo"><h1>Sport<span className='green'>.co</span></h1></div> 
+      <div className="navDesktop-logo">
+        <h1>
+          Avatar<span className="green">.co</span>
+        </h1>
+      </div>
     </div>
-  );
+  )
 }

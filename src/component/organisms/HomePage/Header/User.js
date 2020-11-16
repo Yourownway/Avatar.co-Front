@@ -1,11 +1,43 @@
-import React from 'react'
-
+import React, { useContext } from "react"
+import { AuthContext } from "../../../../App"
+import badges from "../assets/badge/badge"
 export default function User() {
-    return (
-        <div className='user'>
-        <div className='user-container'>
-            <h1>UserSection
-            </h1>
-        </div></div>
-    )
+  const authValue = useContext(AuthContext)
+  const userData = authValue.reducerState.user
+  return (
+    <div className="user">
+      <div className="user-container">
+        <div className="header-user-data">
+          <h1 className="header-user-name font-name ">{userData.firstName}</h1>{" "}
+          <p className="font-description">
+            {" "}
+            XP:<span className="white">{userData.userXp}</span>{" "}
+          </p>
+          <div className="header-user-container-Xpbar">
+            <div
+              className="header-user-content-Xpbar"
+              style={{
+                width:
+                  `${userData.userXp}`.substring(
+                    1,
+                    `${userData.userXp}`.length - 1
+                  ) + "%",
+              }}
+            ></div>
+          </div>
+        </div>
+        {userData.userBadge ? (
+          <div className="header-user-badge">
+            <img
+              className="header-user-badge-img "
+              src={badges[`${userData.userBadge}`].img}
+            />
+            <p className="font-badge header-user-badge-descritpion">
+              "{badges[`${userData.userBadge}`].name}"
+            </p>{" "}
+          </div>
+        ) : null}
+      </div>
+    </div>
+  )
 }

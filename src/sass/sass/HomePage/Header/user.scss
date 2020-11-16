@@ -1,0 +1,81 @@
+.user {
+  grid-column: 5/9;
+  padding: 2%;
+  background-color: $dark-blue;
+  min-width: 100px;
+
+  &-container {
+    height: 100%;
+    display: flex;
+    background-color: $red;
+    border: solid $white;
+  }
+}
+
+@media (min-width: 450px) {
+  .user {
+    grid-column: 6/9;
+
+    background-color: $dark-blue;
+
+    &-container {
+      height: 100%;
+
+      background-color: $red;
+      border: solid $white;
+      display: flex;
+      width: 100%;
+
+      align-items: center;
+    }
+  }
+}
+
+.header-user {
+  &-data {
+    width: 50%;
+    height: 100%;
+
+    & p {
+      color: black;
+      text-align: center;
+      font-size: 3vh;
+    }
+  }
+  &-container-Xpbar {
+    height: 2vh;
+    background: white;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 2%;
+    border-radius: 16px;
+  }
+  &-content-Xpbar {
+    height: 2vh;
+    border-radius: 16px 0px 0px 16px;
+    background: radial-gradient(ellipse at left, blue, rgb(228, 234, 255));
+  }
+  &-name {
+    font-size: 4vh;
+    text-align: center;
+    @media (max-width: 800px) {
+      font-size: 3vh;
+    }
+  }
+  &-badge {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-img {
+      height: 10vh;
+    }
+
+    &-descritpion {
+      color: black;
+      font-size: 3vh;
+    }
+  }
+}

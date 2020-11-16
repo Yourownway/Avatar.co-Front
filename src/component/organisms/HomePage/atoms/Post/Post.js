@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react"
 import { AuthContext } from "../../../../../App"
 import ButtonPost from "./ButtonPost"
 import ListParticipant from "./ListParticipant"
-
+import badges from "../../assets/badge/badge"
 export default function Post({ postDefaultData, events, eventsValidate }) {
   useEffect(() => {}, [postDefaultData.length, events])
   const authValue = useContext(AuthContext)
@@ -37,7 +37,16 @@ export default function Post({ postDefaultData, events, eventsValidate }) {
               </div>
               <div className="postList-li-top-user">
                 <div className="postList-li-top-user-container">
-                  <h3>{post.User.firstName}</h3>
+                  <h3 className="font-name">{post.User.firstName}</h3>
+                  <div className="postList-li-top-badge-container">
+                    <img
+                      className="postList-li-top-badge"
+                      src={badges[`${post.User.userBadge}`].img}
+                    />
+                    <p className="font-badge postList-li-top-badge-descritpion">
+                      "{badges[`${post.User.userBadge}`].name}"
+                    </p>{" "}
+                  </div>
                 </div>
               </div>
             </div>
