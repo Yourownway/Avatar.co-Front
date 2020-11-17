@@ -36,7 +36,7 @@
   overflow: auto;
 
   width: 100%;
-  max-height: 60vh;
+  height: 70vh;
 
   &-ul {
     padding: 2%;
@@ -196,9 +196,14 @@
         }
         &-descritpion {
           position: relative;
-          bottom: 4.3vh;
-          font-size: 2.6vh;
+          bottom: 4.2vh;
+
+          font-size: 1.9vh;
           color: black;
+          @media (max-width: 640px) {
+            font-size: 1.5vh;
+            bottom: 3.5;
+          }
           @media (max-width: 450px) {
             display: none;
             width: 1%;
@@ -333,6 +338,7 @@
           height: 10vh;
           overflow: auto;
           z-index: 1;
+          color: black;
 
           grid-row: 6;
           grid-column: 1/5;

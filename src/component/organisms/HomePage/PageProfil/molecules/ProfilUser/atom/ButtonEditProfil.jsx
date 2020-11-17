@@ -1,5 +1,5 @@
 import React,{useContext, useState} from 'react'
-import {useHistory} from 'react-router-dom'
+
 import axios from 'axios'
 import { AuthContext } from '../../../../../../../App';
 
@@ -15,7 +15,7 @@ export default function UserEditForm({userData,open,setOpen}) {
 
 
 const [file,setFile] = useState(null)
-let history = useHistory()
+
      const handleChange = (event) => {
     const { name, value } = event.target;
     setUserUpdateData({
@@ -30,8 +30,7 @@ let history = useHistory()
  
 
   
-// const res =await axios.post('/test', data)
-// console.log(res,'data')
+
        const res = await axios.patch(`/api/profil/${userData.id}/edit-user`, userUpdateData,config );
 
     
@@ -59,7 +58,7 @@ let history = useHistory()
 
     return (
        <> 
-          {/* <button className='btn'onClick={()=>setOpen(!open)}>Edit</button> */}
+         
 
           {open? (
 <>

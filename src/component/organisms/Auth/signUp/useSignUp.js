@@ -11,9 +11,6 @@ export default function useSignUp() {
     // errorMessage: null,
   })
 
-  // const [display, setDisplay] = useState(false);
-  // const [inputData, setInputData] = useState("");
-
   const handleChange = (event) => {
     const { name, value } = event.target
     setInputs({
@@ -35,7 +32,7 @@ export default function useSignUp() {
         })
       }
     } catch (error) {
-      console.log(error.response.data.error)
+      console.log(error)
       setInputs({
         ...inputs,
         // isSubmitting: false,

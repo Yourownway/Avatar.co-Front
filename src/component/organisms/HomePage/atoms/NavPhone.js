@@ -30,7 +30,7 @@ export default function NavPhone() {
             <li className="navPhone-li">
               <NavLink
                 className="navPhone-a"
-                to="/Home/Page/Profil"
+                to="/Home/Page/Profil/AllEvent"
                 activeClassName="selected"
                 exact
               >

@@ -11,7 +11,6 @@ const initialState = {
 
   token: null || localStorage.getItem("token"),
 }
-
 const reducer = (state, action) => {
   console.log("ICI ACTION :", action)
   switch (action.type) {
@@ -19,10 +18,18 @@ const reducer = (state, action) => {
       console.log("SINGIN", action)
       localStorage.setItem("token", action.payload.data.Token)
       localStorage.setItem("user", action.payload.data)
+
       return {
         ...state,
         isAuthenticated: true,
         token: action.payload.data.Token,
+        user: action.payload.data,
+      }
+    case "LOAD_USER":
+      console.log("LOAD_USER", state)
+      return {
+        ...state,
+        isAuthenticated: true,
         user: action.payload.data,
       }
     case "LOGOUT":
@@ -31,13 +38,6 @@ const reducer = (state, action) => {
         ...state,
         isAuthenticated: false,
         token: null,
-      }
-    case "LOAD_USER":
-      console.log("LOAD_USER", state)
-      return {
-        ...state,
-        isAuthenticated: true,
-        user: action.payload.data,
       }
     default:
       return state

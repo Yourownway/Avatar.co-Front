@@ -9,8 +9,6 @@ export default function useSignIn() {
   const [inputValues, setValues] = useState({
     userEmail: "",
     userPassword: "",
-    // isSubmitting: false,
-    // errorMessage: null,
   })
 
   let history = useHistory()
@@ -32,7 +30,7 @@ export default function useSignIn() {
 
         setValues({
           ...inputValues,
-          isSubmitting: true,
+          // isSubmitting: true,
           errorMessage: null,
         })
         history.push("/Home/Page/Profil/AllEvent")

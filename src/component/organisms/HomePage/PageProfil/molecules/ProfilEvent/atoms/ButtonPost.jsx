@@ -5,6 +5,7 @@ import { AuthContext } from '../../../../../../App'
 import EditEvent from './EditEvent'
 
 export default function ButtonPost({postUser}) {
+  const token = localStorage.getItem("token")
     const authValue = useContext(AuthContext)
     const reducerUserData = authValue.reducerState.user
 const [open,setOpen] = useState(false)

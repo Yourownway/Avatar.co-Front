@@ -6,19 +6,25 @@ import { useUpdatePost } from "../../../../Context/ContextProvider"
 import EditEvent from "./EditEvent"
 import NewEvent from "./NewEvent"
 
-export default function ButtonPost({ post, eventValidate }) {
+export default function ButtonPost({ post }) {
+  const token = localStorage.getItem("token")
   const authValue = useContext(AuthContext)
   const userData = authValue.reducerState.user
   const [open, setOpen] = useState(false)
   const [openReq, setOpenReq] = useState(false)
   const updatePost = useUpdatePost()
-  const [postState, setPostState] = useState(post)
 
   const handleCancelEvent = async (post) => {
     try {
       const res = await axios.delete(
-        `/api/event/${post.id}/${userData.id}/cancel`
+        `/api/event/${post.id}/${userData.id}/cancel`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       )
+
       if (res) {
         console.log(res, "event supprimé")
         const refreshPosts = async () => {
@@ -35,7 +41,13 @@ export default function ButtonPost({ post, eventValidate }) {
   const handleClickDelete = async () => {
     try {
       const fetchDelete = async () => {
-        const res = await axios.delete(`/api/post/${post.id}/delete`)
+        const res = await axios.delete(`/api/post/${post.id}/delete`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        console.log("ici")
+
         if (res) {
           console.log(`post numero ${post.id} supprimer avec succès!`)
           //importer un reducer ou un context pour mettre a jour les USER POST

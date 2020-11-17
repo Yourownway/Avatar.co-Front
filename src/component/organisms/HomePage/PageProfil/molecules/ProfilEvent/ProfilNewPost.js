@@ -4,7 +4,7 @@ import FormUserPost from "./atoms/FromUserPost"
 import { AuthContext } from "../../../../../../App"
 export default function ProfilNewPost() {
   const authValue = useContext(AuthContext)
-  const userData = authValue.reducerState.user
+
   const { handleChange, handleSubmit, userPostData } = usePorfilNewPost()
   return (
     <div className="profilUser-newPost">

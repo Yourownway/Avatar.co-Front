@@ -17,8 +17,6 @@ export default function ProfilUser({ postsEventsUser }) {
   const authValue = useContext(AuthContext)
   const userData = authValue.reducerState.user
   const {
-    handleClickEdit,
-    openEdit,
     handleClickCancelEvent,
     handleClickDeclineEvent,
     handleClickValidation,
@@ -43,11 +41,6 @@ export default function ProfilUser({ postsEventsUser }) {
     }
     getRequest()
   }, [postsEventsUser, userRequest.length, requette])
-  // console.log(
-  //   userRequest.map((event) =>
-  //     event.filter((data) => data.userId != userData.id)
-  //   )
-  // )
 
   return (
     <>
@@ -133,13 +126,8 @@ export default function ProfilUser({ postsEventsUser }) {
             >
               Edit
             </button>
-
-            {/* <p> <span>Description:</span>{userData.userDescription}</p> */}
-            {/* <UserEditForm userData={userData}/>   */}
           </div>
         </div>
-
-        {/* <h1>Vous avez {userRequest.length} Notification</h1> */}
 
         <ButtonEditProfil open={open} setOpen={setOpen} userData={userData} />
         {openNotification ? (
@@ -165,13 +153,11 @@ export default function ProfilUser({ postsEventsUser }) {
                             {event.userId === userData.id ? (
                               <>
                                 <div className="notifList-li-top">
-                                  <p>
-                                    <span className="font-description">
-                                      Vous{" "}
-                                    </span>
+                                  <p className="font-description">
+                                    <span className="font-name">Vous </span>
                                     souhaitez participer à{" "}
                                     {postsEventsUser[i] ? (
-                                      <span className="font-description">
+                                      <span className="red font-description">
                                         {postsEventsUser[i]["postName"]}
                                       </span>
                                     ) : (
@@ -197,20 +183,22 @@ export default function ProfilUser({ postsEventsUser }) {
                             ) : (
                               <>
                                 <div className="notifList-li-top">
-                                  <p>
+                                  <p className="font-description">
                                     <span className="font-name">
                                       {event.User.firstName}{" "}
                                     </span>
                                     souhaite participer à votre evenement{" "}
                                     {postsEventsUser[i] ? (
-                                      <span className="font-description">
+                                      <span className=" red font-description">
                                         {postsEventsUser[i]["postName"]}
                                       </span>
                                     ) : null}
                                   </p>
 
                                   {event.eventComment ? (
-                                    <h3>message: {event.eventComment}</h3>
+                                    <h3 className=" comment font-description green">
+                                      "{event.eventComment}"
+                                    </h3>
                                   ) : null}
                                 </div>
                                 <div className="notifList-li-bottom">

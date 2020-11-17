@@ -19,7 +19,7 @@ export default function NextEvent() {
                 // style={{ textTransform: "capitalize" }}
                 className="font-description red"
               >
-                <Moment locale="de" fromNow>
+                <Moment format="D MMM YYYY" withTitle>
                   {nextEvent.postDate}
                 </Moment>
               </p>{" "}

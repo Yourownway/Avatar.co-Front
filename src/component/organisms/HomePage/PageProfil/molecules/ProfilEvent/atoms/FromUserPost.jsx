@@ -20,7 +20,7 @@ export default function FromUserPost({handleChange, userPostData}) {
     }
     fetchParcs()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
-console.log(parcs,"ici")
+
     return (
         <>
         <h1>Le nom de l'event..</h1>
@@ -41,7 +41,7 @@ console.log(parcs,"ici")
       />
   <h1>Quel genre ..?</h1>
      <select name='categoryId' onChange={handleChange}>
-                
+                   <option></option>
                   {categories.map((data) => (
                     <option value={data.id}>
                       {data.categoryName}
@@ -50,7 +50,7 @@ console.log(parcs,"ici")
                 </select>
       <h1>Ou ca ..? </h1>
              <select name='parcId' onChange={handleChange}>
-                
+                   <option></option>
                   {parcs.map((data) => (
                     <option value={data.id}>
                       {data.parcName}

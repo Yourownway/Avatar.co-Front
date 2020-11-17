@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import axios from "axios"
-import {
-  usePostData,
-  useNextEvent,
-  useUpdateNextEvent,
-  useUser,
-  useUpdatePost,
-} from "../../../../../Context/ContextProvider"
+import { useUpdatePost } from "../../../../../Context/ContextProvider"
+const token = localStorage.getItem("token")
 
 export default function useProfilUser() {
   const [openEdit, setOpenEdit] = useState(false)
@@ -18,7 +13,11 @@ export default function useProfilUser() {
     setOpenEdit(!openEdit)
   }
   const handleClickCancelEvent = async (postId, userId) => {
-    const res = await axios.delete(`/api/event/${postId}/${userId}/cancel`)
+    const res = await axios.delete(`/api/event/${postId}/${userId}/cancel`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     if (res.status === 200) {
       console.log("evenement annuler")
 

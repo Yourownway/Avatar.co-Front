@@ -6,14 +6,8 @@ import { AuthContext } from "../../../App"
 
 import PageProfil from "./PageProfil/PageProfil"
 import PageTraining from "./PageTraining/PageTraining"
-import PageCoaching from "./PageCoaching/PageCoaching"
-import {
-  usePostData,
-  useUpdatePost,
-  useUserUpdate,
-  usenextEvent,
-  useupdateNextEvent,
-} from "../../Context/ContextProvider"
+
+import { usePostData, useUpdatePost } from "../../Context/ContextProvider"
 
 export default function HomePage() {
   const authValue = useContext(AuthContext)
@@ -53,10 +47,6 @@ export default function HomePage() {
     <>
       <Header />
 
-      {/*   
-    <h1>Bienvenu {authValue.reducerState.user.firstName} :')</h1>
-       <h1> Envie de jouer au sport ? </h1> */}
-      {/* <button onClick={handleClick}>Click</button> */}
       <Switch>
         <Route path={"/Home/Page/Profil"}>
           <PageProfil />

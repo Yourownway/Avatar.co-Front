@@ -18,7 +18,7 @@ export default function Nav() {
           <NavLink
             activeClassName="selected"
             className="navDesktop-a"
-            to="/Home/Page/Profil/"
+            to="/Home/Page/Profil/AllEvent"
             exact
           >
             PROFIL

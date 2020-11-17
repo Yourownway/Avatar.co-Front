@@ -22,6 +22,7 @@ export default function PageProfil() {
   const userData = authValue.reducerState.user
 
   const PostData = usePostData()
+
   const updateNextEvent = useUpdateNextEvent()
   const [postId, setPostId] = useState([])
   const [postsEventsUser, setPostsEventsUser] = useState([])
@@ -29,16 +30,11 @@ export default function PageProfil() {
   const [postsAdmin, setPostsAdmin] = useState([])
   const [validateAdmin, setValidateAdmin] = useState([])
 
-  const token = localStorage.getItem("token")
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
   useEffect(() => {
     const fetchAllPostUser = async () => {
       try {
         const res = await axios.get(`/api/event/${userData.id}/postId`)
+
         setPostId(res.data)
         if (postId.length > 0) {
           // je recupere les post ou l'user paticipe ou a crée avec les events de tout les users
