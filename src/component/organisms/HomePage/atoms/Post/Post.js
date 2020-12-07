@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react"
-import { AuthContext } from "../../../../../App"
+import React, { useEffect } from "react"
+
 import ButtonPost from "./ButtonPost"
 import ListParticipant from "./ListParticipant"
 import badges from "../../assets/badge/badge"
@@ -7,9 +7,10 @@ import Moment from "react-moment"
 import "moment-timezone"
 import "moment/locale/fr"
 export default function Post({ postDefaultData, events, eventsValidate }) {
-  useEffect(() => {}, [postDefaultData.length, events])
-  const authValue = useContext(AuthContext)
-  const userData = authValue.reducerState.user
+  useEffect(() => {
+    console.log(eventsValidate)
+  }, [postDefaultData.length, events])
+
   const URL = "http://localhost:3006/"
 
   return (
@@ -39,7 +40,7 @@ export default function Post({ postDefaultData, events, eventsValidate }) {
               </div>
               <div className="postList-li-top-image">
                 {post.User.userImage ? (
-                  <img src={URL + post.User.userImage} />
+                  <img src={URL + post.User.userImage} alt="user avatar" />
                 ) : null}
               </div>
               <div className="postList-li-top-user">
@@ -47,6 +48,7 @@ export default function Post({ postDefaultData, events, eventsValidate }) {
                   <h3 className="font-name">{post.User.firstName}</h3>
                   <div className="postList-li-top-badge-container">
                     <img
+                      alt="user badge"
                       className="postList-li-top-badge"
                       src={badges[`${post.User.userBadge}`].img}
                     />

@@ -34,6 +34,7 @@ export default function User() {
         {userData.userBadge ? (
           <div className="header-user-badge">
             <img
+              alt="badge"
               className="header-user-badge-img "
               src={badges[`${userData.userBadge}`].img}
             />

@@ -1,5 +1,5 @@
 import axios from "axios"
-import React, { useContext, useEffect, useReducer, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Route, Switch } from "react-router-dom"
 import { AuthContext } from "../../../../App"
 import {
@@ -38,7 +38,7 @@ export default function PageProfil() {
         setPostId(res.data)
         if (postId.length > 0) {
           // je recupere les post ou l'user paticipe ou a crée avec les events de tout les users
-          const res = await axios
+          await axios
             .all(
               postId.map((postId) =>
                 axios.get(`/api/post/${postId.postId}/postById`)
@@ -61,12 +61,9 @@ export default function PageProfil() {
                 setUsersProfilValidate(getValidation)
               }
               if (getData.length > 0) {
-                console.log("getData", getData)
                 const getAdmin = await getData.filter(
                   (data) => data.userId === userData.id
                 )
-
-                console.log(getAdmin, "ici")
 
                 setPostsAdmin(getAdmin)
                 if (getAdmin.length > 0) {
@@ -91,7 +88,7 @@ export default function PageProfil() {
     postsEventsUser.length,
     usersProfilValidate.length,
     PostData,
-  ])
+  ]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

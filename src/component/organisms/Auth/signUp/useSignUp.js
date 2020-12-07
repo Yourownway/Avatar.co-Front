@@ -24,7 +24,8 @@ export default function useSignUp() {
     try {
       const res = await axios.post(`api/SignUp`, inputs)
 
-      if (res === 200) {
+      if (res) {
+        alert("Welcome!")
         setInputs({
           ...inputs,
           // isSubmitting: true,

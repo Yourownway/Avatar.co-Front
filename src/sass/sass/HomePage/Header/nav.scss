@@ -8,7 +8,7 @@
   &-ul {
     display: flex;
     font-family: Menu;
-
+    font-size: 3rem;
     width: 65%;
     justify-content: space-around;
     margin: auto;
@@ -21,8 +21,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
     & h1 {
-      font-size: 10vh;
+    font-size: 8rem;
       text-align: center;
     }
   }
@@ -73,6 +74,7 @@
       justify-content: space-around;
       align-items: center;
       height: 100%;
+      font-size: 2rem;
     }
   }
 }

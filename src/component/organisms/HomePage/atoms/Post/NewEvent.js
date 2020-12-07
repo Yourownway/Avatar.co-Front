@@ -34,10 +34,22 @@ export default function NewEvent({ post, userData, setOpen, open }) {
   }
 
   return (
-    <div>
+    <div className="modale-newEvent-container">
       <h3>Ajouter un commentaire?</h3>
-      <input value={state.value} name="eventComment" onChange={handleChange} />
-      <button onClick={() => handleClickCreateEvent(post)}>Envoyer</button>
+      <div className="modale-newEvent-form">
+        <input
+          value={state.value}
+          name="eventComment"
+          onChange={handleChange}
+        />
+
+        <button
+          className="modale-newEvent-btn"
+          onClick={() => handleClickCreateEvent(post)}
+        >
+          Envoyer
+        </button>
+      </div>
     </div>
   )
 }

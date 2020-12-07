@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react"
+import React, { useReducer } from "react"
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { ContextProvider } from "./component/Context/ContextProvider"

@@ -1,8 +1,10 @@
-import React, { useState } from "react"
-
+import React, { useContext, useEffect, useState } from "react"
+import { AuthContext } from "../../../../../App"
 export default function ListParticipant({ users, post }) {
   const [open, setOpen] = useState(false)
   const URL = "http://localhost:3006/"
+  const authValue = useContext(AuthContext)
+  const userData = authValue.reducerState.user
 
   return (
     <>
@@ -34,12 +36,19 @@ export default function ListParticipant({ users, post }) {
             {users.map((user) => (
               <li>
                 {user.User.userImage ? (
-                  <img src={URL + user.User.userImage} />
-                ) : null}
-                <div>
-                  <p> {user.User.firstName} </p>
-                  <p> Xp: {user.User.userXp} </p>
-                </div>
+                  <img alt="user Avatar" src={URL + user.User.userImage} />
+                ) : null}{" "}
+                {user.User.id === userData.id ? (
+                  <div>
+                    <p className="yellow"> {user.User.firstName} </p>
+                    <p className="yellow"> Xp: {user.User.userXp} </p>{" "}
+                  </div>
+                ) : (
+                  <div>
+                    <p> {user.User.firstName} </p>
+                    <p> Xp: {user.User.userXp} </p>
+                  </div>
+                )}
               </li>
             ))}
           </ul>{" "}

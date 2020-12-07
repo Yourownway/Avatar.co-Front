@@ -1,16 +1,14 @@
-import React, { useContext } from "react"
+import React from "react"
 import usePorfilNewPost from "./usePorfilNewPost"
 import FormUserPost from "./atoms/FromUserPost"
-import { AuthContext } from "../../../../../../App"
-export default function ProfilNewPost() {
-  const authValue = useContext(AuthContext)
 
+export default function ProfilNewPost() {
   const { handleChange, handleSubmit, userPostData } = usePorfilNewPost()
   return (
     <div className="profilUser-newPost">
       <form className="profilUser-newPost-form" onSubmit={handleSubmit}>
         <FormUserPost handleChange={handleChange} userPostData={userPostData} />
-        <button>Valider</button>
+        <button className="btn">Valider</button>
       </form>
     </div>
   )

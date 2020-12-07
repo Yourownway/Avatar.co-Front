@@ -1,18 +1,33 @@
 .pageTraining-search {
   display: flex;
   justify-content: center;
+  padding: 2%;
   &-input {
     height: 5vh;
-    background: white;
+    background: rgba($color: white, $alpha: 0.5);
+    outline: none;
     font-family: description;
     font-weight: bold;
     color: black;
-    border-radius: 16px;
+    border: white 1px;
+    border-radius: 4px;
+    width: 20vw;
     padding-left: 2%;
   }
+   &-input::placeholder{
+     color:black;
+     font-family: Descritpion;
+     font-size: 2rem;
+    
+ 
+    width: 100%;
+     margin: auto;
+
+   }
   & button {
     height: 5vh;
     font-size: 2vh;
+  
   }
 }
 .search-result {

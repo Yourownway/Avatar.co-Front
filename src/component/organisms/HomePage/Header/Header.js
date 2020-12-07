@@ -1,5 +1,5 @@
 import React from "react"
-import SearchBar from "../atoms/ShearchBar/SearchBar"
+
 import Nav from "../atoms/Nav"
 
 import User from "./User"

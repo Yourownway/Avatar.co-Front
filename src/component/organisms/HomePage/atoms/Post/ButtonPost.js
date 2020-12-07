@@ -1,5 +1,5 @@
 import axios from "axios"
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../../../../App"
 import { useUpdatePost } from "../../../../Context/ContextProvider"
 
@@ -46,7 +46,6 @@ export default function ButtonPost({ post }) {
             Authorization: `Bearer ${token}`,
           },
         })
-        console.log("ici")
 
         if (res) {
           console.log(`post numero ${post.id} supprimer avec succès!`)
@@ -64,6 +63,10 @@ export default function ButtonPost({ post }) {
       console.log(error)
     }
   }
+
+  useEffect(() => {
+    console.log(userData, "DATA")
+  }, [])
   return (
     <div className="postList-li-bottom-control">
       <div className="postList-li-bottom-status">
@@ -123,7 +126,7 @@ export default function ButtonPost({ post }) {
         <button onClick={() => setOpenReq(!openReq)}>Participer</button>
       )}
       {openReq ? (
-        <div>
+        <div className="modale-newEvent">
           {" "}
           <button onClick={() => setOpenReq(!openReq)}>X</button>
           <NewEvent

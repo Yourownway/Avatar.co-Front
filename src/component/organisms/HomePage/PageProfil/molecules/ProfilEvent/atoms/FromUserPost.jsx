@@ -23,7 +23,7 @@ export default function FromUserPost({handleChange, userPostData}) {
 
     return (
         <>
-        <h1>Le nom de l'event..</h1>
+        <h2>Le nom de l'event..</h2>
       <input
         onChange={handleChange}
         type="text"
@@ -31,15 +31,15 @@ export default function FromUserPost({handleChange, userPostData}) {
         placeholder="postName"
         value={userPostData.postName}
       />
-      <h1>Quand ..?</h1>
-      <input
+      <h2>Quand ..?</h2>
+      <input className="profilUser-newPost-where"
         onChange={handleChange}
         type="date"
         name="postDate"
         placeholder="postDate"
         value={userPostData.postDate}
       />
-  <h1>Quel genre ..?</h1>
+  <h2>Quel genre ..?</h2>
      <select name='categoryId' onChange={handleChange}>
                    <option></option>
                   {categories.map((data) => (
@@ -48,7 +48,7 @@ export default function FromUserPost({handleChange, userPostData}) {
                     </option>
                   ))}
                 </select>
-      <h1>Ou ca ..? </h1>
+      <h2>Ou ca ..? </h2>
              <select name='parcId' onChange={handleChange}>
                    <option></option>
                   {parcs.map((data) => (
@@ -59,7 +59,7 @@ export default function FromUserPost({handleChange, userPostData}) {
                 </select>
      
  
-      <h1>Combien de personne ..?</h1>
+      <h2>Combien de personne ..?</h2>
       <input
         onChange={handleChange}
         type="text"
@@ -67,7 +67,7 @@ export default function FromUserPost({handleChange, userPostData}) {
         placeholder="postMaxGuest"
         value={userPostData.postMaxGuest}
       />
-       <h1>Dis nous en plus ..!</h1>
+       <h2>Dis nous en plus ..!</h2>
       <textarea
         onChange={handleChange}
         type="text"

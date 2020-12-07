@@ -3,16 +3,14 @@ import { useHistory } from "react-router-dom"
 import {
   usePostData,
   useSearchUpdate,
-  useSearch,
 } from "../../../../Context/ContextProvider"
 
 export default function useSearchbar() {
   const postData = usePostData()
   const updateSearch = useSearchUpdate()
-  const searchData = useSearch()
+
   const [searchInput, setSearchDataInput] = useState("")
   const history = useHistory()
-  const URL = window.location.href
 
   const handleChange = (e) => {
     setSearchDataInput(e.target.value)

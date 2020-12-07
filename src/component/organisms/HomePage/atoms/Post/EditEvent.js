@@ -27,7 +27,7 @@ export default function EditEvent({ postUser, userData, open, setOpen }) {
     )
     if (res.status === 200) {
       console.log("post edité", res)
-      console.log(res.status)
+
       const refreshPosts = async () => {
         const res = await axios("/api/post/allpost")
         updatePost(res.data.post)
@@ -49,7 +49,7 @@ export default function EditEvent({ postUser, userData, open, setOpen }) {
         >
           X
         </button>
-        <h1>Nom..?</h1>
+        <h2>Nom..?</h2>
         <input
           className="newPost-input"
           onChange={handleChange}
@@ -58,7 +58,7 @@ export default function EditEvent({ postUser, userData, open, setOpen }) {
           placeholder={postUser.postName}
           value={eventUpdateData.postName}
         />
-        <h1>Description..?</h1>
+        <h2>Description..?</h2>
         <input
           className="newPost-input"
           onChange={handleChange}
@@ -74,7 +74,7 @@ export default function EditEvent({ postUser, userData, open, setOpen }) {
         placeholder={postUser.postDate}
         value={eventUpdateData.postDate}
       /> */}
-        <h1>Nombre..?</h1>
+        <h2>Nombre..?</h2>
         <input
           className="newPost-input"
           onChange={handleChange}
@@ -83,7 +83,7 @@ export default function EditEvent({ postUser, userData, open, setOpen }) {
           placeholder={postUser.postMaxGuest}
           value={eventUpdateData.postMaxGuest}
         />
-        <h1>LVL..?</h1>
+        <h2>LVL..?</h2>
         <input
           className="newPost-input"
           onChange={handleChange}

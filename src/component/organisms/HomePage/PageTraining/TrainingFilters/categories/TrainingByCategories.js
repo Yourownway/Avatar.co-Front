@@ -7,7 +7,6 @@ import axios from "axios"
 export default function TrainingPostCategorie({ categories }) {
   const [postByCategorie, setPostByCategorie] = useState([])
   const [validateCategorie, setValidateCategorie] = useState([])
-  const [postsEventsByCategorie, setPostEventsByCatagorie] = useState([])
 
   const categorie = useParams()
 
@@ -18,12 +17,11 @@ export default function TrainingPostCategorie({ categories }) {
       )[0]
       if (getId) {
         const res = await axios.get(`/api/post/${getId.id}/category`)
-        console.log(res.data.post)
+
         if (res.data.post.length > 0) {
           setPostByCategorie(res.data.post)
           const getEvents = res.data.post.map((post) => post["Events"])
           if (getEvents) {
-            setPostEventsByCatagorie(getEvents)
             const getValidation = await getEvents.map((events) =>
               events.filter(
                 (eventData) => eventData["eventValidation"] === true
@@ -38,7 +36,7 @@ export default function TrainingPostCategorie({ categories }) {
     }
 
     filterByCategorie()
-  }, [categorie.name])
+  }, [categorie.name]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>

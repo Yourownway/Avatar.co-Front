@@ -28,7 +28,7 @@ export default function Nav() {
           <NavLink
             activeClassName="selected"
             className="navbar-a"
-            to="/Home/Page/Training"
+            to="/Home/Page/Training/Date"
             exact
           >
             TRAINING

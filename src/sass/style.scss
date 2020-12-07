@@ -1,5 +1,6 @@
 @import "./sass/reset.scss";
 @import "./sass/var.scss";
+@import "./sass/HomePage/atoms/post.scss";
 @import "./sass/HomePage/Header/nav.scss";
 @import "./sass/HomePage/Header/user.scss";
 @import "./sass/HomePage/PageProfil/molecules/pageEvent.scss";
@@ -69,6 +70,10 @@ body {
 
 .font-badge {
   font-family: Badge;
+}
+.yellow {
+  color: $dark-blue;
+  
 }
 
 .red {

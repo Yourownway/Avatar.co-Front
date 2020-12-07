@@ -22,7 +22,6 @@ export default function ProfilUser({ postsEventsUser }) {
     handleClickValidation,
   } = useProfilUser()
   useEffect(() => {
-    console.log("mise a jour ==========>")
     const getRequest = async () => {
       const request = await postsEventsUser.map((post) =>
         post.Events.filter(
@@ -34,7 +33,6 @@ export default function ProfilUser({ postsEventsUser }) {
       )
       if (request) {
         const cleanRequest = request.filter((event) => event.length > 0)
-        console.log(cleanRequest, "ici")
 
         setUserRequest(cleanRequest)
       }
@@ -55,6 +53,7 @@ export default function ProfilUser({ postsEventsUser }) {
               {userRequest.length}
             </h1>{" "}
             <img
+              alt="notification"
               src={bell}
               className="pageUser-profil-bell"
               onClick={() => {
@@ -63,10 +62,15 @@ export default function ProfilUser({ postsEventsUser }) {
               }}
             />
             <img
+              alt="avatar"
               className="pageUser-profil-avatar-img"
               src={URL + userData.userImage}
             />
-            <img src={banner} className="pageUser-profil-banner-img" />{" "}
+            <img
+              alt="banner"
+              src={banner}
+              className="pageUser-profil-banner-img"
+            />{" "}
             <h1 className="font-name pageUser-profil-banner-h1">
               {userData.firstName}
             </h1>
@@ -79,6 +83,7 @@ export default function ProfilUser({ postsEventsUser }) {
                   <>
                     {" "}
                     <img
+                      alt="badge"
                       className="pageUser-profil-badge"
                       src={badges[`${userData.userBadge}`].img}
                     />

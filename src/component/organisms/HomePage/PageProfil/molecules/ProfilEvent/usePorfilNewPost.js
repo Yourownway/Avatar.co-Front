@@ -23,7 +23,7 @@ export default function usePorfilNewPost() {
   }
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log(userPostData)
+
     const res = await axios.post("/api/post", userPostData)
 
     if (res.status === 200) {

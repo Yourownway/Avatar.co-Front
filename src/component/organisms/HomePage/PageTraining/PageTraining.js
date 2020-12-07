@@ -32,12 +32,11 @@ export default function PageTraining() {
           )
 
           setUsersTrainingValidate(getValidation[0])
-          console.log(usersTrainingValidate, "userTrainingValidate")
         }
       }
       filterPostEvent()
     }
-  }, [postData, postsEvents.length, usersTrainingValidate.length])
+  }, [postData, postsEvents.length, usersTrainingValidate.length]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -47,12 +46,13 @@ export default function PageTraining() {
           <ul>
             <li>
               <NavLink activeClassName="selected" to="/Home/Page/Training/Date">
-                Date
+                <h2> Date</h2>
               </NavLink>
             </li>
             <li>
               <NavLink to={`/Home/Page/Training/Categorie/${select}`}>
-                <select onChange={handleChange}>
+                <h2> Catégorie</h2>
+                <select className="pageTraining-select" onChange={handleChange}>
                   <option></option>
                   {categories.map((data) => (
                     <option value={data.categoryName}>

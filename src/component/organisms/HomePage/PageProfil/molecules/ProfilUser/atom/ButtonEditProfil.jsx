@@ -43,7 +43,7 @@ const [file,setFile] = useState(null)
     const handleSubmitImg = async (event) => {
 
       event.preventDefault();
- const data = new FormData;
+ const data = new FormData();
  data.append('file',file)
 
        const res = await axios.patch(`/api/profil/${userData.id}/edit-image`, data);

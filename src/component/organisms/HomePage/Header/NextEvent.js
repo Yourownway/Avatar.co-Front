@@ -5,7 +5,7 @@ import "moment-timezone"
 import "moment/locale/fr"
 export default function NextEvent() {
   const nextEvent = useNextEvent()
-  console.log(nextEvent)
+
   return (
     <div className="nextEvent-container">
       <div className="nextEvent">

@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react"
 
-import ContextPost from "../../../Context/ContextPost"
-
 import axios from "axios"
-import { usePostData } from "../../../Context/ContextProvider"
 
 export default function usePageTraining() {
-  const postData = usePostData()
   const [categories, setCategories] = useState([])
   const [select, setSelect] = useState("")
 

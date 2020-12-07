@@ -26,14 +26,20 @@ h6 {
   padding: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: 17px;
-  font-weight: normal;
+h1 {
+  font-size: 3.3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+p {
+  font-size: 1.5rem;
 }
 
 ul {
@@ -49,6 +55,12 @@ textarea {
 
 html {
   box-sizing: border-box;
+  font-size: 62.5%;
+}
+@media (min-width: 700px) {
+  html {
+    font-size: 80%;
+  }
 }
 
 *,
@@ -87,6 +99,40 @@ a {
   color: inherit;
 }
 
+select {
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 40%;
+  font-family: Descritpion;
+  font-size: 1.6rem;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.5);
+  font-family: Descritpion;
+  border: none;
+  outline: none;
+}
+
+.modale-newEvent {
+  background: #011641ff;
+  border-radius: 4px;
+  padding: 5%;
+}
+.modale-newEvent-form {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.modale-newEvent-form input {
+  margin-right: 1%;
+}
+.modale-newEvent-btn {
+  width: 10%;
+}
+
 .navDesktop {
   background-color: #011641ff;
   grid-row: 1;
@@ -97,6 +143,7 @@ a {
 .navDesktop-ul {
   display: flex;
   font-family: Menu;
+  font-size: 3rem;
   width: 65%;
   justify-content: space-around;
   margin: auto;
@@ -110,7 +157,7 @@ a {
   justify-content: center;
 }
 .navDesktop-logo h1 {
-  font-size: 10vh;
+  font-size: 8rem;
   text-align: center;
 }
 
@@ -158,6 +205,7 @@ a {
   justify-content: space-around;
   align-items: center;
   height: 100%;
+  font-size: 2rem;
 }
 
 .nextEvent-container {
@@ -339,11 +387,13 @@ a {
 }
 .postList-ul {
   padding: 2%;
+  width: 100%;
 }
 .postList-li {
   height: 55vh;
   padding: 2%;
   margin: 0 0% 10% 0%;
+  max-width: 60vw;
   display: grid;
   grid-template-rows: repeat(10, 10%);
 }
@@ -417,7 +467,7 @@ a {
   grid-column: 1/11;
   text-align: left;
   max-width: 98%;
-  font-size: 14px;
+  font-size: 1.5rem;
 }
 @media (max-width: 350px) {
   .postList-li-top-description {
@@ -429,13 +479,13 @@ a {
   padding-top: 5%;
   grid-column: 1/9;
   text-align: left;
-  font-size: 16px;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 .postList-li-top-when {
   margin: auto;
   color: #b90617ff;
-  font-size: 12px;
+  font-size: 1.8rem;
   padding: 0% 0% 0% 19%;
   font-weight: bold;
   grid-row: 9/11;
@@ -455,7 +505,7 @@ a {
 .postList-li-top-user {
   background: #011641ff;
   grid-row: 8/11;
-  grid-column: 8/11;
+  grid-column: 7/11;
   margin: 3%;
 }
 .postList-li-top-user-container {
@@ -468,7 +518,7 @@ a {
 .postList-li-top-user h3 {
   width: 50%;
   margin: auto;
-  font-size: 100%;
+  font-size: 2rem;
   text-align: center;
 }
 @media (max-width: 851px) {
@@ -502,8 +552,7 @@ a {
   }
 }
 .postList-li-top-badge-container {
-  width: 50%;
-  height: 100%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -706,31 +755,27 @@ a {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  display: block;
 }
 .pageUser-profil-avatar-img {
-  max-height: 260px;
   left: 20%;
   z-index: 2;
-  width: auto;
+  width: 60%;
   position: relative;
-  bottom: 13vh;
 }
 .pageUser-profil-banner-img {
   z-index: 3;
-  height: 10vh;
+  width: auto;
   position: relative;
-  bottom: 24vh;
-  width: 100%;
+  bottom: 27%;
 }
 .pageUser-profil-banner-h1 {
   z-index: 4;
   color: black;
   font-size: 3.5vh;
   padding: 1%;
-  width: 100%;
+  width: auto;
   position: relative;
-  bottom: 30vh;
+  bottom: 40%;
   text-align: center;
 }
 .pageUser-profil-bell {
@@ -738,13 +783,14 @@ a {
   height: 8vh;
   width: 22%;
   margin-left: 80%;
-  bottom: 4vh;
+  top: 25%;
   right: 2%;
   position: relative;
 }
 .pageUser-profil-bell-number {
-  font-size: 3vh;
-  right: 2%;
+  font-size: 140%;
+  top: 34%;
+  right: 3.5%;
   padding-right: 1%;
   position: relative;
   color: white;
@@ -853,22 +899,24 @@ a {
   }
 }
 .pageUser-profil-edit form {
+  height: 30vh;
+  border: solid blue;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 .notifList {
   overflow: auto;
   background: #b90617ff;
-  padding: 4% 10%;
+  padding: 2% 10%;
   max-height: 26vh;
 }
 
 .notifList-li {
   margin-bottom: 2%;
-  height: 12vh;
+  height: 100%;
   min-height: 100px;
 }
 
@@ -884,7 +932,8 @@ a {
   background: #011641ff;
   margin: 0 0 0 6%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  padding: 0 35%;
   align-items: center;
 }
 
@@ -895,8 +944,7 @@ a {
 
 .profilUser-newPost {
   background: #b90617ff;
-  border: solid red;
-  height: 70vh;
+  height: 80vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -911,13 +959,31 @@ a {
   flex-direction: column;
   justify-content: space-around;
   max-height: 80%;
+  padding-top: 3%;
 }
-.profilUser-newPost-form h1 {
+.profilUser-newPost-form h2 {
   font-family: Descritpion;
 }
 .profilUser-newPost-form input,
 .profilUser-newPost-form textarea {
-  background-color: lavender;
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 50%;
+  font-family: Descritpion;
+  font-size: 1.6rem;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.profilUser-newPost-form textarea {
+  height: 100%;
+}
+.profilUser-newPost-form button {
+  width: 40%;
+  margin-top: 6%;
+  align-self: flex-end;
+}
+.profilUser-newPost-where {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 450px) {
@@ -942,17 +1008,34 @@ a {
   font-family: Menu;
   width: 25%;
   padding: 2%;
+  height: 20vh;
 }
 @media (max-width: 425px) {
   .pageTraining-nav {
     width: 100%;
   }
 }
+.pageTraining-nav ul {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 @media (max-width: 425px) {
   .pageTraining-nav ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
   }
+}
+.pageTraining select {
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 60%;
+  font-family: Descritpion;
+  font-size: 1.6rem;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .authPage {
@@ -1019,15 +1102,26 @@ a {
 .pageTraining-search {
   display: flex;
   justify-content: center;
+  padding: 2%;
 }
 .pageTraining-search-input {
   height: 5vh;
-  background: white;
+  background: rgba(255, 255, 255, 0.5);
+  outline: none;
   font-family: description;
   font-weight: bold;
   color: black;
-  border-radius: 16px;
+  border: white 1px;
+  border-radius: 4px;
+  width: 20vw;
   padding-left: 2%;
+}
+.pageTraining-search-input::placeholder {
+  color: black;
+  font-family: Descritpion;
+  font-size: 2rem;
+  width: 100%;
+  margin: auto;
 }
 .pageTraining-search button {
   height: 5vh;
@@ -1103,6 +1197,10 @@ body {
 
 .font-badge {
   font-family: Badge;
+}
+
+.yellow {
+  color: #011641ff;
 }
 
 .red {

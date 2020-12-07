@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react"
+import React, { useEffect, useContext } from "react"
 import { Route, Switch } from "react-router-dom"
 import Header from "./Header/Header"
 import axios from "axios"
@@ -7,13 +7,12 @@ import { AuthContext } from "../../../App"
 import PageProfil from "./PageProfil/PageProfil"
 import PageTraining from "./PageTraining/PageTraining"
 
-import { usePostData, useUpdatePost } from "../../Context/ContextProvider"
+import { useUpdatePost } from "../../Context/ContextProvider"
 
 export default function HomePage() {
   const authValue = useContext(AuthContext)
 
   const updatePost = useUpdatePost()
-  const postData = usePostData()
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -32,7 +31,7 @@ export default function HomePage() {
       }
     }
     fetchUser()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +40,7 @@ export default function HomePage() {
     }
 
     fetchData()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
